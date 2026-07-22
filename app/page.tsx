@@ -352,7 +352,14 @@ export default function Home() {
           {lobbyServices.map((service) => (
             <article className="lobby-service-card" key={service.title}>
               <a href={service.image} target="_blank" rel="noreferrer" aria-label={`查看${service.title}完整清单`}>
-                <img src={service.image} alt={service.alt} />
+                <img
+                  src={service.image}
+                  alt={service.alt}
+                  width="1810"
+                  height="1279"
+                  loading="lazy"
+                  decoding="async"
+                />
                 <span>查看完整清单 ↗</span>
               </a>
               <div>
@@ -404,7 +411,14 @@ export default function Home() {
                     <div className="freight-landmarks">
                       {guide.secondaryImages.map((item) => (
                         <a href={item.src} target="_blank" rel="noreferrer" key={item.src}>
-                          <img src={item.src} alt={item.alt} />
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      width="1707"
+                      height="1280"
+                      loading="lazy"
+                      decoding="async"
+                    />
                           <span>{item.label}</span>
                         </a>
                       ))}
@@ -412,7 +426,14 @@ export default function Home() {
                     <div className="freight-sequence" aria-label="18号货梯室内路线步骤">
                       {freightSequence.map((label, index) => (
                         <a href={guide.image} target="_blank" rel="noreferrer" key={label} className={`freight-step freight-step-${index + 1}`}>
-                          <img src={guide.image} alt={`${label}路线画面`} />
+                      <img
+                        src={guide.image}
+                        alt={`${label}路线画面`}
+                        width="1037"
+                        height="6583"
+                        loading="lazy"
+                        decoding="async"
+                      />
                           <span>{String(index + 3).padStart(2, "0")} · {label}</span>
                         </a>
                       ))}
@@ -420,12 +441,26 @@ export default function Home() {
                   </div>
                 ) : guide.kind === "notice" ? (
                   <a className="temporary-parking-notice" href={guide.image} target="_blank" rel="noreferrer" aria-label="查看车辆临停处原图">
-                    <img src={guide.image} alt={guide.alt} />
+                    <img
+                      src={guide.image}
+                      alt={guide.alt}
+                      width="1672"
+                      height="941"
+                      loading="lazy"
+                      decoding="async"
+                    />
                     <div><span>车辆临停处</span><strong>仅限接送 · 接待临停</strong><small>完成后请立即驶离，不得长期停放</small></div>
                   </a>
                 ) : (
                   <a className="route-visual" href={guide.image} target="_blank" rel="noreferrer" aria-label={`查看${guide.title}原图`}>
-                    <img src={guide.image} alt={guide.alt} />
+                  <img
+                    src={guide.image}
+                    alt={guide.alt}
+                    width="5032"
+                    height="3579"
+                    loading="lazy"
+                    decoding="async"
+                  />
                     <span>{guide.imagePending ? "路线照片待更换" : "查看清晰原图 ↗"}</span>
                   </a>
                 )}

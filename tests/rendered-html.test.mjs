@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
 const projectRoot = new URL("../", import.meta.url);
@@ -72,6 +72,8 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /广东省珠海市香洲区横琴跨境电商（华发）创新产业园T3栋拓展区高区负一外卖柜/);
   assert.match(html, /广东省珠海市香洲区横琴跨境电商（华发）创新产业园T3栋拓展区xxxx号房/);
   assert.doesNotMatch(html, /takeout-route\.png/);
+  const lazyImages = html.match(/<img[^>]+loading="lazy"[^>]+decoding="async"[^>]*>/g) ?? [];
+  assert.ok(lazyImages.length >= 10);
   assert.match(html, /18号货梯指引/);
   assert.match(html, /车辆导航至“森林子果蔬茶”/);
   assert.match(html, /饮用水、快递及送货请统一使用专属 18 号货梯/);
@@ -104,4 +106,14 @@ test("keeps required local guide assets available", async () => {
     access(new URL("public/lobby-supplies-kit.jpg", projectRoot)),
     access(new URL("public/temporary-parking-entrance.png", projectRoot)),
   ]);
+});
+
+test("keeps scroll performance safeguards", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const topbarRule = css.match(/\.topbar\s*\{[^}]*\}/s)?.[0] ?? "";
+
+  assert.doesNotMatch(topbarRule, /backdrop-filter/);
+  assert.match(css, /content-visibility:\s*auto/);
+  assert.match(css, /contain-intrinsic-size:\s*auto\s+\d+px/);
+  assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.hero-orb\s*\{[^}]*display:\s*none/);
 });

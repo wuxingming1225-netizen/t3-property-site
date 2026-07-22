@@ -28,7 +28,7 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .topbar {
   position: fixed; inset: 0 0 auto; z-index: 50; height: 74px; padding: 0 max(28px, calc((100vw - 1180px) / 2));
   display: flex; align-items: center; justify-content: space-between; color: #fff;
-  background: linear-gradient(180deg, rgba(2, 15, 35, .56), transparent); backdrop-filter: blur(4px);
+  background: linear-gradient(180deg, rgba(2, 15, 35, .92), rgba(2, 15, 35, .74) 70%, rgba(2, 15, 35, .46));
 }
 .brand { display: flex; align-items: center; gap: 12px; font-size: 17px; font-weight: 650; letter-spacing: .05em; }
 .brand-mark { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.38); font-size: 16px; font-weight: 800; letter-spacing: -.04em; }
@@ -93,6 +93,10 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .quick-links i { font-style: normal; }
 
 .team-section { padding: 95px 0 105px; background: linear-gradient(180deg, #f1f8ff, #fbfdff); }
+.team-section, .services, .routes, .guide, .contact-strip, footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
 .section-heading { display: flex; justify-content: space-between; align-items: end; margin-bottom: 48px; }
 .section-heading h2 { margin-top: 16px; font-size: clamp(36px, 4vw, 52px); }
 .section-heading > p { width: 320px; margin: 0 0 4px; color: var(--muted); font-size: 14px; line-height: 1.8; text-align: right; }
@@ -292,6 +296,8 @@ footer { padding: 42px 0; background: #06172d; color: #fff; }
   .brand-mark { width: 38px; height: 38px; }
   .nav-call { padding: 9px 12px; font-size: 11px; }
   .hero { min-height: 720px; }
+  .hero-orb { display: none; }
+  .hero-photo { animation: none; }
   .hero-photo { background-position: 62% center; }
   .hero h1 { margin-top: 23px; font-size: 48px; line-height: 1.08; }
   .hero-content > p { font-size: 16px; }
@@ -352,6 +358,11 @@ footer { padding: 42px 0; background: #06172d; color: #fff; }
   .contact-inner > a span { width: 36px; height: 36px; }
   .footer-grid { grid-template-columns: 1fr; }
   .copyright { grid-column: auto; }
+}
+
+@media (hover: none) {
+  .person-card:hover, .service-card:hover, .primary-btn:hover, .glass-btn:hover { transform: none; }
+  .route-visual:hover img, .takeout-step:hover img, .freight-step:hover img { transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
