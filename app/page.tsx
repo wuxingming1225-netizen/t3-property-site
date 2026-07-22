@@ -65,6 +65,37 @@ const team = [
   },
 ];
 
+const supportTeam = [
+  {
+    index: "08",
+    role: "工程部经理",
+    tag: "工程统筹",
+    name: "姓名待补充",
+    range: "T3 工程运维全域",
+    duties: "统筹设施设备运行、工程维修、施工协调与现场技术支持。",
+    phone: "电话待补充",
+    featured: true,
+  },
+  {
+    index: "09",
+    role: "安管部负责人",
+    tag: "安全管理",
+    name: "姓名待补充",
+    range: "T3 公共区域",
+    duties: "负责安全秩序、消防巡查、突发事件响应与现场协同。",
+    phone: "电话待补充",
+  },
+  {
+    index: "10",
+    role: "安管部负责人",
+    tag: "秩序保障",
+    name: "姓名待补充",
+    range: "T3 公共区域",
+    duties: "负责重点区域巡查、人员车辆秩序与日常安全服务保障。",
+    phone: "电话待补充",
+  },
+];
+
 const services = [
   {
     icon: "闸",
@@ -234,7 +265,7 @@ export default function Home() {
             <div><span className="section-kicker">QUICK DIRECTORY</span><h3>想找什么，直接到达。</h3></div>
           </div>
           <nav className="directory-links" aria-label="网站目录">
-            <a href="#team"><span>01</span><strong>人员介绍</strong><small>认识7位专属客服小伙伴</small><i>↓</i></a>
+            <a href="#team"><span>01</span><strong>人员介绍</strong><small>认识10位专属服务伙伴</small><i>↓</i></a>
             <a href="#services"><span>02</span><strong>服务介绍</strong><small>大堂便民与甄品服务</small><i>↓</i></a>
             <a href="#routes"><span>03</span><strong>路线介绍</strong><small>外卖、停车与货梯指引</small><i>↓</i></a>
           </nav>
@@ -255,6 +286,29 @@ export default function Home() {
           </div>
           <div className="team-grid">
             {team.map((person) => (
+              <article className={`person-card${person.featured ? " featured" : ""}`} key={person.index}>
+                <div className="person-photo">
+                  <div className="photo-placeholder">
+                    <span className="person-silhouette"><i /></span>
+                    <small>照片待补充</small>
+                  </div>
+                  <span className="person-index">{person.index}</span>
+                  <span className="person-tag">{person.tag}</span>
+                </div>
+                <div className="person-info">
+                  <div className="role-row"><div><span>{person.name}</span><h3>{person.role}</h3></div><span className="arrow">↗</span></div>
+                  <p>{person.duties}</p>
+                  <div className="person-meta"><span>⌖ {person.range}</span><span>☎ {person.phone}</span></div>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="team-subheading">
+            <span className="section-kicker">PROFESSIONAL SUPPORT</span>
+            <h3>专业支持团队</h3>
+          </div>
+          <div className="team-grid support-team-grid">
+            {supportTeam.map((person) => (
               <article className={`person-card${person.featured ? " featured" : ""}`} key={person.index}>
                 <div className="person-photo">
                   <div className="photo-placeholder">

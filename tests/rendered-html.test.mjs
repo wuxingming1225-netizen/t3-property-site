@@ -51,6 +51,13 @@ test("renders the T3 property service site", async () => {
   assert.ok(html.indexOf("刘大平") < html.indexOf("周芷盈"));
   assert.ok(html.indexOf("周芷盈") < html.indexOf("梁盼盼"));
   assert.ok(html.indexOf("梁盼盼") < html.indexOf("刘嘉欣"));
+  assert.match(html, /认识10位专属服务伙伴/);
+  assert.match(html, /专业支持团队/);
+  assert.match(html, /工程部经理/);
+  assert.match(html, /安管部负责人/);
+  assert.equal((html.match(/<span>姓名待补充<\/span>/g) ?? []).length, 3);
+  assert.ok(html.indexOf("刘嘉欣") < html.indexOf("工程部经理"));
+  assert.ok(html.indexOf("工程部经理") < html.indexOf("安管部负责人"));
   assert.match(html, /大堂便民与甄品服务/);
   assert.match(html, /臻品物资箱/);
   assert.match(html, /应急领用品/);
