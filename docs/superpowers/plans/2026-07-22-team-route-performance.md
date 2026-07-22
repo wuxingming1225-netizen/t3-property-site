@@ -50,7 +50,8 @@ Add these assertions inside `renders the T3 property service site`, after the ex
 Run:
 
 ```bash
-PATH='/Users/xingming/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:'"$PATH" npm test
+PATH='/Users/xingming/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:/Users/xingming/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/Users/xingming/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:'"$PATH" pnpm run build
+/Users/xingming/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node --test tests/rendered-html.test.mjs
 ```
 
 Expected: FAIL because `认识10位专属服务伙伴` and the three new roles are absent.
@@ -136,7 +137,7 @@ Add these styles after `.team-grid` in `app/globals.css`:
 
 - [ ] **Step 4: Run the test and verify GREEN**
 
-Run the same `npm test` command. Expected: PASS.
+Run the same build and Node test commands. Expected: PASS.
 
 - [ ] **Step 5: Commit the team expansion**
 
@@ -188,7 +189,7 @@ Remove the old `public/takeout-route.png` access assertion.
 
 - [ ] **Step 2: Run the test and verify RED**
 
-Run the standard `npm test` command. Expected: FAIL because the new route labels, addresses, and assets do not exist.
+Run the standard build and Node test commands. Expected: FAIL because the new route labels, addresses, and assets do not exist.
 
 - [ ] **Step 3: Optimize the supplied photos into local web assets**
 
@@ -259,7 +260,7 @@ In the existing mobile media query, use:
 
 - [ ] **Step 6: Run the test and verify GREEN**
 
-Run the standard `npm test` command. Expected: PASS.
+Run the standard build and Node test commands. Expected: PASS.
 
 - [ ] **Step 7: Commit the takeout route update**
 
@@ -312,7 +313,7 @@ Inside the rendered HTML test, add:
 
 - [ ] **Step 2: Run the test and verify RED**
 
-Run the standard `npm test` command. Expected: FAIL because the fixed topbar still uses `backdrop-filter`, section deferral is absent, and fewer than 10 images have lazy/async attributes.
+Run the standard build and Node test commands. Expected: FAIL because the fixed topbar still uses `backdrop-filter`, section deferral is absent, and fewer than 10 images have lazy/async attributes.
 
 - [ ] **Step 3: Add lazy decoding to below-fold images**
 
@@ -375,8 +376,9 @@ Inside a new hover-capability query add:
 Run:
 
 ```bash
-PATH='/Users/xingming/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:'"$PATH" npm test
-PATH='/Users/xingming/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:'"$PATH" npm run lint
+PATH='/Users/xingming/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:/Users/xingming/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/Users/xingming/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:'"$PATH" pnpm run build
+/Users/xingming/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node --test tests/rendered-html.test.mjs
+PATH='/Users/xingming/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:/Users/xingming/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/Users/xingming/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:'"$PATH" pnpm run lint
 ```
 
 Expected: all tests PASS, build exits 0, and lint exits 0.
