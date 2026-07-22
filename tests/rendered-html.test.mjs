@@ -64,9 +64,14 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /便民借用品/);
   assert.match(html, /填写完成后发送管家录入/);
   assert.match(html, /路线和办理，一眼看懂/);
-  assert.match(html, /低区负一层电梯厅/);
-  assert.match(html, /经中央连廊前往/);
-  assert.match(html, /到达外卖存取处/);
+  assert.match(html, /0(?:<!-- -->)?1(?:<!-- -->)? · (?:<!-- -->)?低区电梯厅左转/);
+  assert.match(html, /0(?:<!-- -->)?2(?:<!-- -->)? · (?:<!-- -->)?通道终点左转/);
+  assert.match(html, /0(?:<!-- -->)?3(?:<!-- -->)? · (?:<!-- -->)?直走抵达外卖柜/);
+  assert.ok(html.indexOf("低区电梯厅左转") < html.indexOf("通道终点左转"));
+  assert.ok(html.indexOf("通道终点左转") < html.indexOf("直走抵达外卖柜"));
+  assert.match(html, /广东省珠海市香洲区横琴跨境电商（华发）创新产业园T3栋拓展区高区负一外卖柜/);
+  assert.match(html, /广东省珠海市香洲区横琴跨境电商（华发）创新产业园T3栋拓展区xxxx号房/);
+  assert.doesNotMatch(html, /takeout-route\.png/);
   assert.match(html, /18号货梯指引/);
   assert.match(html, /车辆导航至“森林子果蔬茶”/);
   assert.match(html, /饮用水、快递及送货请统一使用专属 18 号货梯/);
@@ -89,7 +94,9 @@ test("renders the T3 property service site", async () => {
 test("keeps required local guide assets available", async () => {
   await Promise.all([
     access(new URL("public/t3-building.jpg", projectRoot)),
-    access(new URL("public/takeout-route.png", projectRoot)),
+    access(new URL("public/takeout-step-1.jpg", projectRoot)),
+    access(new URL("public/takeout-step-2.jpg", projectRoot)),
+    access(new URL("public/takeout-step-3.jpg", projectRoot)),
     access(new URL("public/parking-apply.jpg", projectRoot)),
     access(new URL("public/freight-arrival.jpg", projectRoot)),
     access(new URL("public/freight-entrance.jpg", projectRoot)),

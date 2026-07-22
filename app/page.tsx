@@ -128,15 +128,15 @@ const routeGuides = [
     id: "takeout-guide",
     eyebrow: "TAKEOUT ROUTE",
     title: "外卖取餐路线",
-    image: "/takeout-route.png",
+    image: "/takeout-step-1.jpg",
     alt: "从负一层低区电梯厅经中央连廊前往高区电梯厅外卖存放架的路线图",
-    imagePending: true,
+    imagePending: false,
     featured: false,
     wide: true,
     kind: "takeout",
     secondaryImages: [],
     steps: [
-      "取餐点：T3 拓展区负一层高区电梯厅外卖存放架",
+      "取餐点：广东省珠海市香洲区横琴跨境电商（华发）创新产业园T3栋拓展区高区负一外卖柜",
       "低区客户请从负一层经中央连廊前往高区电梯厅",
       "核对信息后及时取走，请勿长时间存放",
     ],
@@ -207,7 +207,11 @@ const faqs = [
 ];
 
 const freightSequence = ["进入通道", "按箭头右转", "沿走廊直行", "按箭头左转", "到达18号货梯"];
-const takeoutSequence = ["低区负一层电梯厅", "经中央连廊前往", "高区负一层电梯厅", "到达外卖存取处"];
+const takeoutSequence = [
+  { src: "/takeout-step-1.jpg", label: "低区电梯厅左转", alt: "从负一层低区电梯厅向左转" },
+  { src: "/takeout-step-2.jpg", label: "通道终点左转", alt: "沿通道前行并在终点向左转" },
+  { src: "/takeout-step-3.jpg", label: "直走抵达外卖柜", alt: "直行抵达高区负一层外卖柜" },
+];
 
 export default function Home() {
   return (
@@ -381,14 +385,20 @@ export default function Home() {
                   {guide.note && <p>{guide.note}</p>}
                 </div>
                 {guide.kind === "takeout" ? (
-                  <div className="takeout-gallery" aria-label="外卖取餐路线步骤">
-                    {takeoutSequence.map((label, index) => (
-                      <a href={guide.image} target="_blank" rel="noreferrer" key={label} className={`takeout-step takeout-step-${index + 1}`}>
-                        <img src={guide.image} alt={`${label}路线画面`} />
-                        <span>{String(index + 1).padStart(2, "0")} · {label}</span>
-                      </a>
-                    ))}
-                  </div>
+                  <>
+                    <div className="takeout-gallery" aria-label="外卖取餐路线步骤">
+                      {takeoutSequence.map((step, index) => (
+                        <a href={step.src} target="_blank" rel="noreferrer" key={step.src} className="takeout-step">
+                          <img src={step.src} alt={step.alt} width="1600" height="899" loading="lazy" decoding="async" />
+                          <span>{String(index + 1).padStart(2, "0")} · {step.label}</span>
+                        </a>
+                      ))}
+                    </div>
+                    <div className="route-address-grid" aria-label="外卖与快递地址">
+                      <div><span>TAKEOUT ADDRESS</span><strong>外卖地址</strong><p>广东省珠海市香洲区横琴跨境电商（华发）创新产业园T3栋拓展区高区负一外卖柜</p></div>
+                      <div><span>COURIER ADDRESS</span><strong>快递地址</strong><p>广东省珠海市香洲区横琴跨境电商（华发）创新产业园T3栋拓展区xxxx号房</p></div>
+                    </div>
+                  </>
                 ) : guide.kind === "freight" ? (
                   <div className="freight-gallery">
                     <div className="freight-landmarks">
