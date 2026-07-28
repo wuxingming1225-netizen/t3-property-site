@@ -14,7 +14,7 @@
 - Keep the original seven named team members, one engineering manager placeholder, and one security manager placeholder, for exactly nine people.
 - Remove enterprise signage from data, page content, metadata, and tests.
 - Keep one existing supplies card; add disposable towels, a hair dryer, and disposable slippers to its right-hand explanation without creating another row.
-- Reserve equal photo positions for the umbrella machine and umbrella-cover machine; the latter supplies long- and short-handle umbrella covers.
+- Reserve equal photo positions for the umbrella machine, umbrella-cover machine, and umbrella water remover; the water remover uses chenille absorbent fabric and removes water after four to five side-to-side wipes.
 - Keep lobby warm services separate from parking and access.
 - Keep the confirmed takeout route, address cards, three takeout images, and freight-elevator route unchanged.
 - Show exactly five confirmed FAQs.
@@ -45,7 +45,10 @@ assert.match(html, /一次性毛巾/);
 assert.match(html, /一次性拖鞋/);
 assert.match(html, /雨伞机/);
 assert.match(html, /雨伞套机/);
+assert.match(html, /雨伞除水器/);
 assert.match(html, /长柄和短柄雨伞/);
+assert.match(html, /雪尼尔吸水面料/);
+assert.match(html, /左右擦拭 4 至 5 次/);
 ```
 
 - [ ] **Step 2: Add access and FAQ assertions**
@@ -94,7 +97,7 @@ git commit -m "test: define service and access refresh"
 
 **Interfaces:**
 - Consumes: Existing team, lobby image, parking images, takeout images, and freight images from `public/`.
-- Produces: `supportTeam` with two entries; `accessServices`, `lobbyServices`, `umbrellaServices`, `parkingGuides`, `routeGuides`, and the five-entry `faqs` array rendered in the approved page order.
+- Produces: `supportTeam` with two entries; `accessServices`, `lobbyServices`, `weatherServices`, `parkingGuides`, `routeGuides`, and the five-entry `faqs` array rendered in the approved page order.
 
 - [ ] **Step 1: Reduce and reorganize the page data**
 
@@ -142,7 +145,7 @@ const accessServices = [
   },
 ];
 
-const umbrellaServices = [
+const weatherServices = [
   {
     icon: "伞",
     title: "雨伞机",
@@ -152,6 +155,11 @@ const umbrellaServices = [
     icon: "套",
     title: "雨伞套机",
     text: "提供适用于长柄和短柄雨伞的雨伞套。",
+  },
+  {
+    icon: "净",
+    title: "雨伞除水器",
+    text: "采用雪尼尔吸水面料，雨伞左右擦拭 4 至 5 次即可快速去除水滴。",
   },
 ];
 ```
@@ -171,7 +179,7 @@ const faqs = [
   ["如何开通闸机权限？", "联系专属物业管家领取人员信息采集表，填写完成后发送管家录入。"],
   ["临时报备停车怎么办理？", "车辆到达前请联系所属区域物业管家完成临时报备。临停仅限接送、接待等临时停靠，完成后请立即驶离，不得长期停放。"],
   ["停车月卡如何申请？", "进入“爱泊客”小程序，选择“横琴华发商都停车场”，上传资料并等待管家审核；审核通过后在线缴费。"],
-  ["雨天的暖心服务有哪些？", "前台暖心物品包含一次性毛巾、吹风机和一次性拖鞋；雨伞机提供免费雨伞借用，雨伞套机提供适用于长柄和短柄雨伞的雨伞套。"],
+  ["雨天的暖心服务有哪些？", "前台暖心物品包含一次性毛巾、吹风机和一次性拖鞋；雨伞机提供免费雨伞借用，雨伞套机提供适用于长柄和短柄雨伞的雨伞套；雨伞除水器采用雪尼尔吸水面料，左右擦拭 4 至 5 次即可快速去除水滴。"],
   ["外卖取餐和18号货梯怎么走？", "外卖请按负一层低区电梯厅、中央连廊、高区电梯厅的路线前往外卖柜；饮用水、快递及送货请从“森林子果蔬茶”旁侧通道前往专属18号货梯，施工材料须到负三层上下货。"],
 ];
 ```
@@ -180,7 +188,7 @@ const faqs = [
 
 Change the directory to four cards linking to `#team`, `#services`, `#access`, and `#routes`, with “认识9位专属服务伙伴” under personnel. Keep the quick links and point both parking links into `#access`.
 
-Keep the existing `lobby-service-card` as the only warm-supplies row. Directly after it, render an umbrella heading and two equal `weather-service-card` articles. Each card must include a styled placeholder area with “照片待补充”, its machine name, and its right-side service explanation.
+Keep the existing `lobby-service-card` as the only warm-supplies row. Directly after it, render a rainy-day service heading and three equal `weather-service-card` articles. Each card must include a styled placeholder area with “照片待补充”, its device name, and its right-side service explanation.
 
 - [ ] **Step 4: Create the separate parking-and-access section**
 
@@ -240,14 +248,14 @@ git commit -m "feat: reorganize property services and access"
 
 **Interfaces:**
 - Consumes: The new class names rendered by Task 2.
-- Produces: Equal umbrella placeholders, equal parking image cards, responsive stacking, smooth anchor navigation, and preserved reduced-motion and content-visibility rules.
+- Produces: Three equal rainy-day equipment placeholders, equal parking image cards, responsive stacking, smooth anchor navigation, and preserved reduced-motion and content-visibility rules.
 
 - [ ] **Step 1: Add CSS-level layout assertions**
 
 Extend the performance test:
 
 ```js
-assert.match(css, /\.weather-service-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*1fr\)/s);
+assert.match(css, /\.weather-service-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*1fr\)/s);
 assert.match(css, /\.parking-guide-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*1fr\)/s);
 assert.match(css, /\.parking-guide-visual\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*9/s);
 assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.weather-service-grid,\s*\.parking-guide-grid\s*\{[^}]*grid-template-columns:\s*1fr/s);
@@ -267,7 +275,7 @@ Expected: the content tests pass and the new CSS selector assertions fail.
 
 Add focused styles for:
 
-- `.weather-service-grid`: two equal columns under the existing supplies card.
+- `.weather-service-grid`: three equal columns under the existing supplies card.
 - `.weather-service-card`: equal blue-white cards with a photo placeholder and explanation.
 - `.access-section`: a visually distinct pale-blue section.
 - `.access-service-grid`: two compact top cards.
