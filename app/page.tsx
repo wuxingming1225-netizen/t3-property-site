@@ -74,7 +74,6 @@ const supportTeam = [
     range: "T3 工程运维全域",
     duties: "统筹设施设备运行、工程维修、施工协调与现场技术支持。",
     phone: "电话待补充",
-    featured: true,
   },
   {
     index: "09",

@@ -56,7 +56,7 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /工程部经理/);
   assert.match(html, /安管部负责人/);
   assert.equal((html.match(/<span>姓名待补充<\/span>/g) ?? []).length, 2);
-  assert.equal((html.match(/安管部负责人/g) ?? []).length, 1);
+  assert.equal((html.match(/<h3>安管部负责人<\/h3>/g) ?? []).length, 1);
   assert.ok(html.indexOf("刘嘉欣") < html.indexOf("工程部经理"));
   assert.ok(html.indexOf("工程部经理") < html.indexOf("安管部负责人"));
   assert.match(html, /大堂暖心服务/);
@@ -133,5 +133,9 @@ test("keeps scroll performance safeguards", async () => {
   assert.doesNotMatch(topbarRule, /backdrop-filter/);
   assert.match(css, /content-visibility:\s*auto/);
   assert.match(css, /contain-intrinsic-size:\s*auto\s+\d+px/);
+  assert.match(css, /\.weather-service-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*1fr\)/s);
+  assert.match(css, /\.parking-guide-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*1fr\)/s);
+  assert.match(css, /\.parking-guide-visual\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*9/s);
+  assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.weather-service-grid,\s*\.parking-guide-grid\s*\{[^}]*grid-template-columns:\s*1fr/s);
   assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.hero-orb\s*\{[^}]*display:\s*none/);
 });

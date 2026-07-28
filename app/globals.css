@@ -23,7 +23,7 @@ a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 button, summary, a { -webkit-tap-highlight-color: transparent; }
 .section-shell { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
-.team-section, .services, .routes, .route-card { scroll-margin-top: 84px; }
+.team-section, .services, .access-section, .routes, .route-card, .parking-guide-card { scroll-margin-top: 84px; }
 
 .topbar {
   position: fixed; inset: 0 0 auto; z-index: 50; height: 74px; padding: 0 max(28px, calc((100vw - 1180px) / 2));
@@ -79,7 +79,7 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .directory-heading { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 24px; }
 .directory-heading h3 { margin: 11px 0 0; font-size: 30px; letter-spacing: -.04em; }
 .directory-heading p { max-width: 340px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; text-align: right; }
-.directory-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; }
+.directory-links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; }
 .directory-links a { position: relative; min-height: 142px; display: flex; flex-direction: column; padding: 20px; border: 1px solid #dce9f5; border-radius: 20px; background: #fff; transition: .3s ease; }
 .directory-links a:hover { transform: translateY(-4px); border-color: #9acbfa; box-shadow: 0 14px 32px rgba(25, 87, 148, .1); }
 .directory-links span { color: #7ba1c4; font-size: 10px; font-weight: 750; letter-spacing: .14em; }
@@ -93,7 +93,7 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .quick-links i { font-style: normal; }
 
 .team-section { padding: 95px 0 105px; background: linear-gradient(180deg, #f1f8ff, #fbfdff); }
-.team-section, .services, .routes, .guide, .contact-strip, footer {
+.team-section, .services, .access-section, .routes, .guide, .contact-strip, footer {
   content-visibility: auto;
   contain-intrinsic-size: auto 900px;
 }
@@ -155,6 +155,42 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .lobby-service-card p { margin: 0; color: #597086; font-size: 14px; line-height: 1.9; }
 .lobby-service-tags { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 9px; }
 .lobby-service-tags span { border: 1px solid #b8d8f5; border-radius: 999px; padding: 9px 13px; color: #1c6eb8; background: rgba(255,255,255,.66); font-size: 11px; font-weight: 650; }
+
+.weather-service-heading { margin: 54px 0 22px; }
+.weather-service-heading h3 { margin: 12px 0 0; font-size: 30px; letter-spacing: -.04em; }
+.weather-service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.weather-service-card { min-width: 0; overflow: hidden; border: 1px solid #d6e6f4; border-radius: 24px; background: #fff; box-shadow: 0 16px 44px rgba(28, 89, 148, .08); }
+.weather-service-photo { min-height: 230px; display: grid; place-content: center; justify-items: center; gap: 12px; color: #6287a9; background: radial-gradient(circle at 50% 30%, #fff, #e5f3ff 68%, #d6eaff); }
+.weather-service-photo > span { width: 72px; height: 72px; display: grid; place-items: center; border: 1px solid rgba(15, 105, 185, .18); border-radius: 24px; color: #fff; background: linear-gradient(145deg, #1688ea, #0760bd); font-size: 24px; font-weight: 750; box-shadow: 0 15px 34px rgba(14, 102, 181, .2); }
+.weather-service-photo small { font-size: 10px; letter-spacing: .15em; }
+.weather-service-copy { min-height: 170px; padding: 26px; }
+.weather-service-copy > span { color: #2b78bc; font-size: 10px; font-weight: 700; letter-spacing: .14em; }
+.weather-service-copy h4 { margin: 8px 0 12px; font-size: 25px; letter-spacing: -.04em; }
+.weather-service-copy p { margin: 0; color: #61778c; font-size: 13px; line-height: 1.8; }
+
+.access-section { padding: 110px 0 120px; background: linear-gradient(180deg, #eef7ff, #f7fbff); }
+.access-heading { margin-bottom: 30px; }
+.access-service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.access-service-card { min-height: 310px; display: flex; flex-direction: column; padding: 28px; border: 1px solid #d6e6f4; border-radius: 24px; background: rgba(255,255,255,.9); box-shadow: 0 16px 44px rgba(28, 89, 148, .07); }
+.access-service-card .service-subtitle { margin-top: 32px; }
+.access-service-card h3 { margin: 8px 0 14px; font-size: 29px; letter-spacing: -.04em; }
+.access-service-card > p { margin: 0; color: #60758a; font-size: 13px; line-height: 1.85; }
+.access-steps { margin: 2px 0 0; padding: 0; list-style: none; counter-reset: access-step; }
+.access-steps li { counter-increment: access-step; position: relative; min-height: 34px; padding: 2px 0 13px 36px; color: #60758a; font-size: 13px; line-height: 1.65; }
+.access-steps li::before { content: counter(access-step); position: absolute; left: 0; top: 0; width: 25px; height: 25px; display: grid; place-items: center; border-radius: 50%; color: var(--blue); background: #e7f3ff; font-size: 10px; font-weight: 750; }
+.parking-guide-grid { margin-top: 22px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; align-items: stretch; }
+.parking-guide-card { min-width: 0; overflow: hidden; display: flex; flex-direction: column; border: 1px solid #d6e6f4; border-radius: 26px; background: #fff; box-shadow: 0 18px 50px rgba(28, 79, 132, .08); }
+.parking-guide-visual { position: relative; aspect-ratio: 16 / 9; overflow: hidden; display: block; background: #edf5fb; }
+.parking-guide-visual img { width: 100%; height: 100%; object-fit: contain; background: #fff; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.parking-guide-visual::after { content: ""; position: absolute; inset: auto 0 0; height: 32%; background: linear-gradient(transparent, rgba(3, 24, 46, .45)); pointer-events: none; }
+.parking-guide-visual > span { position: absolute; z-index: 2; right: 16px; bottom: 14px; border: 1px solid rgba(255,255,255,.46); border-radius: 999px; padding: 9px 12px; color: #fff; background: rgba(5, 24, 48, .44); font-size: 10px; }
+.parking-guide-visual:hover img { transform: scale(1.02); }
+.parking-guide-copy { flex: 1; padding: 30px; }
+.parking-guide-copy h3 { margin: 12px 0 24px; font-size: 32px; letter-spacing: -.045em; }
+.parking-guide-copy ol { margin: 0; padding: 0; list-style: none; counter-reset: parking-step; }
+.parking-guide-copy li { counter-increment: parking-step; position: relative; min-height: 36px; padding: 0 0 14px 38px; color: #60758a; font-size: 13px; line-height: 1.65; }
+.parking-guide-copy li::before { content: counter(parking-step); position: absolute; left: 0; top: -1px; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; color: var(--blue); background: #eaf5ff; font-size: 10px; font-weight: 750; }
+.parking-guide-copy > p { margin: 10px 0 0; padding-top: 18px; border-top: 1px solid #e4edf5; color: #7a8ea1; font-size: 11px; line-height: 1.7; }
 
 .routes { padding: 90px 0 115px; background: #f5f9fd; }
 .route-heading > p { text-align: left; }
@@ -274,6 +310,7 @@ footer { padding: 42px 0; background: #06172d; color: #fff; }
 
 @media (max-width: 980px) {
   .topbar nav { display: none; }
+  .directory-links { grid-template-columns: repeat(2, 1fr); }
   .team-grid { grid-template-columns: repeat(2, 1fr); }
   .directory-heading { align-items: start; }
   .person-card.featured { grid-column: span 2; }
@@ -306,6 +343,7 @@ footer { padding: 42px 0; background: #06172d; color: #fff; }
   .primary-btn, .glass-btn { width: 100%; }
   .hero-status, .scroll-cue { display: none; }
   .intro, .services { padding: 90px 0; }
+  .access-section { padding: 78px 0 90px; }
   .routes { padding: 68px 0 90px; }
   .intro-grid { grid-template-columns: 1fr; gap: 35px; }
   .intro h2 { font-size: 42px; }
@@ -333,6 +371,11 @@ footer { padding: 42px 0; background: #06172d; color: #fff; }
   .lobby-service-card > a { min-height: 360px; }
   .lobby-service-card > div { padding: 30px 24px; }
   .lobby-service-card h3 { font-size: 32px; }
+  .weather-service-grid, .parking-guide-grid { grid-template-columns: 1fr; }
+  .access-service-grid { grid-template-columns: 1fr; }
+  .weather-service-photo { min-height: 240px; }
+  .parking-guide-copy { padding: 26px 24px 30px; }
+  .parking-guide-copy h3 { font-size: 29px; }
   .route-grid { grid-template-columns: 1fr; }
   .route-card, .route-card.route-featured, .route-card.route-wide { grid-column: auto; grid-template-columns: 1fr; min-height: 0; }
   .route-visual, .route-card:not(.route-featured) .route-visual { min-height: 310px; }
