@@ -85,31 +85,26 @@ const supportTeam = [
     duties: "负责安全秩序、消防巡查、突发事件响应与现场协同。",
     phone: "电话待补充",
   },
-  {
-    index: "10",
-    role: "安管部负责人",
-    tag: "秩序保障",
-    name: "姓名待补充",
-    range: "T3 公共区域",
-    duties: "负责重点区域巡查、人员车辆秩序与日常安全服务保障。",
-    phone: "电话待补充",
-  },
 ];
 
-const services = [
+const accessServices = [
   {
     icon: "闸",
     title: "闸机权限",
     subtitle: "人员信息录入",
     text: "联系专属物业管家领取人员信息采集表，填写完成后发送管家录入。",
-    note: "预计 3 个工作日内完成",
+    steps: [],
   },
   {
-    icon: "牌",
-    title: "企业门牌",
-    subtitle: "广告字 / 牌匾申请",
-    text: "联系专属物业管家获取规范与申请函，经运营及物业审核后方可施工。",
-    note: "退场时须恢复原状",
+    icon: "访",
+    title: "访客到访指引",
+    subtitle: "前台登记 · 提前报备",
+    text: "",
+    steps: [
+      "访客抵达后在前台登记",
+      "提前联系需要到访企业的对接人",
+      "企业对接人将访客信息发送给对应客服管家报备",
+    ],
   },
 ];
 
@@ -119,40 +114,37 @@ const lobbyServices = [
     subtitle: "大堂甄品服务",
     image: "/lobby-supplies-kit.jpg",
     alt: "臻品物资箱物品领用与借用清单",
-    text: "提供纸巾、女性用品、雨衣、针线包等领用品，以及吹风机、维修工具、充电宝、测温枪等借用品。",
+    text: "提供纸巾、女性用品、雨衣、针线包等领用品，以及一次性毛巾、吹风机、一次性拖鞋、维修工具、充电宝、测温枪等暖心借用品。",
   },
 ];
 
-const routeGuides = [
+const weatherServices = [
   {
-    id: "takeout-guide",
-    eyebrow: "TAKEOUT ROUTE",
-    title: "外卖取餐路线",
-    image: "/takeout-step-1.jpg",
-    alt: "从负一层低区电梯厅经中央连廊前往高区电梯厅外卖存放架的路线图",
-    imagePending: false,
-    featured: false,
-    wide: true,
-    kind: "takeout",
-    secondaryImages: [],
-    steps: [
-      "取餐点：广东省珠海市香洲区横琴跨境电商（华发）创新产业园T3栋拓展区高区负一外卖柜",
-      "低区客户请从负一层经中央连廊前往高区电梯厅",
-      "核对信息后及时取走，请勿长时间存放",
-    ],
-    note: "该区域设有 24 小时监控。",
+    icon: "伞",
+    title: "雨伞机",
+    text: "提供免费雨伞借用服务。",
   },
+  {
+    icon: "套",
+    title: "雨伞套机",
+    text: "提供适用于长柄和短柄雨伞的雨伞套。",
+  },
+  {
+    icon: "净",
+    title: "雨伞除水器",
+    text: "采用雪尼尔吸水面料，雨伞左右擦拭 4 至 5 次即可快速去除水滴。",
+  },
+];
+
+const parkingGuides = [
   {
     id: "temporary-parking-guide",
     eyebrow: "TEMPORARY PARKING",
     title: "临时报备停车指引",
     image: "/temporary-parking-entrance.png",
     alt: "横琴跨境电商华发创新产业园车辆临停处",
-    imagePending: false,
-    featured: false,
-    wide: true,
-    kind: "notice",
-    secondaryImages: [],
+    width: 1672,
+    height: 941,
     steps: [
       "车辆到达前，请联系所属区域物业管家完成临时报备",
       "仅限接送、接待等临时停靠",
@@ -166,13 +158,30 @@ const routeGuides = [
     title: "停车月卡申请",
     image: "/parking-apply.jpg",
     alt: "T3 长租月卡新申请操作指引",
-    imagePending: false,
-    featured: false,
-    wide: true,
-    kind: "standard",
-    secondaryImages: [],
+    width: 5032,
+    height: 3579,
     steps: ["进入“爱泊客”小程序", "选择“横琴华发商都停车场”", "上传资料并等待管家审核", "审核通过后在线缴费"],
     note: "建议至少提前 2 个工作日申请。",
+  },
+];
+
+const routeGuides = [
+  {
+    id: "takeout-guide",
+    eyebrow: "TAKEOUT ROUTE",
+    title: "外卖取餐路线",
+    image: "/takeout-step-1.jpg",
+    alt: "从负一层低区电梯厅经中央连廊前往高区电梯厅外卖存放架的路线图",
+    featured: false,
+    wide: true,
+    kind: "takeout",
+    secondaryImages: [],
+    steps: [
+      "取餐点：广东省珠海市香洲区横琴跨境电商（华发）创新产业园T3栋拓展区高区负一外卖柜",
+      "低区客户请从负一层经中央连廊前往高区电梯厅",
+      "核对信息后及时取走，请勿长时间存放",
+    ],
+    note: "该区域设有 24 小时监控。",
   },
   {
     id: "freight-guide",
@@ -201,9 +210,11 @@ const routeGuides = [
 ];
 
 const faqs = [
-  ["外卖放在哪里？", "T3 拓展区外卖统一存放于负一层高区电梯厅外卖架。低区客户请经中央连廊前往；该区域设有 24 小时监控，请核对信息并及时取走。"],
-  ["18号货梯怎么走、哪些物品需要使用？", "车辆请导航至“森林子果蔬茶”，沿车信路路边规范停车，从店铺旁侧通道入口进入，再按现场箭头前往 18 号货梯。饮用水、快递及送货请统一使用该货梯；施工材料运输须到负三层 18 号货梯上下货。"],
-  ["大堂有哪些甄品服务？", "大堂设有臻品物资箱，包含纸巾、女性用品、雨衣等应急领用品，以及吹风机、维修工具、充电宝、测温枪等便民借用品；完整清单可在服务图片中查看。"],
+  ["如何开通闸机权限？", "联系专属物业管家领取人员信息采集表，填写完成后发送管家录入。"],
+  ["临时报备停车怎么办理？", "车辆到达前请联系所属区域物业管家完成临时报备。临停仅限接送、接待等临时停靠，完成后请立即驶离，不得长期停放。"],
+  ["停车月卡如何申请？", "进入“爱泊客”小程序，选择“横琴华发商都停车场”，上传资料并等待管家审核；审核通过后在线缴费。"],
+  ["雨天的暖心服务有哪些？", "前台暖心物品包含一次性毛巾、吹风机和一次性拖鞋；雨伞机提供免费雨伞借用，雨伞套机提供适用于长柄和短柄雨伞的雨伞套；雨伞除水器采用雪尼尔吸水面料，左右擦拭 4 至 5 次即可快速去除水滴。"],
+  ["外卖取餐和18号货梯怎么走？", "外卖请按负一层低区电梯厅、中央连廊、高区电梯厅的路线前往外卖柜；饮用水、快递及送货请从“森林子果蔬茶”旁侧通道前往专属18号货梯，施工材料须到负三层上下货。"],
 ];
 
 const freightSequence = ["进入通道", "按箭头右转", "沿走廊直行", "按箭头左转", "到达18号货梯"];
@@ -223,8 +234,9 @@ export default function Home() {
         </a>
         <nav aria-label="页面导航">
           <a href="#team">物业团队</a>
-          <a href="#services">便民服务</a>
-          <a href="#routes">路线指引</a>
+          <a href="#services">暖心服务</a>
+          <a href="#access">停车通行</a>
+          <a href="#routes">外卖货梯</a>
         </nav>
         <a className="nav-call" href="tel:07568696992">24h 应急热线</a>
       </header>
@@ -269,9 +281,10 @@ export default function Home() {
             <div><span className="section-kicker">QUICK DIRECTORY</span><h3>想找什么，直接到达。</h3></div>
           </div>
           <nav className="directory-links" aria-label="网站目录">
-            <a href="#team"><span>01</span><strong>人员介绍</strong><small>认识10位专属服务伙伴</small><i>↓</i></a>
-            <a href="#services"><span>02</span><strong>服务介绍</strong><small>大堂便民与甄品服务</small><i>↓</i></a>
-            <a href="#routes"><span>03</span><strong>路线介绍</strong><small>外卖、停车与货梯指引</small><i>↓</i></a>
+            <a href="#team"><span>01</span><strong>人员介绍</strong><small>认识9位专属服务伙伴</small><i>↓</i></a>
+            <a href="#services"><span>02</span><strong>服务介绍</strong><small>大堂甄品与雨天暖心服务</small><i>↓</i></a>
+            <a href="#access"><span>03</span><strong>停车与通行</strong><small>闸机、访客、临停与月卡</small><i>↓</i></a>
+            <a href="#routes"><span>04</span><strong>路线介绍</strong><small>外卖取餐与18号货梯</small><i>↓</i></a>
           </nav>
           <div className="quick-links" aria-label="常用办理直达">
             <span>常用办理直达</span>
@@ -335,18 +348,7 @@ export default function Home() {
 
       <section className="services section-shell" id="services">
         <div className="section-heading service-heading">
-          <div><span className="section-kicker">LOBBY SERVICE</span><h2>大堂便民与甄品服务</h2></div>
-        </div>
-        <div className="service-grid service-grid-compact">
-          {services.map((service, index) => (
-            <article className="service-card" key={service.title}>
-              <div className="service-top"><span className="service-icon">{service.icon}</span><span className="service-no">0{index + 1}</span></div>
-              <span className="service-subtitle">{service.subtitle}</span>
-              <h3>{service.title}</h3>
-              <p>{service.text}</p>
-              <div className="service-note"><span>✓</span>{service.note}</div>
-            </article>
-          ))}
+          <div><span className="section-kicker">LOBBY WARM SERVICE</span><h2>大堂暖心服务</h2></div>
         </div>
         <div className="lobby-service-grid">
           {lobbyServices.map((service) => (
@@ -371,17 +373,85 @@ export default function Home() {
             </article>
           ))}
         </div>
+        <div className="weather-service-heading">
+          <span className="section-kicker">RAINY DAY CARE</span>
+          <h3>雨天暖心服务</h3>
+        </div>
+        <div className="weather-service-grid">
+          {weatherServices.map((service) => (
+            <article className="weather-service-card" key={service.title}>
+              <div className="weather-service-photo" aria-label={`${service.title}照片待补充`}>
+                <span>{service.icon}</span>
+                <small>照片待补充</small>
+              </div>
+              <div className="weather-service-copy">
+                <span>雨天设备</span>
+                <h4>{service.title}</h4>
+                <p>{service.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="access-section" id="access">
+        <div className="section-shell">
+          <div className="section-heading access-heading">
+            <div><span className="section-kicker">PARKING & ACCESS</span><h2>停车与通行</h2></div>
+            <p>闸机、访客、临时报备与停车月卡集中查看。</p>
+          </div>
+          <div className="access-service-grid">
+            {accessServices.map((service, index) => (
+              <article className="access-service-card" key={service.title}>
+                <div className="service-top"><span className="service-icon">{service.icon}</span><span className="service-no">0{index + 1}</span></div>
+                <span className="service-subtitle">{service.subtitle}</span>
+                <h3>{service.title}</h3>
+                {service.text && <p>{service.text}</p>}
+                {service.steps.length > 0 && (
+                  <ol className="access-steps">
+                    {service.steps.map((step) => <li key={step}>{step}</li>)}
+                  </ol>
+                )}
+              </article>
+            ))}
+          </div>
+          <div className="parking-guide-grid">
+            {parkingGuides.map((guide) => (
+              <article className="parking-guide-card" id={guide.id} key={guide.title}>
+                <a className="parking-guide-visual" href={guide.image} target="_blank" rel="noreferrer" aria-label={`查看${guide.title}清晰原图`}>
+                  <img
+                    src={guide.image}
+                    alt={guide.alt}
+                    width={guide.width}
+                    height={guide.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>查看清晰原图 ↗</span>
+                </a>
+                <div className="parking-guide-copy">
+                  <span className="section-kicker">{guide.eyebrow}</span>
+                  <h3>{guide.title}</h3>
+                  <ol>
+                    {guide.steps.map((step) => <li key={step}><span>{step}</span></li>)}
+                  </ol>
+                  {guide.note && <p>{guide.note}</p>}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="routes" id="routes">
         <div className="section-shell">
           <div className="section-heading route-heading">
-            <div><span className="section-kicker">SERVICE MAP</span><h2>路线和办理，一眼看懂</h2></div>
-            <p>外卖、停车和货梯指引集中在这里展示；点击图片可查看清晰原图。</p>
+            <div><span className="section-kicker">SERVICE MAP</span><h2>外卖与货梯路线</h2></div>
+            <p>外卖取餐与18号货梯指引集中展示；点击图片可查看清晰原图。</p>
           </div>
           <div className="route-grid">
             {routeGuides.map((guide) => (
-              <article id={guide.id} className={`route-card${guide.featured ? " route-featured" : ""}${guide.wide ? " route-wide" : ""}${guide.kind === "freight" ? " route-freight" : ""}${guide.kind === "takeout" ? " route-takeout" : ""}${guide.kind === "notice" ? " route-notice" : ""}`} key={guide.title}>
+              <article id={guide.id} className={`route-card${guide.featured ? " route-featured" : ""}${guide.wide ? " route-wide" : ""}${guide.kind === "freight" ? " route-freight" : " route-takeout"}`} key={guide.title}>
                 <div className="route-copy">
                   {guide.featured && <span className="route-priority">重点指引</span>}
                   <span className="section-kicker">{guide.eyebrow}</span>
@@ -406,7 +476,7 @@ export default function Home() {
                       <div><span>COURIER ADDRESS</span><strong>快递地址</strong><p>广东省珠海市香洲区横琴跨境电商（华发）创新产业园T3栋拓展区xxxx号房</p></div>
                     </div>
                   </>
-                ) : guide.kind === "freight" ? (
+                ) : (
                   <div className="freight-gallery">
                     <div className="freight-landmarks">
                       {guide.secondaryImages.map((item) => (
@@ -439,30 +509,6 @@ export default function Home() {
                       ))}
                     </div>
                   </div>
-                ) : guide.kind === "notice" ? (
-                  <a className="temporary-parking-notice" href={guide.image} target="_blank" rel="noreferrer" aria-label="查看车辆临停处原图">
-                    <img
-                      src={guide.image}
-                      alt={guide.alt}
-                      width="1672"
-                      height="941"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <div><span>车辆临停处</span><strong>仅限接送 · 接待临停</strong><small>完成后请立即驶离，不得长期停放</small></div>
-                  </a>
-                ) : (
-                  <a className="route-visual" href={guide.image} target="_blank" rel="noreferrer" aria-label={`查看${guide.title}原图`}>
-                  <img
-                    src={guide.image}
-                    alt={guide.alt}
-                    width="5032"
-                    height="3579"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                    <span>{guide.imagePending ? "路线照片待更换" : "查看清晰原图 ↗"}</span>
-                  </a>
                 )}
               </article>
             ))}

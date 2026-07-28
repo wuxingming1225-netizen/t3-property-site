@@ -15,14 +15,14 @@ export async function generateMetadata(): Promise<Metadata> {
     icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
     openGraph: {
       title: "横琴天啟 T3｜物业团队 · 便民服务",
-      description: "认识专属物业团队，快速查看停车、外卖、门牌与门禁服务指引。",
+      description: "认识专属物业团队，快速查看大堂暖心服务、停车通行、外卖与货梯路线。",
       images: [{ url: new URL("/og.png", baseUrl).toString(), width: 1200, height: 630, alt: "横琴天啟 T3 物业便民服务" }],
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title: "横琴天啟 T3｜物业团队 · 便民服务",
-      description: "认识专属物业团队，快速查看停车、外卖、门牌与门禁服务指引。",
+      description: "认识专属物业团队，快速查看大堂暖心服务、停车通行、外卖与货梯路线。",
       images: [new URL("/og.png", baseUrl).toString()],
     },
   };
