@@ -32,6 +32,7 @@ const team = [
     role: "选品中心负责人",
     tag: "选品空间",
     name: "刘大平",
+    image: "/liu-daping.jpg",
     range: "T3选品中心5-9楼",
     duties: "统筹选品中心接洽、活动支持、空间秩序与资源协同。",
     phone: "电话待补充",
@@ -83,6 +84,7 @@ const supportTeam = [
     role: "安管部负责人",
     tag: "安全管理",
     name: "侯焕武",
+    image: "/hou-huanwu.jpg",
     range: "T3 公共区域",
     duties: "负责安全秩序、消防巡查、突发事件响应与现场协同。",
     phone: "13500241113",
@@ -382,11 +384,15 @@ export default function Home() {
           <div className="team-grid support-team-grid">
             {supportTeam.map((person) => (
               <article className={`person-card${person.featured ? " featured" : ""}`} key={person.index}>
-                <div className="person-photo">
-                  <div className="photo-placeholder">
-                    <span className="person-silhouette"><i /></span>
-                    <small>照片待补充</small>
-                  </div>
+                <div className={`person-photo${"image" in person ? " has-photo" : ""}`}>
+                  {"image" in person ? (
+                    <img className="person-portrait" src={person.image} alt={`${person.name} ${person.role}`} width="1254" height="1254" loading="lazy" decoding="async" />
+                  ) : (
+                    <div className="photo-placeholder">
+                      <span className="person-silhouette"><i /></span>
+                      <small>照片待补充</small>
+                    </div>
+                  )}
                   <span className="person-index">{person.index}</span>
                   <span className="person-tag">{person.tag}</span>
                 </div>

@@ -73,6 +73,7 @@ test("renders the T3 property service site", async () => {
   assert.ok(html.indexOf("刘大平") < html.indexOf("周芷盈"));
   assert.ok(html.indexOf("周芷盈") < html.indexOf("梁盼盼"));
   assert.ok(html.indexOf("梁盼盼") < html.indexOf("刘嘉欣"));
+  assert.match(html, /liu-daping\.jpg/);
   assert.match(html, /zhou-zhiying\.jpg/);
   assert.match(html, /liang-panpan\.jpg/);
   assert.match(html, /liu-jiaxin\.jpg/);
@@ -85,6 +86,7 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /13823091591/);
   assert.match(html, /侯焕武/);
   assert.match(html, /13500241113/);
+  assert.match(html, /hou-huanwu\.jpg/);
   assert.equal((html.match(/<span>姓名待补充<\/span>/g) ?? []).length, 0);
   assert.equal((html.match(/<h3>安管部负责人<\/h3>/g) ?? []).length, 1);
   assert.ok(html.indexOf("刘嘉欣") < html.indexOf("刘六虎"));
@@ -170,6 +172,8 @@ test("keeps required local guide assets available", async () => {
     access(new URL("public/zhou-zhiying.jpg", projectRoot)),
     access(new URL("public/liang-panpan.jpg", projectRoot)),
     access(new URL("public/liu-jiaxin.jpg", projectRoot)),
+    access(new URL("public/liu-daping.jpg", projectRoot)),
+    access(new URL("public/hou-huanwu.jpg", projectRoot)),
   ]);
 });
 
