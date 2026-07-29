@@ -77,21 +77,12 @@ const supportTeam = [
   },
   {
     index: "09",
-    role: "工程人员",
-    tag: "工程服务",
-    name: "侯焕武",
-    range: "T3 工程运维全域",
-    duties: "负责设施设备巡检、工程维修、施工配合与现场技术支持。",
-    phone: "13500241113",
-  },
-  {
-    index: "10",
     role: "安管部负责人",
     tag: "安全管理",
-    name: "姓名待补充",
+    name: "侯焕武",
     range: "T3 公共区域",
     duties: "负责安全秩序、消防巡查、突发事件响应与现场协同。",
-    phone: "电话待补充",
+    phone: "13500241113",
   },
 ];
 
@@ -298,7 +289,7 @@ export default function Home() {
             <div><span className="section-kicker">QUICK DIRECTORY</span><h3>想找什么，直接到达。</h3></div>
           </div>
           <nav className="directory-links" aria-label="网站目录">
-            <a href="#team"><span>01</span><strong>人员介绍</strong><small>认识10位专属服务伙伴</small><i>↓</i></a>
+            <a href="#team"><span>01</span><strong>人员介绍</strong><small>认识9位专属服务伙伴</small><i>↓</i></a>
             <a href="#services"><span>02</span><strong>服务介绍</strong><small>大堂甄品与雨天暖心服务</small><i>↓</i></a>
             <a href="#access"><span>03</span><strong>停车与通行</strong><small>闸机、访客、临停与月卡</small><i>↓</i></a>
             <a href="#routes"><span>04</span><strong>路线介绍</strong><small>外卖取餐与18号货梯</small><i>↓</i></a>
