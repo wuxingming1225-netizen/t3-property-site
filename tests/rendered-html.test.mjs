@@ -147,8 +147,13 @@ test("keeps required local guide assets available", async () => {
 test("keeps scroll performance safeguards", async () => {
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   const topbarRule = css.match(/\.topbar\s*\{[^}]*\}/s)?.[0] ?? "";
+  const navCallRule = css.match(/\.nav-call\s*\{[^}]*\}/s)?.[0] ?? "";
 
   assert.doesNotMatch(topbarRule, /backdrop-filter/);
+  assert.doesNotMatch(navCallRule, /backdrop-filter/);
+  assert.match(css, /scroll-padding-top:\s*84px/);
+  assert.match(css, /\.intro::after\s*\{[^}]*content:\s*"T3"/s);
+  assert.match(css, /\.intro\s*\{[^}]*padding:\s*92px\s+0\s+88px/s);
   assert.match(css, /content-visibility:\s*auto/);
   assert.match(css, /contain-intrinsic-size:\s*auto\s+\d+px/);
   assert.match(css, /\.weather-service-grid\s*\{[^}]*grid-template-columns:\s*repeat\(4,\s*1fr\)/s);
