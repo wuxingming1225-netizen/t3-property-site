@@ -73,6 +73,9 @@ test("renders the T3 property service site", async () => {
   assert.ok(html.indexOf("刘大平") < html.indexOf("周芷盈"));
   assert.ok(html.indexOf("周芷盈") < html.indexOf("梁盼盼"));
   assert.ok(html.indexOf("梁盼盼") < html.indexOf("刘嘉欣"));
+  assert.match(html, /zhou-zhiying\.jpg/);
+  assert.match(html, /liang-panpan\.jpg/);
+  assert.match(html, /liu-jiaxin\.jpg/);
   assert.match(html, /认识9位专属服务伙伴/);
   assert.match(html, /专业支持团队/);
   assert.match(html, /工程部经理/);
@@ -164,6 +167,9 @@ test("keeps required local guide assets available", async () => {
     access(new URL("public/umbrella-sleeve-machine.jpg", projectRoot)),
     access(new URL("public/umbrella-dryer.jpg", projectRoot)),
     access(new URL("public/shoe-polisher.jpg", projectRoot)),
+    access(new URL("public/zhou-zhiying.jpg", projectRoot)),
+    access(new URL("public/liang-panpan.jpg", projectRoot)),
+    access(new URL("public/liu-jiaxin.jpg", projectRoot)),
   ]);
 });
 

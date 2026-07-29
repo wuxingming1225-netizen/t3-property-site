@@ -154,6 +154,8 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .person-photo::before, .person-photo::after { content: ""; position: absolute; border-radius: 50%; border: 1px solid rgba(255,255,255,.65); }
 .person-photo::before { width: 250px; height: 250px; right: -70px; top: -80px; }
 .person-photo::after { width: 160px; height: 160px; left: -60px; bottom: -80px; }
+.person-photo.has-photo::before, .person-photo.has-photo::after { display: none; }
+.person-portrait { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 36%; }
 .photo-placeholder { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 16px; color: #7b9dbc; }
 .photo-placeholder small { font-size: 11px; letter-spacing: .15em; }
 .person-silhouette { width: 122px; height: 122px; position: relative; display: block; border-radius: 50%; background: rgba(255,255,255,.44); border: 1px dashed rgba(49,114,173,.34); }

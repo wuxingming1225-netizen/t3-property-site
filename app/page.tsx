@@ -41,6 +41,7 @@ const team = [
     role: "大堂管家",
     tag: "首问服务",
     name: "周芷盈",
+    image: "/zhou-zhiying.jpg",
     range: "T3 首层大堂",
     duties: "承担大堂迎宾、访客分流、电梯引导与高峰秩序维护。",
     phone: "电话待补充",
@@ -50,6 +51,7 @@ const team = [
     role: "接待员",
     tag: "来访接待",
     name: "梁盼盼",
+    image: "/liang-panpan.jpg",
     range: "选品中心前台",
     duties: "提供来访登记、路线指引、会议接待与现场咨询服务。",
     phone: "电话待补充",
@@ -59,6 +61,7 @@ const team = [
     role: "接待员",
     tag: "会务支持",
     name: "刘嘉欣",
+    image: "/liu-jiaxin.jpg",
     range: "选品中心前台",
     duties: "负责客户迎送、会务衔接、物资确认与服务信息传递。",
     phone: "电话待补充",
@@ -352,11 +355,15 @@ export default function Home() {
           <div className="team-grid">
             {team.map((person) => (
               <article className={`person-card${person.featured ? " featured" : ""}`} key={person.index}>
-                <div className="person-photo">
-                  <div className="photo-placeholder">
-                    <span className="person-silhouette"><i /></span>
-                    <small>照片待补充</small>
-                  </div>
+                <div className={`person-photo${"image" in person ? " has-photo" : ""}`}>
+                  {"image" in person ? (
+                    <img className="person-portrait" src={person.image} alt={`${person.name} ${person.role}`} width="1254" height="1254" loading="lazy" decoding="async" />
+                  ) : (
+                    <div className="photo-placeholder">
+                      <span className="person-silhouette"><i /></span>
+                      <small>照片待补充</small>
+                    </div>
+                  )}
                   <span className="person-index">{person.index}</span>
                   <span className="person-tag">{person.tag}</span>
                 </div>
