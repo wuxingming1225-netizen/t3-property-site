@@ -76,6 +76,9 @@ test("renders the T3 property service site", async () => {
   assert.ok(html.indexOf("曾令慧") < html.indexOf("何思慧"));
   assert.ok(html.indexOf("何思慧") < html.indexOf("刘大平"));
   assert.ok(html.indexOf("刘大平") < html.indexOf("周芷盈"));
+  assert.match(html, /曾令慧[\s\S]*?中区 \/ 高区/);
+  assert.match(html, /何思慧[\s\S]*?低区 \/ 超高区/);
+  assert.doesNotMatch(html, /楼层待补充/);
   assert.ok(html.indexOf("周芷盈") < html.indexOf("梁盼盼"));
   assert.ok(html.indexOf("梁盼盼") < html.indexOf("刘嘉欣"));
   assert.match(html, /13226026617/);
