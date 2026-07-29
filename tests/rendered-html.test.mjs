@@ -195,11 +195,17 @@ test("keeps scroll performance safeguards", async () => {
   assert.match(css, /scroll-padding-top:\s*84px/);
   assert.match(css, /\.intro::after\s*\{[^}]*content:\s*"T3"/s);
   assert.match(css, /\.intro\s*\{[^}]*padding:\s*92px\s+0\s+88px/s);
+  assert.match(css, /\.refuge-markers\s*\{[^}]*bottom:\s*0[^}]*height:\s*520px/s);
+  assert.match(css, /\.marker-40\s*\{[^}]*top:\s*20%/s);
+  assert.match(css, /\.marker-30\s*\{[^}]*top:\s*40%/s);
+  assert.match(css, /\.marker-20\s*\{[^}]*top:\s*60%/s);
+  assert.match(css, /\.marker-10\s*\{[^}]*top:\s*80%/s);
   assert.match(css, /content-visibility:\s*auto/);
   assert.match(css, /contain-intrinsic-size:\s*auto\s+\d+px/);
   assert.match(css, /\.weather-service-grid\s*\{[^}]*grid-template-columns:\s*repeat\(4,\s*1fr\)/s);
   assert.match(css, /\.parking-guide-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*1fr\)/s);
   assert.match(css, /\.parking-guide-visual\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*9/s);
   assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.weather-service-grid,\s*\.parking-guide-grid\s*\{[^}]*grid-template-columns:\s*1fr/s);
+  assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.refuge-markers\s*\{[^}]*height:\s*450px/s);
   assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.hero-orb\s*\{[^}]*display:\s*none/);
 });
