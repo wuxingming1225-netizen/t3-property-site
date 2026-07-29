@@ -315,6 +315,10 @@ export default function Home() {
               <div className="floor-row floor-primary"><span>01F</span><strong>T3写字楼大堂</strong><i>抵达与服务</i></div>
               <div className="floor-row"><span>02–04F</span><strong>华发商都区域</strong><i>商业配套</i></div>
               <div className="floor-row"><span>05–09F</span><strong>选品中心</strong><i>选品空间</i></div>
+              <div className="floor-row floor-client"><span>11–16F</span><strong>低区客户区域</strong><i>办公空间</i></div>
+              <div className="floor-row floor-client"><span>17–27F</span><strong>中区客户区域</strong><i>办公空间</i></div>
+              <div className="floor-row floor-client"><span>28–38F</span><strong>高区客户区域</strong><i>办公空间</i></div>
+              <div className="floor-row floor-client"><span>39–49F</span><strong>超高区客户区域</strong><i>办公空间</i></div>
               <div className="floor-row floor-safety"><span>10F / 20F / 30F / 40F</span><strong>避难层</strong><i>安全疏散</i></div>
             </div>
             <div className="building-note"><span>安全提示</span><p>避难层用于紧急情况下的临时疏散与避难，请留意楼内消防疏散标识。</p></div>
