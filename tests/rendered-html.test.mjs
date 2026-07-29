@@ -36,7 +36,11 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /T3写字楼大堂/);
   assert.match(html, /华发商都区域/);
   assert.match(html, /05–09F/);
-  assert.match(html, /10 \/ 20 \/ 30 \/ 40F/);
+  assert.match(html, /10F \/ 20F \/ 30F \/ 40F/);
+  assert.match(html, /data-floor="10F"/);
+  assert.match(html, /data-floor="20F"/);
+  assert.match(html, /data-floor="30F"/);
+  assert.match(html, /data-floor="40F"/);
   assert.match(html, /避难层用于紧急情况下的临时疏散与避难/);
   assert.doesNotMatch(html, /您所在的位置/);
   assert.match(html, /t3-building-lineart\.png/);

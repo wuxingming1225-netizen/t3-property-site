@@ -296,6 +296,12 @@ export default function Home() {
               loading="lazy"
               decoding="async"
             />
+            <div className="refuge-markers" aria-hidden="true">
+              <span className="refuge-marker marker-40" data-floor="40F" />
+              <span className="refuge-marker marker-30" data-floor="30F" />
+              <span className="refuge-marker marker-20" data-floor="20F" />
+              <span className="refuge-marker marker-10" data-floor="10F" />
+            </div>
             <div className="building-metrics" aria-label="T3栋项目数据">
               <div><strong>249<small>m</small></strong><span>建筑高度</span></div>
               <div><strong>94,332<small>㎡</small></strong><span>总建筑面积</span></div>
@@ -309,7 +315,7 @@ export default function Home() {
               <div className="floor-row floor-primary"><span>01F</span><strong>T3写字楼大堂</strong><i>抵达与服务</i></div>
               <div className="floor-row"><span>02–04F</span><strong>华发商都区域</strong><i>商业配套</i></div>
               <div className="floor-row"><span>05–09F</span><strong>选品中心</strong><i>选品空间</i></div>
-              <div className="floor-row floor-safety"><span>10 / 20 / 30 / 40F</span><strong>避难层</strong><i>安全疏散</i></div>
+              <div className="floor-row floor-safety"><span>10F / 20F / 30F / 40F</span><strong>避难层</strong><i>安全疏散</i></div>
             </div>
             <div className="building-note"><span>安全提示</span><p>避难层用于紧急情况下的临时疏散与避难，请留意楼内消防疏散标识。</p></div>
           </div>
