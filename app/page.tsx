@@ -3,7 +3,7 @@ const team = [
     index: "01",
     role: "T3物业负责人",
     tag: "统筹管理",
-    name: "T3栋物业负责人",
+    name: "吴幸明",
     image: "/wuxingming-cutout.png",
     range: "T3 写字楼全域",
     duties: "统筹服务品质、安全运营与跨部门协同，快速响应企业重要事项。",
@@ -383,7 +383,7 @@ export default function Home() {
                   <span className="person-tag">{person.tag}</span>
                 </div>
                 <div className="person-info">
-                  <div className="role-row"><div><span>{person.name}</span><h3>{person.role}</h3></div><span className="arrow">↗</span></div>
+                  <div className="role-row"><div><span>{person.role}</span><h3>{person.name}</h3></div><span className="arrow">↗</span></div>
                   <p>{person.duties}</p>
                   <div className="person-meta"><span>⌖ {person.range}</span><span>☎ {person.phone}</span></div>
                 </div>
@@ -410,7 +410,7 @@ export default function Home() {
                   <span className="person-tag">{person.tag}</span>
                 </div>
                 <div className="person-info">
-                  <div className="role-row"><div><span>{person.name}</span><h3>{person.role}</h3></div><span className="arrow">↗</span></div>
+                  <div className="role-row"><div><span>{person.role}</span><h3>{person.name}</h3></div><span className="arrow">↗</span></div>
                   <p>{person.duties}</p>
                   <div className="person-meta"><span>⌖ {person.range}</span><span>☎ {person.phone}</span></div>
                 </div>

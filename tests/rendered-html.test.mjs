@@ -68,9 +68,11 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /href="#freight-guide"/);
   assert.match(html, /href="#takeout-guide"/);
   assert.match(html, /T3物业负责人/);
+  assert.match(html, /<span>T3物业负责人<\/span><h3>吴幸明<\/h3>/);
+  assert.doesNotMatch(html, /T3栋物业负责人/);
   assert.doesNotMatch(html, /T3写字楼物业负责人/);
   assert.match(html, /T3选品中心5-9楼/);
-  assert.ok(html.indexOf("T3栋物业负责人") < html.indexOf("曾令慧"));
+  assert.ok(html.indexOf("吴幸明") < html.indexOf("曾令慧"));
   assert.ok(html.indexOf("曾令慧") < html.indexOf("何思慧"));
   assert.ok(html.indexOf("何思慧") < html.indexOf("刘大平"));
   assert.ok(html.indexOf("刘大平") < html.indexOf("周芷盈"));
@@ -102,7 +104,7 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /liu-liuhu-cutout\.png/);
   assert.match(html, /hou-huanwu-cutout\.png/);
   assert.equal((html.match(/<span>姓名待补充<\/span>/g) ?? []).length, 0);
-  assert.equal((html.match(/<h3>安管部负责人<\/h3>/g) ?? []).length, 1);
+  assert.equal((html.match(/<span>安管部负责人<\/span><h3>侯焕武<\/h3>/g) ?? []).length, 1);
   assert.ok(html.indexOf("刘嘉欣") < html.indexOf("刘六虎"));
   assert.ok(html.indexOf("刘六虎") < html.indexOf("侯焕武"));
   assert.match(html, /大堂暖心服务/);
@@ -205,7 +207,9 @@ test("keeps scroll performance safeguards", async () => {
   assert.match(css, /scroll-padding-top:\s*84px/);
   assert.match(css, /\.intro::after\s*\{[^}]*content:\s*"T3"/s);
   assert.match(css, /\.intro\s*\{[^}]*padding:\s*92px\s+0\s+88px/s);
-  assert.match(css, /\.refuge-markers\s*\{[^}]*bottom:\s*0[^}]*height:\s*520px/s);
+  assert.match(css, /\.refuge-markers\s*\{[^}]*bottom:\s*0[^}]*height:\s*calc\(100%\s*-\s*70px\)/s);
+  assert.match(css, /\.role-row span\s*\{[^}]*font-size:\s*11px/s);
+  assert.match(css, /\.role-row h3\s*\{[^}]*font-size:\s*23px/s);
   assert.match(css, /\.marker-40\s*\{[^}]*top:\s*20%/s);
   assert.match(css, /\.marker-30\s*\{[^}]*top:\s*40%/s);
   assert.match(css, /\.marker-20\s*\{[^}]*top:\s*60%/s);
