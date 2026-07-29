@@ -284,6 +284,36 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <article className="building-overview" aria-labelledby="building-overview-title">
+          <div className="building-visual">
+            <span className="building-code">HENGQIN · T3</span>
+            <span className="building-grid" aria-hidden="true" />
+            <img
+              src="/t3-building-lineart.png"
+              alt="横琴天啟T3栋建筑轮廓"
+              width="862"
+              height="1825"
+              loading="lazy"
+              decoding="async"
+            />
+            <div className="building-metrics" aria-label="T3栋项目数据">
+              <div><strong>249<small>m</small></strong><span>建筑高度</span></div>
+              <div><strong>94,332<small>㎡</small></strong><span>总建筑面积</span></div>
+            </div>
+          </div>
+          <div className="building-copy">
+            <span className="section-kicker">BUILDING OVERVIEW</span>
+            <h3 id="building-overview-title">一眼读懂T3栋</h3>
+            <p>从首层大堂到选品空间，用一张纵向导览快速认识楼宇功能分布。</p>
+            <div className="floor-directory" aria-label="T3栋楼层功能">
+              <div className="floor-row floor-primary"><span>01F</span><strong>T3写字楼大堂</strong><i>抵达与服务</i></div>
+              <div className="floor-row"><span>02–04F</span><strong>华发商都区域</strong><i>商业配套</i></div>
+              <div className="floor-row"><span>05–09F</span><strong>选品中心</strong><i>选品空间</i></div>
+              <div className="floor-row floor-safety"><span>10 / 20 / 30 / 40F</span><strong>避难层</strong><i>安全疏散</i></div>
+            </div>
+            <div className="building-note"><span>安全提示</span><p>避难层用于紧急情况下的临时疏散与避难，请留意楼内消防疏散标识。</p></div>
+          </div>
+        </article>
         <div className="home-directory" aria-label="网站目录与常用指引">
           <div className="directory-heading">
             <div><span className="section-kicker">QUICK DIRECTORY</span><h3>想找什么，直接到达。</h3></div>

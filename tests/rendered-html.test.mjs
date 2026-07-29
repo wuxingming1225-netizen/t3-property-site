@@ -30,6 +30,16 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /您的专属物业团队/);
   assert.match(html, /T3/);
   assert.match(html, /物业服务/);
+  assert.match(html, /一眼读懂T3栋/);
+  assert.match(html, /249/);
+  assert.match(html, /94,332/);
+  assert.match(html, /T3写字楼大堂/);
+  assert.match(html, /华发商都区域/);
+  assert.match(html, /05–09F/);
+  assert.match(html, /10 \/ 20 \/ 30 \/ 40F/);
+  assert.match(html, /避难层用于紧急情况下的临时疏散与避难/);
+  assert.doesNotMatch(html, /您所在的位置/);
+  assert.match(html, /t3-building-lineart\.png/);
   assert.match(html, /人员介绍/);
   assert.match(html, /服务介绍/);
   assert.match(html, /路线介绍/);
@@ -128,6 +138,7 @@ test("renders the T3 property service site", async () => {
 test("keeps required local guide assets available", async () => {
   await Promise.all([
     access(new URL("public/t3-building.jpg", projectRoot)),
+    access(new URL("public/t3-building-lineart.png", projectRoot)),
     access(new URL("public/takeout-step-1.jpg", projectRoot)),
     access(new URL("public/takeout-step-2.jpg", projectRoot)),
     access(new URL("public/takeout-step-3.jpg", projectRoot)),
