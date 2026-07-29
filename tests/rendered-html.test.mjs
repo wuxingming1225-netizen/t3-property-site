@@ -45,7 +45,7 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /href="#takeout-guide"/);
   assert.match(html, /T3写字楼物业负责人/);
   assert.match(html, /T3选品中心5-9楼/);
-  assert.ok(html.indexOf("T3物业负责人") < html.indexOf("曾令慧"));
+  assert.ok(html.indexOf("T3栋物业负责人") < html.indexOf("曾令慧"));
   assert.ok(html.indexOf("曾令慧") < html.indexOf("何思慧"));
   assert.ok(html.indexOf("何思慧") < html.indexOf("刘大平"));
   assert.ok(html.indexOf("刘大平") < html.indexOf("周芷盈"));
