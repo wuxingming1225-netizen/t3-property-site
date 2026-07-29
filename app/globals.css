@@ -95,7 +95,7 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .marker-40 { top: 20%; }
 .marker-30 { top: 40%; }
 .marker-20 { top: 60%; }
-.marker-10 { top: 80%; }
+.marker-10 { top: 72%; }
 .building-metrics { position: absolute; z-index: 3; inset: auto 22px 22px; display: grid; grid-template-columns: 1fr 1.25fr; gap: 8px; }
 .building-metrics > div { padding: 14px 16px; border: 1px solid rgba(231, 207, 156, .42); border-radius: 16px; color: #fff; background: linear-gradient(145deg, rgba(5, 29, 57, .86), rgba(42, 43, 49, .74)); box-shadow: inset 0 1px rgba(255, 239, 201, .12); backdrop-filter: blur(16px); }
 .building-metrics strong { display: block; font-size: 23px; letter-spacing: -.04em; }

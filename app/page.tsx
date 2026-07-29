@@ -1,7 +1,7 @@
 const team = [
   {
     index: "01",
-    role: "T3写字楼物业负责人",
+    role: "T3物业负责人",
     tag: "统筹管理",
     name: "T3栋物业负责人",
     image: "/wuxingming-cutout.png",

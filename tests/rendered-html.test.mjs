@@ -65,7 +65,8 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /href="#temporary-parking-guide"/);
   assert.match(html, /href="#freight-guide"/);
   assert.match(html, /href="#takeout-guide"/);
-  assert.match(html, /T3写字楼物业负责人/);
+  assert.match(html, /T3物业负责人/);
+  assert.doesNotMatch(html, /T3写字楼物业负责人/);
   assert.match(html, /T3选品中心5-9楼/);
   assert.ok(html.indexOf("T3栋物业负责人") < html.indexOf("曾令慧"));
   assert.ok(html.indexOf("曾令慧") < html.indexOf("何思慧"));
@@ -199,7 +200,7 @@ test("keeps scroll performance safeguards", async () => {
   assert.match(css, /\.marker-40\s*\{[^}]*top:\s*20%/s);
   assert.match(css, /\.marker-30\s*\{[^}]*top:\s*40%/s);
   assert.match(css, /\.marker-20\s*\{[^}]*top:\s*60%/s);
-  assert.match(css, /\.marker-10\s*\{[^}]*top:\s*80%/s);
+  assert.match(css, /\.marker-10\s*\{[^}]*top:\s*72%/s);
   assert.match(css, /content-visibility:\s*auto/);
   assert.match(css, /contain-intrinsic-size:\s*auto\s+\d+px/);
   assert.match(css, /\.weather-service-grid\s*\{[^}]*grid-template-columns:\s*repeat\(4,\s*1fr\)/s);
