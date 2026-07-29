@@ -3,7 +3,7 @@ const team = [
     index: "01",
     role: "T3写字楼物业负责人",
     tag: "统筹管理",
-    name: "吴幸明",
+    name: "T3物业负责人",
     range: "T3 写字楼全域",
     duties: "统筹服务品质、安全运营与跨部门协同，快速响应企业重要事项。",
     phone: "13543226860",
@@ -70,13 +70,22 @@ const supportTeam = [
     index: "08",
     role: "工程部经理",
     tag: "工程统筹",
-    name: "姓名待补充",
+    name: "刘六虎",
     range: "T3 工程运维全域",
     duties: "统筹设施设备运行、工程维修、施工协调与现场技术支持。",
-    phone: "电话待补充",
+    phone: "13823091591",
   },
   {
     index: "09",
+    role: "工程人员",
+    tag: "工程服务",
+    name: "侯焕武",
+    range: "T3 工程运维全域",
+    duties: "负责设施设备巡检、工程维修、施工配合与现场技术支持。",
+    phone: "13500241113",
+  },
+  {
+    index: "10",
     role: "安管部负责人",
     tag: "安全管理",
     name: "姓名待补充",
@@ -113,25 +122,34 @@ const lobbyServices = [
     subtitle: "大堂甄品服务",
     image: "/lobby-supplies-kit.jpg",
     alt: "臻品物资箱物品领用与借用清单",
-    text: "提供纸巾、女性用品、雨衣、针线包等领用品，以及一次性毛巾、吹风机、一次性拖鞋、维修工具、充电宝、测温枪等暖心借用品。",
+    text: "提供纸巾、女性用品、雨衣、针线包、后跟贴、漱口水、衣服去污纸等领用品，以及一次性毛巾、吹风机、一次性拖鞋、维修工具、充电宝、测温枪等暖心借用品。",
   },
 ];
 
 const weatherServices = [
   {
-    icon: "伞",
     title: "雨伞机",
+    image: "/shared-umbrella-station.jpg",
+    alt: "大堂免费共享雨伞机",
     text: "提供免费雨伞借用服务。",
   },
   {
-    icon: "套",
     title: "雨伞套机",
+    image: "/umbrella-sleeve-machine.jpg",
+    alt: "大堂长柄和短柄雨伞套机",
     text: "提供适用于长柄和短柄雨伞的雨伞套。",
   },
   {
-    icon: "净",
     title: "雨伞除水器",
-    text: "采用雪尼尔吸水面料，雨伞左右擦拭 4 至 5 次即可快速去除水滴。",
+    image: "/umbrella-dryer.jpg",
+    alt: "采用雪尼尔吸水面料的雨伞除水器",
+    text: "采用雪尼尔吸水面料，将雨伞放入除水器内左右摇动 2 至 3 次，即可快速去除水滴。",
+  },
+  {
+    title: "皮鞋擦鞋机",
+    image: "/shoe-polisher.jpg",
+    alt: "大堂皮鞋擦鞋机",
+    text: "大堂配备皮鞋擦鞋机，同时提供皮鞋湿巾，方便日常鞋面清洁与护理。",
   },
 ];
 
@@ -212,7 +230,7 @@ const faqs = [
   ["如何开通闸机权限？", "联系专属物业管家领取人员信息采集表，填写完成后发送管家录入。"],
   ["临时报备停车怎么办理？", "车辆到达前请联系所属区域物业管家完成临时报备。临停仅限接送、接待等临时停靠，完成后请立即驶离，不得长期停放。"],
   ["停车月卡如何申请？", "进入“爱泊客”小程序，选择“横琴华发商都停车场”，上传资料并等待管家审核；审核通过后在线缴费。"],
-  ["雨天的暖心服务有哪些？", "前台暖心物品包含一次性毛巾、吹风机和一次性拖鞋；雨伞机提供免费雨伞借用，雨伞套机提供适用于长柄和短柄雨伞的雨伞套；雨伞除水器采用雪尼尔吸水面料，左右擦拭 4 至 5 次即可快速去除水滴。"],
+  ["雨天的暖心服务有哪些？", "前台暖心物品包含一次性毛巾、吹风机和一次性拖鞋；雨伞机提供免费雨伞借用，雨伞套机提供适用于长柄和短柄雨伞的雨伞套；雨伞除水器采用雪尼尔吸水面料，将雨伞放入后左右摇动 2 至 3 次即可快速去除水滴。"],
   ["外卖取餐和18号货梯怎么走？", "外卖请按负一层低区电梯厅、中央连廊、高区电梯厅的路线前往外卖柜；饮用水、快递及送货请从“森林子果蔬茶”旁侧通道前往专属18号货梯，施工材料须到负三层上下货。"],
 ];
 
@@ -280,7 +298,7 @@ export default function Home() {
             <div><span className="section-kicker">QUICK DIRECTORY</span><h3>想找什么，直接到达。</h3></div>
           </div>
           <nav className="directory-links" aria-label="网站目录">
-            <a href="#team"><span>01</span><strong>人员介绍</strong><small>认识9位专属服务伙伴</small><i>↓</i></a>
+            <a href="#team"><span>01</span><strong>人员介绍</strong><small>认识10位专属服务伙伴</small><i>↓</i></a>
             <a href="#services"><span>02</span><strong>服务介绍</strong><small>大堂甄品与雨天暖心服务</small><i>↓</i></a>
             <a href="#access"><span>03</span><strong>停车与通行</strong><small>闸机、访客、临停与月卡</small><i>↓</i></a>
             <a href="#routes"><span>04</span><strong>路线介绍</strong><small>外卖取餐与18号货梯</small><i>↓</i></a>
@@ -379,12 +397,25 @@ export default function Home() {
         <div className="weather-service-grid">
           {weatherServices.map((service) => (
             <article className="weather-service-card" key={service.title}>
-              <div className="weather-service-photo" aria-label={`${service.title}照片待补充`}>
-                <span>{service.icon}</span>
-                <small>照片待补充</small>
-              </div>
+              <a
+                className="weather-service-photo"
+                href={service.image}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`查看${service.title}清晰原图`}
+              >
+                <img
+                  src={service.image}
+                  alt={service.alt}
+                  width="3024"
+                  height="4032"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span>查看清晰原图 ↗</span>
+              </a>
               <div className="weather-service-copy">
-                <span>雨天设备</span>
+                <span>{service.title === "皮鞋擦鞋机" ? "大堂便民设备" : "雨天设备"}</span>
                 <h4>{service.title}</h4>
                 <p>{service.text}</p>
               </div>

@@ -45,32 +45,47 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /href="#takeout-guide"/);
   assert.match(html, /T3写字楼物业负责人/);
   assert.match(html, /T3选品中心5-9楼/);
-  assert.ok(html.indexOf("吴幸明") < html.indexOf("曾令慧"));
+  assert.ok(html.indexOf("T3物业负责人") < html.indexOf("曾令慧"));
   assert.ok(html.indexOf("曾令慧") < html.indexOf("何思慧"));
   assert.ok(html.indexOf("何思慧") < html.indexOf("刘大平"));
   assert.ok(html.indexOf("刘大平") < html.indexOf("周芷盈"));
   assert.ok(html.indexOf("周芷盈") < html.indexOf("梁盼盼"));
   assert.ok(html.indexOf("梁盼盼") < html.indexOf("刘嘉欣"));
-  assert.match(html, /认识9位专属服务伙伴/);
+  assert.match(html, /认识10位专属服务伙伴/);
   assert.match(html, /专业支持团队/);
   assert.match(html, /工程部经理/);
+  assert.match(html, /工程人员/);
   assert.match(html, /安管部负责人/);
-  assert.equal((html.match(/<span>姓名待补充<\/span>/g) ?? []).length, 2);
+  assert.match(html, /刘六虎/);
+  assert.match(html, /13823091591/);
+  assert.match(html, /侯焕武/);
+  assert.match(html, /13500241113/);
+  assert.equal((html.match(/<span>姓名待补充<\/span>/g) ?? []).length, 1);
   assert.equal((html.match(/<h3>安管部负责人<\/h3>/g) ?? []).length, 1);
-  assert.ok(html.indexOf("刘嘉欣") < html.indexOf("工程部经理"));
-  assert.ok(html.indexOf("工程部经理") < html.indexOf("安管部负责人"));
+  assert.ok(html.indexOf("刘嘉欣") < html.indexOf("刘六虎"));
+  assert.ok(html.indexOf("刘六虎") < html.indexOf("侯焕武"));
+  assert.ok(html.indexOf("侯焕武") < html.indexOf("安管部负责人"));
   assert.match(html, /大堂暖心服务/);
   assert.match(html, /臻品物资箱/);
   assert.match(html, /应急领用品/);
   assert.match(html, /便民借用品/);
   assert.match(html, /一次性毛巾/);
   assert.match(html, /一次性拖鞋/);
+  assert.match(html, /后跟贴/);
+  assert.match(html, /漱口水/);
+  assert.match(html, /衣服去污纸/);
   assert.match(html, /雨伞机/);
   assert.match(html, /雨伞套机/);
   assert.match(html, /雨伞除水器/);
+  assert.match(html, /皮鞋擦鞋机/);
+  assert.match(html, /皮鞋湿巾/);
   assert.match(html, /长柄和短柄雨伞/);
   assert.match(html, /雪尼尔吸水面料/);
-  assert.match(html, /左右擦拭 4 至 5 次/);
+  assert.match(html, /左右摇动 2 至 3 次/);
+  assert.match(html, /shared-umbrella-station\.jpg/);
+  assert.match(html, /umbrella-sleeve-machine\.jpg/);
+  assert.match(html, /umbrella-dryer\.jpg/);
+  assert.match(html, /shoe-polisher\.jpg/);
   assert.match(html, /停车与通行/);
   assert.match(html, /填写完成后发送管家录入/);
   assert.match(html, /访客抵达后在前台登记/);
@@ -123,6 +138,10 @@ test("keeps required local guide assets available", async () => {
     access(new URL("public/freight-route.jpg", projectRoot)),
     access(new URL("public/lobby-supplies-kit.jpg", projectRoot)),
     access(new URL("public/temporary-parking-entrance.png", projectRoot)),
+    access(new URL("public/shared-umbrella-station.jpg", projectRoot)),
+    access(new URL("public/umbrella-sleeve-machine.jpg", projectRoot)),
+    access(new URL("public/umbrella-dryer.jpg", projectRoot)),
+    access(new URL("public/shoe-polisher.jpg", projectRoot)),
   ]);
 });
 
@@ -133,7 +152,7 @@ test("keeps scroll performance safeguards", async () => {
   assert.doesNotMatch(topbarRule, /backdrop-filter/);
   assert.match(css, /content-visibility:\s*auto/);
   assert.match(css, /contain-intrinsic-size:\s*auto\s+\d+px/);
-  assert.match(css, /\.weather-service-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*1fr\)/s);
+  assert.match(css, /\.weather-service-grid\s*\{[^}]*grid-template-columns:\s*repeat\(4,\s*1fr\)/s);
   assert.match(css, /\.parking-guide-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*1fr\)/s);
   assert.match(css, /\.parking-guide-visual\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*9/s);
   assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.weather-service-grid,\s*\.parking-guide-grid\s*\{[^}]*grid-template-columns:\s*1fr/s);

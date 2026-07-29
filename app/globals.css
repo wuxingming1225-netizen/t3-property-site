@@ -158,11 +158,12 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 
 .weather-service-heading { margin: 54px 0 22px; }
 .weather-service-heading h3 { margin: 12px 0 0; font-size: 30px; letter-spacing: -.04em; }
-.weather-service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.weather-service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .weather-service-card { min-width: 0; overflow: hidden; border: 1px solid #d6e6f4; border-radius: 24px; background: #fff; box-shadow: 0 16px 44px rgba(28, 89, 148, .08); }
-.weather-service-photo { min-height: 230px; display: grid; place-content: center; justify-items: center; gap: 12px; color: #6287a9; background: radial-gradient(circle at 50% 30%, #fff, #e5f3ff 68%, #d6eaff); }
-.weather-service-photo > span { width: 72px; height: 72px; display: grid; place-items: center; border: 1px solid rgba(15, 105, 185, .18); border-radius: 24px; color: #fff; background: linear-gradient(145deg, #1688ea, #0760bd); font-size: 24px; font-weight: 750; box-shadow: 0 15px 34px rgba(14, 102, 181, .2); }
-.weather-service-photo small { font-size: 10px; letter-spacing: .15em; }
+.weather-service-photo { position: relative; aspect-ratio: 3 / 4; display: block; overflow: hidden; background: #e7f2fb; }
+.weather-service-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s cubic-bezier(.2,.7,.2,1); }
+.weather-service-photo:hover img { transform: scale(1.025); }
+.weather-service-photo > span { position: absolute; right: 14px; bottom: 14px; border: 1px solid rgba(255,255,255,.48); border-radius: 999px; padding: 9px 12px; color: #fff; background: rgba(5,24,48,.48); backdrop-filter: blur(10px); font-size: 10px; }
 .weather-service-copy { min-height: 170px; padding: 26px; }
 .weather-service-copy > span { color: #2b78bc; font-size: 10px; font-weight: 700; letter-spacing: .14em; }
 .weather-service-copy h4 { margin: 8px 0 12px; font-size: 25px; letter-spacing: -.04em; }
@@ -314,6 +315,7 @@ footer { padding: 42px 0; background: #06172d; color: #fff; }
   .team-grid { grid-template-columns: repeat(2, 1fr); }
   .directory-heading { align-items: start; }
   .person-card.featured { grid-column: span 2; }
+  .weather-service-grid { grid-template-columns: repeat(2, 1fr); }
   .service-grid { grid-template-columns: repeat(2, 1fr); }
   .route-card { grid-template-columns: 1fr; }
   .route-card.route-wide { grid-template-columns: 1fr 1fr; }
@@ -373,7 +375,7 @@ footer { padding: 42px 0; background: #06172d; color: #fff; }
   .lobby-service-card h3 { font-size: 32px; }
   .weather-service-grid, .parking-guide-grid { grid-template-columns: 1fr; }
   .access-service-grid { grid-template-columns: 1fr; }
-  .weather-service-photo { min-height: 240px; }
+  .weather-service-photo { aspect-ratio: 3 / 4; }
   .parking-guide-copy { padding: 26px 24px 30px; }
   .parking-guide-copy h3 { font-size: 29px; }
   .route-grid { grid-template-columns: 1fr; }
