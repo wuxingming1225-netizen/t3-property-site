@@ -81,12 +81,7 @@ test("renders the T3 property service site", async () => {
   assert.doesNotMatch(html, /楼层待补充/);
   assert.ok(html.indexOf("周芷盈") < html.indexOf("梁盼盼"));
   assert.ok(html.indexOf("梁盼盼") < html.indexOf("刘嘉欣"));
-  assert.match(html, /13226026617/);
-  assert.match(html, /17368289843/);
-  assert.match(html, /13612200521/);
-  assert.match(html, /15916291959/);
-  assert.match(html, /17330902312/);
-  assert.match(html, /18825330286/);
+  assert.doesNotMatch(html, /1\d{10}/);
   assert.doesNotMatch(html, /电话待补充/);
   assert.match(html, /wuxingming-cutout\.png/);
   assert.match(html, /zeng-linghui-cutout\.png/);
@@ -101,9 +96,7 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /安管部负责人/);
   assert.doesNotMatch(html, /工程人员/);
   assert.match(html, /刘六虎/);
-  assert.match(html, /13823091591/);
   assert.match(html, /侯焕武/);
-  assert.match(html, /13500241113/);
   assert.match(html, /liu-liuhu-cutout\.png/);
   assert.match(html, /hou-huanwu-cutout\.png/);
   assert.equal((html.match(/<span>姓名待补充<\/span>/g) ?? []).length, 0);
@@ -143,7 +136,8 @@ test("renders the T3 property service site", async () => {
   assert.ok(html.indexOf("低区电梯厅左转") < html.indexOf("通道终点左转"));
   assert.ok(html.indexOf("通道终点左转") < html.indexOf("直走抵达外卖柜"));
   assert.match(html, /广东省珠海市香洲区横琴跨境电商（华发）创新产业园T3栋拓展区高区负一外卖柜/);
-  assert.match(html, /广东省珠海市香洲区横琴跨境电商（华发）创新产业园T3栋拓展区xxxx号房/);
+  assert.match(html, /广东省珠海市香洲区横琴跨境电商（华发）创新产业园T3栋拓展区（请填写企业房号）/);
+  assert.doesNotMatch(html, /xxxx号房/);
   assert.doesNotMatch(html, /takeout-route\.png/);
   const lazyImages = html.match(/<img[^>]+loading="lazy"[^>]+decoding="async"[^>]*>/g) ?? [];
   assert.ok(lazyImages.length >= 10);

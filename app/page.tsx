@@ -7,7 +7,6 @@ const team = [
     image: "/wuxingming-cutout.png",
     range: "T3 写字楼全域",
     duties: "统筹服务品质、安全运营与跨部门协同，快速响应企业重要事项。",
-    phone: "13543226860",
     featured: true,
   },
   {
@@ -18,7 +17,6 @@ const team = [
     image: "/zeng-linghui-cutout.png",
     range: "中区 / 高区",
     duties: "负责企业入驻、报事跟进、费用咨询与中区、高区日常巡查。",
-    phone: "13226026617",
   },
   {
     index: "03",
@@ -28,7 +26,6 @@ const team = [
     image: "/he-sihui-cutout.png",
     range: "低区 / 超高区",
     duties: "负责客户沟通、访客协助、装修协调与低区、超高区日常服务。",
-    phone: "17368289843",
   },
   {
     index: "04",
@@ -38,7 +35,6 @@ const team = [
     image: "/liu-daping-cutout.png",
     range: "T3选品中心5-9楼",
     duties: "统筹选品中心接洽、活动支持、空间秩序与资源协同。",
-    phone: "13612200521",
   },
   {
     index: "05",
@@ -48,7 +44,6 @@ const team = [
     image: "/zhou-zhiying-cutout.png",
     range: "T3 首层大堂",
     duties: "承担大堂迎宾、访客分流、电梯引导与高峰秩序维护。",
-    phone: "15916291959",
   },
   {
     index: "06",
@@ -58,7 +53,6 @@ const team = [
     image: "/liang-panpan-cutout.png",
     range: "选品中心前台",
     duties: "提供来访登记、路线指引、会议接待与现场咨询服务。",
-    phone: "17330902312",
   },
   {
     index: "07",
@@ -68,7 +62,6 @@ const team = [
     image: "/liu-jiaxin-cutout.png",
     range: "选品中心前台",
     duties: "负责客户迎送、会务衔接、物资确认与服务信息传递。",
-    phone: "18825330286",
   },
 ];
 
@@ -81,7 +74,6 @@ const supportTeam = [
     image: "/liu-liuhu-cutout.png",
     range: "T3 工程运维全域",
     duties: "统筹设施设备运行、工程维修、施工协调与现场技术支持。",
-    phone: "13823091591",
   },
   {
     index: "09",
@@ -91,7 +83,6 @@ const supportTeam = [
     image: "/hou-huanwu-cutout.png",
     range: "T3 公共区域",
     duties: "负责安全秩序、消防巡查、突发事件响应与现场协同。",
-    phone: "13500241113",
   },
 ];
 
@@ -385,7 +376,7 @@ export default function Home() {
                 <div className="person-info">
                   <div className="role-row"><div><span>{person.role}</span><h3>{person.name}</h3></div><span className="arrow">↗</span></div>
                   <p>{person.duties}</p>
-                  <div className="person-meta"><span>⌖ {person.range}</span><span>☎ {person.phone}</span></div>
+                  <div className="person-meta"><span>⌖ {person.range}</span></div>
                 </div>
               </article>
             ))}
@@ -412,7 +403,7 @@ export default function Home() {
                 <div className="person-info">
                   <div className="role-row"><div><span>{person.role}</span><h3>{person.name}</h3></div><span className="arrow">↗</span></div>
                   <p>{person.duties}</p>
-                  <div className="person-meta"><span>⌖ {person.range}</span><span>☎ {person.phone}</span></div>
+                  <div className="person-meta"><span>⌖ {person.range}</span></div>
                 </div>
               </article>
             ))}
@@ -560,7 +551,7 @@ export default function Home() {
                     </div>
                     <div className="route-address-grid" aria-label="外卖与快递地址">
                       <div><span>TAKEOUT ADDRESS</span><strong>外卖地址</strong><p>广东省珠海市香洲区横琴跨境电商（华发）创新产业园T3栋拓展区高区负一外卖柜</p></div>
-                      <div><span>COURIER ADDRESS</span><strong>快递地址</strong><p>广东省珠海市香洲区横琴跨境电商（华发）创新产业园T3栋拓展区xxxx号房</p></div>
+                      <div><span>COURIER ADDRESS</span><strong>快递地址</strong><p>广东省珠海市香洲区横琴跨境电商（华发）创新产业园T3栋拓展区（请填写企业房号）</p></div>
                     </div>
                   </>
                 ) : (
