@@ -74,6 +74,13 @@ test("renders the T3 property service site", async () => {
   assert.ok(html.indexOf("刘大平") < html.indexOf("周芷盈"));
   assert.ok(html.indexOf("周芷盈") < html.indexOf("梁盼盼"));
   assert.ok(html.indexOf("梁盼盼") < html.indexOf("刘嘉欣"));
+  assert.match(html, /13226026617/);
+  assert.match(html, /17368289843/);
+  assert.match(html, /13612200521/);
+  assert.match(html, /15916291959/);
+  assert.match(html, /17330902312/);
+  assert.match(html, /18825330286/);
+  assert.doesNotMatch(html, /电话待补充/);
   assert.match(html, /wuxingming-cutout\.png/);
   assert.match(html, /zeng-linghui-cutout\.png/);
   assert.match(html, /he-sihui-cutout\.png/);

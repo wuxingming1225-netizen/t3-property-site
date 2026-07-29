@@ -18,7 +18,7 @@ const team = [
     image: "/zeng-linghui-cutout.png",
     range: "高区 · 楼层待补充",
     duties: "负责企业入驻、报事跟进、费用咨询与高区日常巡查。",
-    phone: "电话待补充",
+    phone: "13226026617",
   },
   {
     index: "03",
@@ -28,7 +28,7 @@ const team = [
     image: "/he-sihui-cutout.png",
     range: "低区 · 楼层待补充",
     duties: "负责客户沟通、访客协助、装修协调与低区日常服务。",
-    phone: "电话待补充",
+    phone: "17368289843",
   },
   {
     index: "04",
@@ -38,7 +38,7 @@ const team = [
     image: "/liu-daping-cutout.png",
     range: "T3选品中心5-9楼",
     duties: "统筹选品中心接洽、活动支持、空间秩序与资源协同。",
-    phone: "电话待补充",
+    phone: "13612200521",
   },
   {
     index: "05",
@@ -48,7 +48,7 @@ const team = [
     image: "/zhou-zhiying-cutout.png",
     range: "T3 首层大堂",
     duties: "承担大堂迎宾、访客分流、电梯引导与高峰秩序维护。",
-    phone: "电话待补充",
+    phone: "15916291959",
   },
   {
     index: "06",
@@ -58,7 +58,7 @@ const team = [
     image: "/liang-panpan-cutout.png",
     range: "选品中心前台",
     duties: "提供来访登记、路线指引、会议接待与现场咨询服务。",
-    phone: "电话待补充",
+    phone: "17330902312",
   },
   {
     index: "07",
@@ -68,7 +68,7 @@ const team = [
     image: "/liu-jiaxin-cutout.png",
     range: "选品中心前台",
     duties: "负责客户迎送、会务衔接、物资确认与服务信息传递。",
-    phone: "电话待补充",
+    phone: "18825330286",
   },
 ];
 
