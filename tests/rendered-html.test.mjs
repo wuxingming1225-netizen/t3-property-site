@@ -73,10 +73,13 @@ test("renders the T3 property service site", async () => {
   assert.ok(html.indexOf("刘大平") < html.indexOf("周芷盈"));
   assert.ok(html.indexOf("周芷盈") < html.indexOf("梁盼盼"));
   assert.ok(html.indexOf("梁盼盼") < html.indexOf("刘嘉欣"));
-  assert.match(html, /liu-daping\.jpg/);
-  assert.match(html, /zhou-zhiying\.jpg/);
-  assert.match(html, /liang-panpan\.jpg/);
-  assert.match(html, /liu-jiaxin\.jpg/);
+  assert.match(html, /wuxingming-cutout\.png/);
+  assert.match(html, /zeng-linghui-cutout\.png/);
+  assert.match(html, /he-sihui-cutout\.png/);
+  assert.match(html, /liu-daping-cutout\.png/);
+  assert.match(html, /zhou-zhiying-cutout\.png/);
+  assert.match(html, /liang-panpan-cutout\.png/);
+  assert.match(html, /liu-jiaxin-cutout\.png/);
   assert.match(html, /认识9位专属服务伙伴/);
   assert.match(html, /专业支持团队/);
   assert.match(html, /工程部经理/);
@@ -86,7 +89,8 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /13823091591/);
   assert.match(html, /侯焕武/);
   assert.match(html, /13500241113/);
-  assert.match(html, /hou-huanwu\.jpg/);
+  assert.match(html, /liu-liuhu-cutout\.png/);
+  assert.match(html, /hou-huanwu-cutout\.png/);
   assert.equal((html.match(/<span>姓名待补充<\/span>/g) ?? []).length, 0);
   assert.equal((html.match(/<h3>安管部负责人<\/h3>/g) ?? []).length, 1);
   assert.ok(html.indexOf("刘嘉欣") < html.indexOf("刘六虎"));
@@ -169,11 +173,15 @@ test("keeps required local guide assets available", async () => {
     access(new URL("public/umbrella-sleeve-machine.jpg", projectRoot)),
     access(new URL("public/umbrella-dryer.jpg", projectRoot)),
     access(new URL("public/shoe-polisher.jpg", projectRoot)),
-    access(new URL("public/zhou-zhiying.jpg", projectRoot)),
-    access(new URL("public/liang-panpan.jpg", projectRoot)),
-    access(new URL("public/liu-jiaxin.jpg", projectRoot)),
-    access(new URL("public/liu-daping.jpg", projectRoot)),
-    access(new URL("public/hou-huanwu.jpg", projectRoot)),
+    access(new URL("public/wuxingming-cutout.png", projectRoot)),
+    access(new URL("public/zeng-linghui-cutout.png", projectRoot)),
+    access(new URL("public/he-sihui-cutout.png", projectRoot)),
+    access(new URL("public/liu-daping-cutout.png", projectRoot)),
+    access(new URL("public/zhou-zhiying-cutout.png", projectRoot)),
+    access(new URL("public/liang-panpan-cutout.png", projectRoot)),
+    access(new URL("public/liu-jiaxin-cutout.png", projectRoot)),
+    access(new URL("public/liu-liuhu-cutout.png", projectRoot)),
+    access(new URL("public/hou-huanwu-cutout.png", projectRoot)),
   ]);
 });
 
