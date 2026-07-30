@@ -9,7 +9,7 @@ const team = [
     role: "T3物业负责人",
     tag: "统筹管理",
     name: "吴幸明",
-    image: asset("/wuxingming-cutout.png"),
+    image: asset("/wuxingming-cutout.webp"),
     range: "T3 全域",
     duties: "统筹服务品质、安全运营与跨部门协同，快速响应企业重要事项。",
     featured: true,
@@ -19,7 +19,7 @@ const team = [
     role: "物业管家",
     tag: "中高区服务",
     name: "曾令慧",
-    image: asset("/zeng-linghui-cutout.png"),
+    image: asset("/zeng-linghui-cutout.webp"),
     range: "中区 / 高区",
     duties: "负责企业入驻、报事跟进、费用咨询与中区、高区日常巡查。",
   },
@@ -28,7 +28,7 @@ const team = [
     role: "物业管家",
     tag: "低区与超高区服务",
     name: "何思慧",
-    image: asset("/he-sihui-cutout.png"),
+    image: asset("/he-sihui-cutout.webp"),
     range: "低区 / 超高区",
     duties: "负责客户沟通、访客协助、装修协调与低区、超高区日常服务。",
   },
@@ -37,7 +37,7 @@ const team = [
     role: "选品中心负责人",
     tag: "选品空间",
     name: "刘大平",
-    image: asset("/liu-daping-cutout.png"),
+    image: asset("/liu-daping-cutout.webp"),
     range: "T3选品中心5-9楼",
     duties: "统筹选品中心接洽、活动支持、空间秩序与资源协同。",
   },
@@ -46,7 +46,7 @@ const team = [
     role: "大堂管家",
     tag: "首问服务",
     name: "周芷盈",
-    image: asset("/zhou-zhiying-cutout.png"),
+    image: asset("/zhou-zhiying-cutout.webp"),
     range: "T3 首层大堂",
     duties: "承担大堂迎宾、访客分流、电梯引导与高峰秩序维护。",
   },
@@ -55,7 +55,7 @@ const team = [
     role: "接待员",
     tag: "来访接待",
     name: "梁盼盼",
-    image: asset("/liang-panpan-cutout.png"),
+    image: asset("/liang-panpan-cutout.webp"),
     range: "选品中心前台",
     duties: "提供来访登记、路线指引、会议接待与现场咨询服务。",
   },
@@ -64,7 +64,7 @@ const team = [
     role: "接待员",
     tag: "会务支持",
     name: "刘嘉欣",
-    image: asset("/liu-jiaxin-cutout.png"),
+    image: asset("/liu-jiaxin-cutout.webp"),
     range: "选品中心前台",
     duties: "负责客户迎送、会务衔接、物资确认与服务信息传递。",
   },
@@ -76,7 +76,7 @@ const supportTeam = [
     role: "工程部经理",
     tag: "工程统筹",
     name: "刘六虎",
-    image: asset("/liu-liuhu-cutout.png"),
+    image: asset("/liu-liuhu-cutout.webp"),
     range: "T3 工程运维全域",
     duties: "统筹设施设备运行、工程维修、施工协调与现场技术支持。",
   },
@@ -85,7 +85,7 @@ const supportTeam = [
     role: "安管部负责人",
     tag: "安全管理",
     name: "侯焕武",
-    image: asset("/hou-huanwu-cutout.png"),
+    image: asset("/hou-huanwu-cutout.webp"),
     range: "T3 公共区域",
     duties: "负责安全秩序、消防巡查、突发事件响应与现场协同。",
   },
@@ -117,6 +117,7 @@ const lobbyServices = [
     title: "臻品物资箱",
     subtitle: "大堂甄品服务",
     image: asset("/lobby-supplies-kit.jpg"),
+    preview: asset("/lobby-supplies-kit.webp"),
     alt: "臻品物资箱物品领用与借用清单",
     text: "提供纸巾、女性用品、雨衣、针线包、后跟贴、漱口水、衣服去污纸等领用品，以及一次性毛巾、吹风机、一次性拖鞋、维修工具、充电宝、测温枪等暖心借用品。",
   },
@@ -126,24 +127,28 @@ const weatherServices = [
   {
     title: "雨伞机",
     image: asset("/shared-umbrella-station.jpg"),
+    preview: asset("/shared-umbrella-station.webp"),
     alt: "大堂免费共享雨伞机",
     text: "提供免费雨伞借用服务。",
   },
   {
     title: "雨伞套机",
     image: asset("/umbrella-sleeve-machine.jpg"),
+    preview: asset("/umbrella-sleeve-machine.webp"),
     alt: "大堂长柄和短柄雨伞套机",
     text: "提供适用于长柄和短柄雨伞的雨伞套。",
   },
   {
     title: "雨伞除水器",
     image: asset("/umbrella-dryer.jpg"),
+    preview: asset("/umbrella-dryer.webp"),
     alt: "采用雪尼尔吸水面料的雨伞除水器",
     text: "采用雪尼尔吸水面料，将雨伞放入除水器内左右摇动 2 至 3 次，即可快速去除水滴。",
   },
   {
     title: "皮鞋擦鞋机",
     image: asset("/shoe-polisher.jpg"),
+    preview: asset("/shoe-polisher.webp"),
     alt: "大堂皮鞋擦鞋机",
     text: "大堂配备皮鞋擦鞋机，同时提供皮鞋湿巾，方便日常鞋面清洁与护理。",
   },
@@ -155,6 +160,7 @@ const parkingGuides = [
     eyebrow: "TEMPORARY PARKING",
     title: "临时报备停车指引",
     image: asset("/temporary-parking-entrance.webp"),
+    preview: asset("/temporary-parking-entrance-preview.webp"),
     alt: "横琴跨境电商华发创新产业园车辆临停处",
     width: 1600,
     height: 900,
@@ -170,6 +176,7 @@ const parkingGuides = [
     eyebrow: "PARKING APPLY",
     title: "停车月卡申请",
     image: asset("/parking-apply.jpg"),
+    preview: asset("/parking-apply.webp"),
     alt: "T3 长租月卡新申请操作指引",
     width: 2200,
     height: 1565,
@@ -184,6 +191,7 @@ const routeGuides = [
     eyebrow: "TAKEOUT ROUTE",
     title: "外卖取餐路线",
     image: asset("/takeout-step-1.jpg"),
+    preview: asset("/takeout-step-1.webp"),
     alt: "从负一层低区电梯厅经中央连廊前往高区电梯厅外卖存放架的路线图",
     featured: false,
     wide: true,
@@ -201,14 +209,15 @@ const routeGuides = [
     eyebrow: "FREIGHT ELEVATOR",
     title: "18号货梯指引",
     image: asset("/freight-route.jpg"),
+    preview: asset("/freight-route.webp"),
     alt: "从森林子果蔬茶旁侧入口前往18号货梯的室内路线指引",
     imagePending: false,
     featured: false,
     wide: true,
     kind: "freight",
     secondaryImages: [
-      { src: asset("/freight-arrival.jpg"), alt: "车辆到达后沿车信路路边停车", label: "01 · 车停路边" },
-      { src: asset("/freight-entrance.jpg"), alt: "森林子果蔬茶旁侧的18号货梯通道入口", label: "02 · 找到旁侧入口" },
+      { src: asset("/freight-arrival.jpg"), preview: asset("/freight-arrival.webp"), alt: "车辆到达后沿车信路路边停车", label: "01 · 车停路边" },
+      { src: asset("/freight-entrance.jpg"), preview: asset("/freight-entrance.webp"), alt: "森林子果蔬茶旁侧的18号货梯通道入口", label: "02 · 找到旁侧入口" },
     ],
     steps: [
       "车辆导航至“森林子果蔬茶”",
@@ -232,9 +241,9 @@ const faqs = [
 
 const freightSequence = ["进入通道", "按箭头右转", "沿走廊直行", "按箭头左转", "到达18号货梯"];
 const takeoutSequence = [
-  { src: asset("/takeout-step-1.jpg"), label: "低区电梯厅左转", alt: "从负一层低区电梯厅向左转" },
-  { src: asset("/takeout-step-2.jpg"), label: "通道终点左转", alt: "沿通道前行并在终点向左转" },
-  { src: asset("/takeout-step-3.jpg"), label: "直走抵达外卖柜", alt: "直行抵达高区负一层外卖柜" },
+  { src: asset("/takeout-step-1.jpg"), preview: asset("/takeout-step-1.webp"), label: "低区电梯厅左转", alt: "从负一层低区电梯厅向左转" },
+  { src: asset("/takeout-step-2.jpg"), preview: asset("/takeout-step-2.webp"), label: "通道终点左转", alt: "沿通道前行并在终点向左转" },
+  { src: asset("/takeout-step-3.jpg"), preview: asset("/takeout-step-3.webp"), label: "直走抵达外卖柜", alt: "直行抵达高区负一层外卖柜" },
 ];
 
 export default function Home() {
@@ -296,12 +305,12 @@ export default function Home() {
         <article className="building-overview" aria-labelledby="building-overview-title">
           <div
             className="building-visual"
-            style={{ "--building-mask": `url("${asset("/t3-building-lineart.png")}")` } as CSSProperties}
+            style={{ "--building-mask": `url("${asset("/t3-building-lineart.webp")}")` } as CSSProperties}
           >
             <span className="building-code">HENGQIN · T3</span>
             <span className="building-grid" aria-hidden="true" />
             <img
-              src={asset("/t3-building-lineart.png")}
+              src={asset("/t3-building-lineart.webp")}
               alt="横琴天啟T3栋建筑轮廓"
               width="862"
               height="1825"
@@ -432,7 +441,7 @@ export default function Home() {
             <article className="lobby-service-card" key={service.title}>
               <a href={service.image} target="_blank" rel="noreferrer" aria-label={`查看${service.title}完整清单`}>
                 <img
-                  src={service.image}
+                  src={service.preview}
                   alt={service.alt}
                   width="1810"
                   height="1279"
@@ -465,7 +474,7 @@ export default function Home() {
                 aria-label={`查看${service.title}清晰原图`}
               >
                 <img
-                  src={service.image}
+                  src={service.preview}
                   alt={service.alt}
                   width="1200"
                   height="1600"
@@ -510,7 +519,7 @@ export default function Home() {
               <article className="parking-guide-card" id={guide.id} key={guide.title}>
                 <a className="parking-guide-visual" href={guide.image} target="_blank" rel="noreferrer" aria-label={`查看${guide.title}清晰原图`}>
                   <img
-                    src={guide.image}
+                    src={guide.preview}
                     alt={guide.alt}
                     width={guide.width}
                     height={guide.height}
@@ -556,7 +565,7 @@ export default function Home() {
                     <div className="takeout-gallery" aria-label="外卖取餐路线步骤">
                       {takeoutSequence.map((step, index) => (
                         <a href={step.src} target="_blank" rel="noreferrer" key={step.src} className="takeout-step">
-                          <img src={step.src} alt={step.alt} width="1600" height="899" loading="lazy" decoding="async" />
+                          <img src={step.preview} alt={step.alt} width="1600" height="899" loading="lazy" decoding="async" />
                           <span>{String(index + 1).padStart(2, "0")} · {step.label}</span>
                         </a>
                       ))}
@@ -572,7 +581,7 @@ export default function Home() {
                       {guide.secondaryImages.map((item) => (
                         <a href={item.src} target="_blank" rel="noreferrer" key={item.src}>
                     <img
-                      src={item.src}
+                      src={item.preview}
                       alt={item.alt}
                       width="1707"
                       height="1280"
@@ -587,7 +596,7 @@ export default function Home() {
                       {freightSequence.map((label, index) => (
                         <a href={guide.image} target="_blank" rel="noreferrer" key={label} className={`freight-step freight-step-${index + 1}`}>
                       <img
-                        src={guide.image}
+                        src={guide.preview}
                         alt={`${label}路线画面`}
                         width="720"
                         height="4571"
