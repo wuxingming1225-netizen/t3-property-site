@@ -1,10 +1,15 @@
+import type { CSSProperties } from "react";
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const asset = (path: string) => `${basePath}${path}`;
+
 const team = [
   {
     index: "01",
     role: "T3物业负责人",
     tag: "统筹管理",
     name: "吴幸明",
-    image: "/wuxingming-cutout.png",
+    image: asset("/wuxingming-cutout.png"),
     range: "T3 写字楼全域",
     duties: "统筹服务品质、安全运营与跨部门协同，快速响应企业重要事项。",
     featured: true,
@@ -14,7 +19,7 @@ const team = [
     role: "物业管家",
     tag: "中高区服务",
     name: "曾令慧",
-    image: "/zeng-linghui-cutout.png",
+    image: asset("/zeng-linghui-cutout.png"),
     range: "中区 / 高区",
     duties: "负责企业入驻、报事跟进、费用咨询与中区、高区日常巡查。",
   },
@@ -23,7 +28,7 @@ const team = [
     role: "物业管家",
     tag: "低区与超高区服务",
     name: "何思慧",
-    image: "/he-sihui-cutout.png",
+    image: asset("/he-sihui-cutout.png"),
     range: "低区 / 超高区",
     duties: "负责客户沟通、访客协助、装修协调与低区、超高区日常服务。",
   },
@@ -32,7 +37,7 @@ const team = [
     role: "选品中心负责人",
     tag: "选品空间",
     name: "刘大平",
-    image: "/liu-daping-cutout.png",
+    image: asset("/liu-daping-cutout.png"),
     range: "T3选品中心5-9楼",
     duties: "统筹选品中心接洽、活动支持、空间秩序与资源协同。",
   },
@@ -41,7 +46,7 @@ const team = [
     role: "大堂管家",
     tag: "首问服务",
     name: "周芷盈",
-    image: "/zhou-zhiying-cutout.png",
+    image: asset("/zhou-zhiying-cutout.png"),
     range: "T3 首层大堂",
     duties: "承担大堂迎宾、访客分流、电梯引导与高峰秩序维护。",
   },
@@ -50,7 +55,7 @@ const team = [
     role: "接待员",
     tag: "来访接待",
     name: "梁盼盼",
-    image: "/liang-panpan-cutout.png",
+    image: asset("/liang-panpan-cutout.png"),
     range: "选品中心前台",
     duties: "提供来访登记、路线指引、会议接待与现场咨询服务。",
   },
@@ -59,7 +64,7 @@ const team = [
     role: "接待员",
     tag: "会务支持",
     name: "刘嘉欣",
-    image: "/liu-jiaxin-cutout.png",
+    image: asset("/liu-jiaxin-cutout.png"),
     range: "选品中心前台",
     duties: "负责客户迎送、会务衔接、物资确认与服务信息传递。",
   },
@@ -71,7 +76,7 @@ const supportTeam = [
     role: "工程部经理",
     tag: "工程统筹",
     name: "刘六虎",
-    image: "/liu-liuhu-cutout.png",
+    image: asset("/liu-liuhu-cutout.png"),
     range: "T3 工程运维全域",
     duties: "统筹设施设备运行、工程维修、施工协调与现场技术支持。",
   },
@@ -80,7 +85,7 @@ const supportTeam = [
     role: "安管部负责人",
     tag: "安全管理",
     name: "侯焕武",
-    image: "/hou-huanwu-cutout.png",
+    image: asset("/hou-huanwu-cutout.png"),
     range: "T3 公共区域",
     duties: "负责安全秩序、消防巡查、突发事件响应与现场协同。",
   },
@@ -111,7 +116,7 @@ const lobbyServices = [
   {
     title: "臻品物资箱",
     subtitle: "大堂甄品服务",
-    image: "/lobby-supplies-kit.jpg",
+    image: asset("/lobby-supplies-kit.jpg"),
     alt: "臻品物资箱物品领用与借用清单",
     text: "提供纸巾、女性用品、雨衣、针线包、后跟贴、漱口水、衣服去污纸等领用品，以及一次性毛巾、吹风机、一次性拖鞋、维修工具、充电宝、测温枪等暖心借用品。",
   },
@@ -120,25 +125,25 @@ const lobbyServices = [
 const weatherServices = [
   {
     title: "雨伞机",
-    image: "/shared-umbrella-station.jpg",
+    image: asset("/shared-umbrella-station.jpg"),
     alt: "大堂免费共享雨伞机",
     text: "提供免费雨伞借用服务。",
   },
   {
     title: "雨伞套机",
-    image: "/umbrella-sleeve-machine.jpg",
+    image: asset("/umbrella-sleeve-machine.jpg"),
     alt: "大堂长柄和短柄雨伞套机",
     text: "提供适用于长柄和短柄雨伞的雨伞套。",
   },
   {
     title: "雨伞除水器",
-    image: "/umbrella-dryer.jpg",
+    image: asset("/umbrella-dryer.jpg"),
     alt: "采用雪尼尔吸水面料的雨伞除水器",
     text: "采用雪尼尔吸水面料，将雨伞放入除水器内左右摇动 2 至 3 次，即可快速去除水滴。",
   },
   {
     title: "皮鞋擦鞋机",
-    image: "/shoe-polisher.jpg",
+    image: asset("/shoe-polisher.jpg"),
     alt: "大堂皮鞋擦鞋机",
     text: "大堂配备皮鞋擦鞋机，同时提供皮鞋湿巾，方便日常鞋面清洁与护理。",
   },
@@ -149,7 +154,7 @@ const parkingGuides = [
     id: "temporary-parking-guide",
     eyebrow: "TEMPORARY PARKING",
     title: "临时报备停车指引",
-    image: "/temporary-parking-entrance.png",
+    image: asset("/temporary-parking-entrance.png"),
     alt: "横琴跨境电商华发创新产业园车辆临停处",
     width: 1672,
     height: 941,
@@ -164,7 +169,7 @@ const parkingGuides = [
     id: "parking-guide",
     eyebrow: "PARKING APPLY",
     title: "停车月卡申请",
-    image: "/parking-apply.jpg",
+    image: asset("/parking-apply.jpg"),
     alt: "T3 长租月卡新申请操作指引",
     width: 5032,
     height: 3579,
@@ -178,7 +183,7 @@ const routeGuides = [
     id: "takeout-guide",
     eyebrow: "TAKEOUT ROUTE",
     title: "外卖取餐路线",
-    image: "/takeout-step-1.jpg",
+    image: asset("/takeout-step-1.jpg"),
     alt: "从负一层低区电梯厅经中央连廊前往高区电梯厅外卖存放架的路线图",
     featured: false,
     wide: true,
@@ -195,15 +200,15 @@ const routeGuides = [
     id: "freight-guide",
     eyebrow: "FREIGHT ELEVATOR",
     title: "18号货梯指引",
-    image: "/freight-route.jpg",
+    image: asset("/freight-route.jpg"),
     alt: "从森林子果蔬茶旁侧入口前往18号货梯的室内路线指引",
     imagePending: false,
     featured: false,
     wide: true,
     kind: "freight",
     secondaryImages: [
-      { src: "/freight-arrival.jpg", alt: "车辆到达后沿车信路路边停车", label: "01 · 车停路边" },
-      { src: "/freight-entrance.jpg", alt: "森林子果蔬茶旁侧的18号货梯通道入口", label: "02 · 找到旁侧入口" },
+      { src: asset("/freight-arrival.jpg"), alt: "车辆到达后沿车信路路边停车", label: "01 · 车停路边" },
+      { src: asset("/freight-entrance.jpg"), alt: "森林子果蔬茶旁侧的18号货梯通道入口", label: "02 · 找到旁侧入口" },
     ],
     steps: [
       "车辆导航至“森林子果蔬茶”",
@@ -227,9 +232,9 @@ const faqs = [
 
 const freightSequence = ["进入通道", "按箭头右转", "沿走廊直行", "按箭头左转", "到达18号货梯"];
 const takeoutSequence = [
-  { src: "/takeout-step-1.jpg", label: "低区电梯厅左转", alt: "从负一层低区电梯厅向左转" },
-  { src: "/takeout-step-2.jpg", label: "通道终点左转", alt: "沿通道前行并在终点向左转" },
-  { src: "/takeout-step-3.jpg", label: "直走抵达外卖柜", alt: "直行抵达高区负一层外卖柜" },
+  { src: asset("/takeout-step-1.jpg"), label: "低区电梯厅左转", alt: "从负一层低区电梯厅向左转" },
+  { src: asset("/takeout-step-2.jpg"), label: "通道终点左转", alt: "沿通道前行并在终点向左转" },
+  { src: asset("/takeout-step-3.jpg"), label: "直走抵达外卖柜", alt: "直行抵达高区负一层外卖柜" },
 ];
 
 export default function Home() {
@@ -250,7 +255,11 @@ export default function Home() {
       </header>
 
       <section className="hero" id="top">
-        <div className="hero-photo" aria-hidden="true" />
+        <div
+          className="hero-photo"
+          aria-hidden="true"
+          style={{ backgroundImage: `url("${asset("/t3-building.jpg")}")` }}
+        />
         <div className="hero-shade" aria-hidden="true" />
         <div className="hero-orb orb-one" aria-hidden="true" />
         <div className="hero-orb orb-two" aria-hidden="true" />
@@ -285,11 +294,14 @@ export default function Home() {
           </div>
         </div>
         <article className="building-overview" aria-labelledby="building-overview-title">
-          <div className="building-visual">
+          <div
+            className="building-visual"
+            style={{ "--building-mask": `url("${asset("/t3-building-lineart.png")}")` } as CSSProperties}
+          >
             <span className="building-code">HENGQIN · T3</span>
             <span className="building-grid" aria-hidden="true" />
             <img
-              src="/t3-building-lineart.png"
+              src={asset("/t3-building-lineart.png")}
               alt="横琴天啟T3栋建筑轮廓"
               width="862"
               height="1825"
@@ -387,7 +399,7 @@ export default function Home() {
           </div>
           <div className="team-grid support-team-grid">
             {supportTeam.map((person) => (
-              <article className={`person-card${person.featured ? " featured" : ""}`} key={person.index}>
+              <article className="person-card" key={person.index}>
                 <div className={`person-photo${"image" in person ? " has-photo" : ""}`}>
                   {"image" in person ? (
                     <img className="person-portrait" src={person.image} alt={`${person.name} ${person.role}`} width="1254" height="1254" loading="lazy" decoding="async" />
