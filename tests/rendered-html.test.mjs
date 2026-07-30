@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access, readFile } from "node:fs/promises";
+import { access, readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
 const projectRoot = new URL("../", import.meta.url);
@@ -69,6 +69,7 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /href="#takeout-guide"/);
   assert.match(html, /T3物业负责人/);
   assert.match(html, /<span>T3物业负责人<\/span><h3>吴幸明<\/h3>/);
+  assert.match(html, /吴幸明[\s\S]*?T3 全域/);
   assert.doesNotMatch(html, /T3栋物业负责人/);
   assert.doesNotMatch(html, /T3写字楼物业负责人/);
   assert.match(html, /T3选品中心5-9楼/);
@@ -177,7 +178,7 @@ test("keeps required local guide assets available", async () => {
     access(new URL("public/freight-entrance.jpg", projectRoot)),
     access(new URL("public/freight-route.jpg", projectRoot)),
     access(new URL("public/lobby-supplies-kit.jpg", projectRoot)),
-    access(new URL("public/temporary-parking-entrance.png", projectRoot)),
+    access(new URL("public/temporary-parking-entrance.webp", projectRoot)),
     access(new URL("public/shared-umbrella-station.jpg", projectRoot)),
     access(new URL("public/umbrella-sleeve-machine.jpg", projectRoot)),
     access(new URL("public/umbrella-dryer.jpg", projectRoot)),
@@ -192,6 +193,26 @@ test("keeps required local guide assets available", async () => {
     access(new URL("public/liu-liuhu-cutout.png", projectRoot)),
     access(new URL("public/hou-huanwu-cutout.png", projectRoot)),
   ]);
+});
+
+test("keeps mobile-critical guide images lightweight", async () => {
+  const assets = [
+    "public/shared-umbrella-station.jpg",
+    "public/umbrella-sleeve-machine.jpg",
+    "public/umbrella-dryer.jpg",
+    "public/shoe-polisher.jpg",
+    "public/temporary-parking-entrance.webp",
+    "public/parking-apply.jpg",
+    "public/freight-route.jpg",
+  ];
+
+  const sizes = await Promise.all(
+    assets.map((path) => stat(new URL(path, projectRoot))),
+  );
+
+  for (const [index, info] of sizes.entries()) {
+    assert.ok(info.size < 1_000_000, `${assets[index]} exceeds 1 MB`);
+  }
 });
 
 test("keeps scroll performance safeguards", async () => {

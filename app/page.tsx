@@ -10,7 +10,7 @@ const team = [
     tag: "统筹管理",
     name: "吴幸明",
     image: asset("/wuxingming-cutout.png"),
-    range: "T3 写字楼全域",
+    range: "T3 全域",
     duties: "统筹服务品质、安全运营与跨部门协同，快速响应企业重要事项。",
     featured: true,
   },
@@ -154,10 +154,10 @@ const parkingGuides = [
     id: "temporary-parking-guide",
     eyebrow: "TEMPORARY PARKING",
     title: "临时报备停车指引",
-    image: asset("/temporary-parking-entrance.png"),
+    image: asset("/temporary-parking-entrance.webp"),
     alt: "横琴跨境电商华发创新产业园车辆临停处",
-    width: 1672,
-    height: 941,
+    width: 1600,
+    height: 900,
     steps: [
       "车辆到达前，请联系所属区域物业管家完成临时报备",
       "仅限接送、接待等临时停靠",
@@ -171,8 +171,8 @@ const parkingGuides = [
     title: "停车月卡申请",
     image: asset("/parking-apply.jpg"),
     alt: "T3 长租月卡新申请操作指引",
-    width: 5032,
-    height: 3579,
+    width: 2200,
+    height: 1565,
     steps: ["进入“爱泊客”小程序", "选择“横琴华发商都停车场”", "上传资料并等待管家审核", "审核通过后在线缴费"],
     note: "建议至少提前 2 个工作日申请。",
   },
@@ -467,8 +467,8 @@ export default function Home() {
                 <img
                   src={service.image}
                   alt={service.alt}
-                  width="3024"
-                  height="4032"
+                  width="1200"
+                  height="1600"
                   loading="lazy"
                   decoding="async"
                 />
@@ -589,8 +589,8 @@ export default function Home() {
                       <img
                         src={guide.image}
                         alt={`${label}路线画面`}
-                        width="1037"
-                        height="6583"
+                        width="720"
+                        height="4571"
                         loading="lazy"
                         decoding="async"
                       />
