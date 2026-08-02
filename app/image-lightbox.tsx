@@ -55,7 +55,6 @@ export default function ImageLightbox() {
       <div className="image-lightbox-frame">
         {image && <img src={image.src} alt={image.alt} />}
       </div>
-      <p>横屏查看更清晰</p>
     </dialog>
   );
 }

@@ -103,18 +103,12 @@ const supportTeam = [
 
 const accessServices = [
   {
-    icon: "闸",
-    title: "闸机权限",
-    subtitle: "人员信息录入",
-    text: "联系专属物业管家领取人员信息采集表，填写完成后发送管家录入。",
-    steps: [],
-  },
-  {
     icon: "访",
-    title: "访客到访指引",
-    subtitle: "前台登记 · 提前报备",
-    text: "",
+    title: "访客与闸机通行",
+    subtitle: "人员录入 · 前台登记 · 提前报备",
+    text: "闸机权限与访客到访统一联系对应客服管家办理。",
     steps: [
+      "闸机权限：领取人员信息采集表，填写完成后发送管家录入",
       "访客抵达后在前台登记",
       "提前联系需要到访企业的对接人",
       "企业对接人将访客信息发送给对应客服管家报备",
@@ -193,6 +187,24 @@ const parkingGuides = [
     steps: ["进入“爱泊客”小程序", "选择“横琴华发商都停车场”", "上传资料并等待管家审核", "审核通过后在线缴费"],
     note: "建议至少提前 2 个工作日申请。",
   },
+  {
+    id: "parking-renewal-guide",
+    eyebrow: "PARKING RENEWAL",
+    title: "停车月卡续费缴费",
+    image: asset("/parking-renewal.jpg"),
+    preview: asset("/parking-renewal.webp"),
+    alt: "T3长租月卡办理续费指引",
+    width: 2227,
+    height: 1280,
+    steps: [
+      "进入“爱泊客”小程序并验证手机号",
+      "在“长租套餐”中选择需要续费的套餐",
+      "选择续费月数并立即支付",
+      "支付完成后查询续费状态",
+    ],
+    alert: "T3拓展区地下停车长租请务必在月卡到期前进行续费，如逾期未续费，原月卡套餐将自动失效，需结清临停费用，并重新提交月租申请。",
+    note: "已生效的月卡费用不予退款，不可中途更换车牌，请合理安排续费时间及车牌。",
+  },
 ];
 
 const routeGuides = [
@@ -226,18 +238,18 @@ const routeGuides = [
     wide: true,
     kind: "freight",
     secondaryImages: [
-      { src: asset("/freight-arrival.jpg"), preview: asset("/freight-arrival.webp"), alt: "车辆到达后沿车信路路边停车", label: "01 · 车停路边" },
+      { src: asset("/freight-arrival.jpg"), preview: asset("/freight-arrival.webp"), alt: "车辆到达后沿路边规范停车", label: "01 · 车停路边" },
       { src: asset("/freight-entrance.jpg"), preview: asset("/freight-entrance.webp"), alt: "森林子果蔬茶旁侧的18号货梯通道入口", label: "02 · 找到旁侧入口" },
     ],
     steps: [
-      "车辆导航至“森林子果蔬茶”",
-      "到达后沿车信路路边规范停车",
-      "从“森林子果蔬茶”旁侧通道入口进入",
-      "进入通道后按照现场箭头指引前行",
-      "到达专属 18 号货梯",
-      "施工材料运输请前往负三层 18 号货梯上下货",
+      "到达后沿路边规范停车",
+      "找到旁侧入口",
+      "进入室内通道",
+      "沿18号货梯箭头直行",
+      "按箭头左转",
+      "到达18号货梯",
     ],
-    note: "饮用水、快递及送货请统一使用专属 18 号货梯；施工材料须在负三层装卸。",
+    note: "车辆请导航至“森林子果蔬茶”。饮用水、快递及送货请统一使用专属 18 号货梯；施工材料运输请前往负三层 18 号货梯上下货。",
   },
 ];
 
@@ -245,16 +257,18 @@ const faqs = [
   ["如何开通闸机权限？", "联系专属物业管家领取人员信息采集表，填写完成后发送管家录入。"],
   ["临时报备停车怎么办理？", "车辆到达前请联系所属区域物业管家完成临时报备。临停仅限接送、接待等临时停靠，完成后请立即驶离，不得长期停放。"],
   ["停车月卡如何申请？", "进入“爱泊客”小程序，选择“横琴华发商都停车场”，上传资料并等待管家审核；审核通过后在线缴费。"],
+  ["停车月卡如何续费？", "T3拓展区地下停车长租请务必在月卡到期前进行续费；逾期未续费，原月卡套餐将自动失效，需结清临停费用并重新提交月租申请。已生效的月卡费用不予退款，不可中途更换车牌。"],
   ["雨天的暖心服务有哪些？", "前台暖心物品包含一次性毛巾、吹风机和一次性拖鞋；雨伞机提供免费雨伞借用，雨伞套机提供适用于长柄和短柄雨伞的雨伞套；雨伞除水器采用雪尼尔吸水面料，将雨伞放入后左右摇动 2 至 3 次即可快速去除水滴。"],
   ["外卖取餐和18号货梯怎么走？", "外卖请按负一层低区电梯厅、中央连廊、高区电梯厅的路线前往外卖柜；饮用水、快递及送货请从“森林子果蔬茶”旁侧通道前往专属18号货梯，施工材料须到负三层上下货。"],
 ];
 
 const freightSequence = [
-  { src: asset("/freight-step-1.jpg"), preview: asset("/freight-step-1.webp"), label: "车辆沿车信路临停", alt: "车辆沿车信路临时停靠后前往18号货梯" },
+  { src: asset("/freight-step-1.jpg"), preview: asset("/freight-step-1.webp"), label: "沿路边规范停车", alt: "车辆到达后沿路边规范停车" },
   { src: asset("/freight-step-2.jpg"), preview: asset("/freight-step-2.webp"), label: "找到旁侧入口", alt: "森林子果蔬茶旁侧的18号货梯通道入口" },
-  { src: asset("/freight-step-3.jpg"), preview: asset("/freight-step-3.webp"), label: "沿18号货梯箭头直行", alt: "沿室内通道地面18号货梯箭头直行" },
-  { src: asset("/freight-step-4.jpg"), preview: asset("/freight-step-4.webp"), label: "在管控区域左转", alt: "在18号货梯管控区域按地面箭头左转" },
-  { src: asset("/freight-step-5.jpg"), preview: asset("/freight-step-5.webp"), label: "到达18号货梯", alt: "抵达专属18号货梯" },
+  { src: asset("/freight-step-3.jpg"), preview: asset("/freight-step-3.webp"), label: "进入室内通道", alt: "从旁侧入口进入18号货梯室内通道" },
+  { src: asset("/freight-step-4.jpg"), preview: asset("/freight-step-4.webp"), label: "沿18号货梯箭头直行", alt: "沿室内通道地面18号货梯箭头直行" },
+  { src: asset("/freight-step-5.jpg"), preview: asset("/freight-step-5.webp"), label: "按箭头左转", alt: "在18号货梯管控区域按地面箭头左转" },
+  { src: asset("/freight-step-6.jpg"), preview: asset("/freight-step-6.webp"), label: "到达18号货梯", alt: "抵达专属18号货梯" },
 ];
 const takeoutSequence = [
   { src: asset("/takeout-step-1.jpg"), preview: asset("/takeout-step-1.webp"), label: "低区电梯厅左转", alt: "从负一层低区电梯厅向左转" },
@@ -528,9 +542,9 @@ export default function Home() {
             <div><span className="section-kicker">PARKING & ACCESS</span><h2>停车与通行</h2></div>
             <p>闸机、访客、临时报备与停车月卡集中查看。</p>
           </div>
-          <div className="access-service-grid">
+          <div className="parking-guide-grid">
             {accessServices.map((service, index) => (
-              <article className="access-service-card" key={service.title}>
+              <article className="access-service-card parking-access-card" key={service.title}>
                 <div className="service-top"><span className="service-icon">{service.icon}</span><span className="service-no">0{index + 1}</span></div>
                 <span className="service-subtitle">{service.subtitle}</span>
                 <h3>{service.title}</h3>
@@ -542,8 +556,6 @@ export default function Home() {
                 )}
               </article>
             ))}
-          </div>
-          <div className="parking-guide-grid">
             {parkingGuides.map((guide) => (
               <article className="parking-guide-card" id={guide.id} key={guide.title}>
                 <a className="parking-guide-visual" href={guide.image} target="_blank" rel="noreferrer" data-lightbox="image" aria-label={`查看${guide.title}清晰原图`}>
@@ -563,6 +575,12 @@ export default function Home() {
                   <ol>
                     {guide.steps.map((step) => <li key={step}><span>{step}</span></li>)}
                   </ol>
+                  {"alert" in guide && guide.alert && (
+                    <div className="parking-renewal-alert">
+                      <strong>重要提醒</strong>
+                      <p>{guide.alert}</p>
+                    </div>
+                  )}
                   {guide.note && <p>{guide.note}</p>}
                 </div>
               </article>
