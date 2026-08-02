@@ -53,7 +53,7 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /data-floor="40F"/);
   assert.match(html, /避难层用于紧急情况下的临时疏散与避难/);
   assert.doesNotMatch(html, /您所在的位置/);
-  assert.match(html, /t3-building-lineart\.png/);
+  assert.match(html, /t3-building-lineart\.webp/);
   assert.match(html, /人员介绍/);
   assert.match(html, /服务介绍/);
   assert.match(html, /路线介绍/);
@@ -84,13 +84,13 @@ test("renders the T3 property service site", async () => {
   assert.ok(html.indexOf("梁盼盼") < html.indexOf("刘嘉欣"));
   assert.doesNotMatch(html, /1\d{10}/);
   assert.doesNotMatch(html, /电话待补充/);
-  assert.match(html, /wuxingming-cutout\.png/);
-  assert.match(html, /zeng-linghui-cutout\.png/);
-  assert.match(html, /he-sihui-cutout\.png/);
-  assert.match(html, /liu-daping-cutout\.png/);
-  assert.match(html, /zhou-zhiying-cutout\.png/);
-  assert.match(html, /liang-panpan-cutout\.png/);
-  assert.match(html, /liu-jiaxin-cutout\.png/);
+  assert.match(html, /wuxingming-cutout\.webp/);
+  assert.match(html, /zeng-linghui-cutout\.webp/);
+  assert.match(html, /he-sihui-cutout\.webp/);
+  assert.match(html, /liu-daping-cutout\.webp/);
+  assert.match(html, /zhou-zhiying-cutout\.webp/);
+  assert.match(html, /liang-panpan-cutout\.webp/);
+  assert.match(html, /liu-jiaxin-cutout\.webp/);
   assert.match(html, /认识9位专属服务伙伴/);
   assert.match(html, /专业支持团队/);
   assert.match(html, /工程部经理/);
@@ -98,8 +98,12 @@ test("renders the T3 property service site", async () => {
   assert.doesNotMatch(html, /工程人员/);
   assert.match(html, /刘六虎/);
   assert.match(html, /侯焕武/);
-  assert.match(html, /liu-liuhu-cutout\.png/);
-  assert.match(html, /hou-huanwu-cutout\.png/);
+  assert.match(html, /liu-liuhu-cutout\.webp/);
+  assert.match(html, /hou-huanwu-cutout\.webp/);
+  assert.equal((html.match(/aria-label="客服部工牌"/g) ?? []).length, 7);
+  assert.equal((html.match(/aria-label="工程部工牌"/g) ?? []).length, 1);
+  assert.equal((html.match(/aria-label="安管部工牌"/g) ?? []).length, 1);
+  assert.match(html, /staff-badge-template\.webp/);
   assert.equal((html.match(/<span>姓名待补充<\/span>/g) ?? []).length, 0);
   assert.equal((html.match(/<span>安管部负责人<\/span><h3>侯焕武<\/h3>/g) ?? []).length, 1);
   assert.ok(html.indexOf("刘嘉欣") < html.indexOf("刘六虎"));
@@ -125,6 +129,10 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /umbrella-sleeve-machine\.jpg/);
   assert.match(html, /umbrella-dryer\.jpg/);
   assert.match(html, /shoe-polisher\.jpg/);
+  assert.match(html, /shared-umbrella-station\.webp/);
+  assert.match(html, /umbrella-sleeve-machine\.webp/);
+  assert.match(html, /umbrella-dryer\.webp/);
+  assert.match(html, /shoe-polisher\.webp/);
   assert.match(html, /停车与通行/);
   assert.match(html, /填写完成后发送管家录入/);
   assert.match(html, /访客抵达后在前台登记/);
@@ -140,9 +148,23 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /广东省珠海市香洲区横琴跨境电商（华发）创新产业园T3栋拓展区（请填写企业房号）/);
   assert.doesNotMatch(html, /xxxx号房/);
   assert.doesNotMatch(html, /takeout-route\.png/);
+  assert.match(html, /takeout-step-1\.webp/);
+  assert.match(html, /takeout-step-2\.webp/);
+  assert.match(html, /takeout-step-3\.webp/);
+  assert.match(html, /data-lightbox="image"/);
   const lazyImages = html.match(/<img[^>]+loading="lazy"[^>]+decoding="async"[^>]*>/g) ?? [];
   assert.ok(lazyImages.length >= 10);
   assert.match(html, /18号货梯指引/);
+  assert.match(html, /0(?:<!-- -->)?1(?:<!-- -->)? · (?:<!-- -->)?按箭头驶入通道方向/);
+  assert.match(html, /0(?:<!-- -->)?2(?:<!-- -->)? · (?:<!-- -->)?找到旁侧入口/);
+  assert.match(html, /0(?:<!-- -->)?5(?:<!-- -->)? · (?:<!-- -->)?沿18号货梯箭头直行/);
+  assert.match(html, /0(?:<!-- -->)?6(?:<!-- -->)? · (?:<!-- -->)?在管控区域继续前行/);
+  assert.ok(html.indexOf("按箭头驶入通道方向") < html.indexOf("找到旁侧入口"));
+  assert.ok(html.indexOf("找到旁侧入口") < html.indexOf("进入室内通道"));
+  assert.ok(html.indexOf("进入室内通道") < html.indexOf("按箭头转向"));
+  assert.ok(html.indexOf("按箭头转向") < html.indexOf("沿18号货梯箭头直行"));
+  assert.ok(html.indexOf("沿18号货梯箭头直行") < html.indexOf("在管控区域继续前行"));
+  assert.ok(html.indexOf("在管控区域继续前行") < html.indexOf("到达18号货梯"));
   assert.match(html, /车辆导航至“森林子果蔬茶”/);
   assert.match(html, /饮用水、快递及送货请统一使用专属 18 号货梯/);
   assert.match(html, /如何开通闸机权限？/);
@@ -169,6 +191,7 @@ test("renders the T3 property service site", async () => {
 test("keeps required local guide assets available", async () => {
   await Promise.all([
     access(new URL("public/t3-building.jpg", projectRoot)),
+    access(new URL("public/t3-building.webp", projectRoot)),
     access(new URL("public/t3-building-lineart.png", projectRoot)),
     access(new URL("public/takeout-step-1.jpg", projectRoot)),
     access(new URL("public/takeout-step-2.jpg", projectRoot)),
@@ -177,6 +200,13 @@ test("keeps required local guide assets available", async () => {
     access(new URL("public/freight-arrival.jpg", projectRoot)),
     access(new URL("public/freight-entrance.jpg", projectRoot)),
     access(new URL("public/freight-route.jpg", projectRoot)),
+    access(new URL("public/freight-step-1.jpg", projectRoot)),
+    access(new URL("public/freight-step-2.jpg", projectRoot)),
+    access(new URL("public/freight-step-3.jpg", projectRoot)),
+    access(new URL("public/freight-step-4.jpg", projectRoot)),
+    access(new URL("public/freight-step-5.jpg", projectRoot)),
+    access(new URL("public/freight-step-6.jpg", projectRoot)),
+    access(new URL("public/freight-step-7.jpg", projectRoot)),
     access(new URL("public/lobby-supplies-kit.jpg", projectRoot)),
     access(new URL("public/temporary-parking-entrance.webp", projectRoot)),
     access(new URL("public/shared-umbrella-station.jpg", projectRoot)),
@@ -192,27 +222,49 @@ test("keeps required local guide assets available", async () => {
     access(new URL("public/liu-jiaxin-cutout.png", projectRoot)),
     access(new URL("public/liu-liuhu-cutout.png", projectRoot)),
     access(new URL("public/hou-huanwu-cutout.png", projectRoot)),
+    access(new URL("public/staff-badge-template.webp", projectRoot)),
   ]);
 });
 
 test("keeps mobile-critical guide images lightweight", async () => {
   const assets = [
-    "public/shared-umbrella-station.jpg",
-    "public/umbrella-sleeve-machine.jpg",
-    "public/umbrella-dryer.jpg",
-    "public/shoe-polisher.jpg",
-    "public/temporary-parking-entrance.webp",
-    "public/parking-apply.jpg",
-    "public/freight-route.jpg",
+    "public/t3-building-lineart.webp",
+    "public/t3-building.webp",
+    "public/lobby-supplies-kit.webp",
+    "public/shared-umbrella-station.webp",
+    "public/umbrella-sleeve-machine.webp",
+    "public/umbrella-dryer.webp",
+    "public/shoe-polisher.webp",
+    "public/temporary-parking-entrance-preview.webp",
+    "public/parking-apply.webp",
+    "public/takeout-step-1.webp",
+    "public/takeout-step-2.webp",
+    "public/takeout-step-3.webp",
+    "public/freight-step-1.webp",
+    "public/freight-step-2.webp",
+    "public/freight-step-3.webp",
+    "public/freight-step-4.webp",
+    "public/freight-step-5.webp",
+    "public/freight-step-6.webp",
+    "public/freight-step-7.webp",
+    "public/staff-badge-template.webp",
+    "public/wuxingming-cutout.webp",
+    "public/zeng-linghui-cutout.webp",
+    "public/he-sihui-cutout.webp",
+    "public/liu-daping-cutout.webp",
+    "public/zhou-zhiying-cutout.webp",
+    "public/liang-panpan-cutout.webp",
+    "public/liu-jiaxin-cutout.webp",
+    "public/liu-liuhu-cutout.webp",
+    "public/hou-huanwu-cutout.webp",
   ];
 
   const sizes = await Promise.all(
     assets.map((path) => stat(new URL(path, projectRoot))),
   );
 
-  for (const [index, info] of sizes.entries()) {
-    assert.ok(info.size < 1_000_000, `${assets[index]} exceeds 1 MB`);
-  }
+  const totalSize = sizes.reduce((total, info) => total + info.size, 0);
+  assert.ok(totalSize < 3_000_000, `optimized page images total ${totalSize} bytes`);
 });
 
 test("keeps scroll performance safeguards", async () => {
@@ -226,7 +278,7 @@ test("keeps scroll performance safeguards", async () => {
   assert.match(css, /\.intro::after\s*\{[^}]*content:\s*"T3"/s);
   assert.match(css, /\.intro\s*\{[^}]*padding:\s*92px\s+0\s+88px/s);
   assert.match(css, /\.refuge-markers\s*\{[^}]*bottom:\s*0[^}]*height:\s*calc\(100%\s*-\s*70px\)/s);
-  assert.match(css, /\.role-row span\s*\{[^}]*font-size:\s*11px/s);
+  assert.match(css, /\.role-row span\s*\{[^}]*font-size:\s*15px/s);
   assert.match(css, /\.role-row h3\s*\{[^}]*font-size:\s*23px/s);
   assert.match(css, /\.marker-40\s*\{[^}]*top:\s*20%/s);
   assert.match(css, /\.marker-30\s*\{[^}]*top:\s*40%/s);
@@ -237,6 +289,8 @@ test("keeps scroll performance safeguards", async () => {
   assert.match(css, /\.weather-service-grid\s*\{[^}]*grid-template-columns:\s*repeat\(4,\s*1fr\)/s);
   assert.match(css, /\.parking-guide-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*1fr\)/s);
   assert.match(css, /\.parking-guide-visual\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*9/s);
+  assert.match(css, /\.freight-step\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*9/s);
+  assert.match(css, /\.image-lightbox-frame\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*9/s);
   assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.weather-service-grid,\s*\.parking-guide-grid\s*\{[^}]*grid-template-columns:\s*1fr/s);
   assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.refuge-markers\s*\{[^}]*height:\s*450px/s);
   assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.hero-orb\s*\{[^}]*display:\s*none/);
