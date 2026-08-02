@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import ImageLightbox from "./image-lightbox";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const asset = (path: string) => `${basePath}${path}`;
@@ -10,6 +11,7 @@ const team = [
     tag: "统筹管理",
     name: "吴幸明",
     image: asset("/wuxingming-cutout.webp"),
+    department: "客服部",
     range: "T3 全域",
     duties: "统筹服务品质、安全运营与跨部门协同，快速响应企业重要事项。",
     featured: true,
@@ -20,6 +22,7 @@ const team = [
     tag: "中高区服务",
     name: "曾令慧",
     image: asset("/zeng-linghui-cutout.webp"),
+    department: "客服部",
     range: "中区 / 高区",
     duties: "负责企业入驻、报事跟进、费用咨询与中区、高区日常巡查。",
   },
@@ -29,6 +32,7 @@ const team = [
     tag: "低区与超高区服务",
     name: "何思慧",
     image: asset("/he-sihui-cutout.webp"),
+    department: "客服部",
     range: "低区 / 超高区",
     duties: "负责客户沟通、访客协助、装修协调与低区、超高区日常服务。",
   },
@@ -38,6 +42,7 @@ const team = [
     tag: "选品空间",
     name: "刘大平",
     image: asset("/liu-daping-cutout.webp"),
+    department: "客服部",
     range: "T3选品中心5-9楼",
     duties: "统筹选品中心接洽、活动支持、空间秩序与资源协同。",
   },
@@ -47,6 +52,7 @@ const team = [
     tag: "首问服务",
     name: "周芷盈",
     image: asset("/zhou-zhiying-cutout.webp"),
+    department: "客服部",
     range: "T3 首层大堂",
     duties: "承担大堂迎宾、访客分流、电梯引导与高峰秩序维护。",
   },
@@ -56,6 +62,7 @@ const team = [
     tag: "来访接待",
     name: "梁盼盼",
     image: asset("/liang-panpan-cutout.webp"),
+    department: "客服部",
     range: "选品中心前台",
     duties: "提供来访登记、路线指引、会议接待与现场咨询服务。",
   },
@@ -65,6 +72,7 @@ const team = [
     tag: "会务支持",
     name: "刘嘉欣",
     image: asset("/liu-jiaxin-cutout.webp"),
+    department: "客服部",
     range: "选品中心前台",
     duties: "负责客户迎送、会务衔接、物资确认与服务信息传递。",
   },
@@ -77,6 +85,7 @@ const supportTeam = [
     tag: "工程统筹",
     name: "刘六虎",
     image: asset("/liu-liuhu-cutout.webp"),
+    department: "工程部",
     range: "T3 工程运维全域",
     duties: "统筹设施设备运行、工程维修、施工协调与现场技术支持。",
   },
@@ -86,6 +95,7 @@ const supportTeam = [
     tag: "安全管理",
     name: "侯焕武",
     image: asset("/hou-huanwu-cutout.webp"),
+    department: "安管部",
     range: "T3 公共区域",
     duties: "负责安全秩序、消防巡查、突发事件响应与现场协同。",
   },
@@ -239,7 +249,15 @@ const faqs = [
   ["外卖取餐和18号货梯怎么走？", "外卖请按负一层低区电梯厅、中央连廊、高区电梯厅的路线前往外卖柜；饮用水、快递及送货请从“森林子果蔬茶”旁侧通道前往专属18号货梯，施工材料须到负三层上下货。"],
 ];
 
-const freightSequence = ["进入通道", "按箭头右转", "沿走廊直行", "按箭头左转", "到达18号货梯"];
+const freightSequence = [
+  { src: asset("/freight-step-1.jpg"), preview: asset("/freight-step-1.webp"), label: "按箭头驶入通道方向", alt: "车辆按红色箭头驶向18号货梯通道方向" },
+  { src: asset("/freight-step-2.jpg"), preview: asset("/freight-step-2.webp"), label: "找到旁侧入口", alt: "森林子果蔬茶旁侧的18号货梯通道入口" },
+  { src: asset("/freight-step-3.jpg"), preview: asset("/freight-step-3.webp"), label: "进入室内通道", alt: "从建筑旁侧入口进入18号货梯室内通道" },
+  { src: asset("/freight-step-4.jpg"), preview: asset("/freight-step-4.webp"), label: "按箭头转向", alt: "进入室内通道后按箭头转向" },
+  { src: asset("/freight-step-5.jpg"), preview: asset("/freight-step-5.webp"), label: "沿18号货梯箭头直行", alt: "沿通道地面18号货梯箭头直行" },
+  { src: asset("/freight-step-6.jpg"), preview: asset("/freight-step-6.webp"), label: "在管控区域继续前行", alt: "在18号货梯管控区域路口按箭头继续前行" },
+  { src: asset("/freight-step-7.jpg"), preview: asset("/freight-step-7.webp"), label: "到达18号货梯", alt: "抵达专属18号货梯" },
+];
 const takeoutSequence = [
   { src: asset("/takeout-step-1.jpg"), preview: asset("/takeout-step-1.webp"), label: "低区电梯厅左转", alt: "从负一层低区电梯厅向左转" },
   { src: asset("/takeout-step-2.jpg"), preview: asset("/takeout-step-2.webp"), label: "通道终点左转", alt: "沿通道前行并在终点向左转" },
@@ -267,7 +285,7 @@ export default function Home() {
         <div
           className="hero-photo"
           aria-hidden="true"
-          style={{ backgroundImage: `url("${asset("/t3-building.jpg")}")` }}
+          style={{ backgroundImage: `url("${asset("/t3-building.webp")}")` }}
         />
         <div className="hero-shade" aria-hidden="true" />
         <div className="hero-orb orb-one" aria-hidden="true" />
@@ -384,7 +402,13 @@ export default function Home() {
               <article className={`person-card${person.featured ? " featured" : ""}`} key={person.index}>
                 <div className={`person-photo${"image" in person ? " has-photo" : ""}`}>
                   {"image" in person ? (
-                    <img className="person-portrait" src={person.image} alt={`${person.name} ${person.role}`} width="1254" height="1254" loading="lazy" decoding="async" />
+                    <>
+                      <img className="person-portrait" src={person.image} alt={`${person.name} ${person.role}`} width="1254" height="1254" loading="lazy" decoding="async" />
+                      <span className="staff-badge" aria-label={`${person.department}工牌`}>
+                        <img src={asset("/staff-badge-template.webp")} alt="" width="900" height="265" loading="lazy" decoding="async" />
+                        <span>{person.department}</span>
+                      </span>
+                    </>
                   ) : (
                     <div className="photo-placeholder">
                       <span className="person-silhouette"><i /></span>
@@ -411,7 +435,13 @@ export default function Home() {
               <article className="person-card" key={person.index}>
                 <div className={`person-photo${"image" in person ? " has-photo" : ""}`}>
                   {"image" in person ? (
-                    <img className="person-portrait" src={person.image} alt={`${person.name} ${person.role}`} width="1254" height="1254" loading="lazy" decoding="async" />
+                    <>
+                      <img className="person-portrait" src={person.image} alt={`${person.name} ${person.role}`} width="1254" height="1254" loading="lazy" decoding="async" />
+                      <span className="staff-badge" aria-label={`${person.department}工牌`}>
+                        <img src={asset("/staff-badge-template.webp")} alt="" width="900" height="265" loading="lazy" decoding="async" />
+                        <span>{person.department}</span>
+                      </span>
+                    </>
                   ) : (
                     <div className="photo-placeholder">
                       <span className="person-silhouette"><i /></span>
@@ -439,7 +469,7 @@ export default function Home() {
         <div className="lobby-service-grid">
           {lobbyServices.map((service) => (
             <article className="lobby-service-card" key={service.title}>
-              <a href={service.image} target="_blank" rel="noreferrer" aria-label={`查看${service.title}完整清单`}>
+              <a href={service.image} target="_blank" rel="noreferrer" data-lightbox="image" aria-label={`查看${service.title}完整清单`}>
                 <img
                   src={service.preview}
                   alt={service.alt}
@@ -471,6 +501,7 @@ export default function Home() {
                 href={service.image}
                 target="_blank"
                 rel="noreferrer"
+                data-lightbox="image"
                 aria-label={`查看${service.title}清晰原图`}
               >
                 <img
@@ -517,7 +548,7 @@ export default function Home() {
           <div className="parking-guide-grid">
             {parkingGuides.map((guide) => (
               <article className="parking-guide-card" id={guide.id} key={guide.title}>
-                <a className="parking-guide-visual" href={guide.image} target="_blank" rel="noreferrer" aria-label={`查看${guide.title}清晰原图`}>
+                <a className="parking-guide-visual" href={guide.image} target="_blank" rel="noreferrer" data-lightbox="image" aria-label={`查看${guide.title}清晰原图`}>
                   <img
                     src={guide.preview}
                     alt={guide.alt}
@@ -564,7 +595,7 @@ export default function Home() {
                   <>
                     <div className="takeout-gallery" aria-label="外卖取餐路线步骤">
                       {takeoutSequence.map((step, index) => (
-                        <a href={step.src} target="_blank" rel="noreferrer" key={step.src} className="takeout-step">
+                        <a href={step.src} target="_blank" rel="noreferrer" data-lightbox="image" key={step.src} className="takeout-step">
                           <img src={step.preview} alt={step.alt} width="1600" height="899" loading="lazy" decoding="async" />
                           <span>{String(index + 1).padStart(2, "0")} · {step.label}</span>
                         </a>
@@ -577,33 +608,18 @@ export default function Home() {
                   </>
                 ) : (
                   <div className="freight-gallery">
-                    <div className="freight-landmarks">
-                      {guide.secondaryImages.map((item) => (
-                        <a href={item.src} target="_blank" rel="noreferrer" key={item.src}>
-                    <img
-                      src={item.preview}
-                      alt={item.alt}
-                      width="1707"
-                      height="1280"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                          <span>{item.label}</span>
-                        </a>
-                      ))}
-                    </div>
                     <div className="freight-sequence" aria-label="18号货梯室内路线步骤">
-                      {freightSequence.map((label, index) => (
-                        <a href={guide.image} target="_blank" rel="noreferrer" key={label} className={`freight-step freight-step-${index + 1}`}>
-                      <img
-                        src={guide.preview}
-                        alt={`${label}路线画面`}
-                        width="720"
-                        height="4571"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                          <span>{String(index + 3).padStart(2, "0")} · {label}</span>
+                      {freightSequence.map((step, index) => (
+                        <a href={step.src} target="_blank" rel="noreferrer" data-lightbox="image" key={step.src} className="freight-step">
+                          <img
+                            src={step.preview}
+                            alt={step.alt}
+                            width="1600"
+                            height="900"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                          <span>{String(index + 1).padStart(2, "0")} · {step.label}</span>
                         </a>
                       ))}
                     </div>
@@ -648,6 +664,7 @@ export default function Home() {
           <p className="copyright">© 2026 T3 PROPERTY SERVICE</p>
         </div>
       </footer>
+      <ImageLightbox />
     </main>
   );
 }
