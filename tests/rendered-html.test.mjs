@@ -155,26 +155,36 @@ test("renders the T3 property service site", async () => {
   const lazyImages = html.match(/<img[^>]+loading="lazy"[^>]+decoding="async"[^>]*>/g) ?? [];
   assert.ok(lazyImages.length >= 10);
   assert.match(html, /18号货梯指引/);
-  assert.match(html, /0(?:<!-- -->)?1(?:<!-- -->)? · (?:<!-- -->)?车辆沿车信路临停/);
+  assert.match(html, /0(?:<!-- -->)?1(?:<!-- -->)? · (?:<!-- -->)?沿路边规范停车/);
   assert.match(html, /0(?:<!-- -->)?2(?:<!-- -->)? · (?:<!-- -->)?找到旁侧入口/);
-  assert.match(html, /0(?:<!-- -->)?3(?:<!-- -->)? · (?:<!-- -->)?沿18号货梯箭头直行/);
-  assert.match(html, /0(?:<!-- -->)?4(?:<!-- -->)? · (?:<!-- -->)?在管控区域左转/);
-  assert.match(html, /0(?:<!-- -->)?5(?:<!-- -->)? · (?:<!-- -->)?到达18号货梯/);
-  assert.ok(html.indexOf("车辆沿车信路临停") < html.indexOf("找到旁侧入口"));
-  assert.ok(html.indexOf("找到旁侧入口") < html.indexOf("沿18号货梯箭头直行"));
-  assert.ok(html.indexOf("沿18号货梯箭头直行") < html.indexOf("在管控区域左转"));
-  assert.ok(html.indexOf("在管控区域左转") < html.indexOf("到达18号货梯"));
-  assert.match(html, /车辆导航至“森林子果蔬茶”/);
+  assert.match(html, /0(?:<!-- -->)?3(?:<!-- -->)? · (?:<!-- -->)?进入室内通道/);
+  assert.match(html, /0(?:<!-- -->)?4(?:<!-- -->)? · (?:<!-- -->)?沿18号货梯箭头直行/);
+  assert.match(html, /0(?:<!-- -->)?5(?:<!-- -->)? · (?:<!-- -->)?按箭头左转/);
+  assert.match(html, /0(?:<!-- -->)?6(?:<!-- -->)? · (?:<!-- -->)?到达18号货梯/);
+  assert.ok(html.indexOf("沿路边规范停车") < html.indexOf("找到旁侧入口"));
+  assert.ok(html.indexOf("找到旁侧入口") < html.indexOf("进入室内通道"));
+  assert.ok(html.indexOf("进入室内通道") < html.indexOf("沿18号货梯箭头直行"));
+  assert.ok(html.indexOf("沿18号货梯箭头直行") < html.indexOf("按箭头左转"));
+  assert.ok(html.indexOf("按箭头左转") < html.indexOf("到达18号货梯"));
+  assert.match(html, /到达后沿路边规范停车/);
+  assert.doesNotMatch(html, /到达后沿车信路路边规范停车|横屏查看更清晰/);
+  assert.match(html, /车辆请导航至“森林子果蔬茶”/);
   assert.match(html, /饮用水、快递及送货请统一使用专属 18 号货梯/);
   assert.match(html, /如何开通闸机权限？/);
   assert.match(html, /临时报备停车怎么办理？/);
   assert.match(html, /停车月卡如何申请？/);
+  assert.match(html, /停车月卡如何续费？/);
   assert.match(html, /雨天的暖心服务有哪些？/);
   assert.match(html, /外卖取餐和18号货梯怎么走？/);
-  assert.equal((html.match(/<details/g) ?? []).length, 5);
+  assert.equal((html.match(/<details/g) ?? []).length, 6);
   assert.match(html, /该区域设有 24 小时监控/);
-  assert.doesNotMatch(html, /停车月卡续费/);
-  assert.doesNotMatch(html, /月卡什么时候续费？/);
+  assert.match(html, /停车月卡续费缴费/);
+  assert.match(html, /T3拓展区地下停车长租请务必在月卡到期前进行续费/);
+  assert.match(html, /原月卡套餐将自动失效/);
+  assert.match(html, /需结清临停费用，并重新提交月租申请/);
+  assert.match(html, /已生效的月卡费用不予退款，不可中途更换车牌/);
+  assert.match(html, /parking-renewal\.webp/);
+  assert.match(html, /访客与闸机通行/);
   assert.doesNotMatch(html, /先看人员和服务，也可以直接进入常用办理指引/);
   assert.doesNotMatch(html, /管理说明：横琴华发商都停车场由商都物业管理/);
   assert.doesNotMatch(html, /办理指引不重复展示；这里仅保留大堂日常服务与便民物资/);
@@ -196,6 +206,8 @@ test("keeps required local guide assets available", async () => {
     access(new URL("public/takeout-step-2.jpg", projectRoot)),
     access(new URL("public/takeout-step-3.jpg", projectRoot)),
     access(new URL("public/parking-apply.jpg", projectRoot)),
+    access(new URL("public/parking-renewal.jpg", projectRoot)),
+    access(new URL("public/parking-renewal.webp", projectRoot)),
     access(new URL("public/freight-arrival.jpg", projectRoot)),
     access(new URL("public/freight-entrance.jpg", projectRoot)),
     access(new URL("public/freight-route.jpg", projectRoot)),
@@ -236,6 +248,7 @@ test("keeps mobile-critical guide images lightweight", async () => {
     "public/shoe-polisher.webp",
     "public/temporary-parking-entrance-preview.webp",
     "public/parking-apply.webp",
+    "public/parking-renewal.webp",
     "public/takeout-step-1.webp",
     "public/takeout-step-2.webp",
     "public/takeout-step-3.webp",
@@ -289,8 +302,8 @@ test("keeps scroll performance safeguards", async () => {
   assert.match(css, /\.parking-guide-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*1fr\)/s);
   assert.match(css, /\.parking-guide-visual\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*9/s);
   assert.match(css, /\.freight-step\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*9/s);
-  assert.match(css, /\.image-lightbox\s*\{[^}]*max-height:\s*calc\(100dvh\s*-\s*24px\)/s);
-  assert.match(css, /\.image-lightbox-frame\s*\{[^}]*height:\s*min\(78dvh,/s);
+  assert.match(css, /\.image-lightbox\s*\{[^}]*max-height:\s*calc\(100dvh\s*-\s*48px\)/s);
+  assert.match(css, /\.image-lightbox-frame\s*\{[^}]*height:\s*min\(56dvh,/s);
   assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.weather-service-grid,\s*\.parking-guide-grid\s*\{[^}]*grid-template-columns:\s*1fr/s);
   assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.refuge-markers\s*\{[^}]*height:\s*450px/s);
   assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.hero-orb\s*\{[^}]*display:\s*none/);
