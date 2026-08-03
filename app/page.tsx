@@ -107,8 +107,12 @@ const accessServices = [
     title: "访客与闸机通行",
     subtitle: "人员录入 · 前台登记 · 提前报备",
     text: "闸机权限与访客到访统一联系对应客服管家办理。",
+    image: asset("/access-gate.jpg"),
+    preview: asset("/access-gate-preview.jpg"),
+    alt: "T3写字楼大堂人脸识别闸机",
     steps: [
-      "闸机权限：领取人员信息采集表，填写完成后发送管家录入",
+      "闸机权限：联系专属管家领取人员信息采集表，填写完成后发送管家录入，三个工作日内完成",
+      "照片要求：请提交清晰的正脸照，避免因照片模糊或角度不正导致识别失败",
       "访客抵达后在前台登记",
       "提前联系需要到访企业的对接人",
       "企业对接人将访客信息发送给对应客服管家报备",
@@ -123,7 +127,7 @@ const lobbyServices = [
     image: asset("/lobby-supplies-kit.jpg"),
     preview: asset("/lobby-supplies-kit.webp"),
     alt: "臻品物资箱物品领用与借用清单",
-    text: "提供纸巾、女性用品、雨衣、针线包、后跟贴、漱口水、衣服去污纸等领用品，以及一次性毛巾、吹风机、一次性拖鞋、维修工具、充电宝、测温枪等暖心借用品。",
+    text: "可直接前往一楼大堂领用或借用。提供纸巾、女性用品、雨衣、针线包、后跟贴、漱口水、衣服去污纸等领用品，以及一次性毛巾、吹风机、一次性拖鞋、维修工具、充电宝、测温枪等暖心借用品。",
   },
 ];
 
@@ -207,6 +211,30 @@ const parkingGuides = [
   },
 ];
 
+const parkingElevatorGuides = [
+  {
+    title: "负一层 · 高区 / 超高区",
+    text: "在 B1 停车后，跟随“T3办公电梯厅”指示牌前行。",
+    image: asset("/parking-elevator-b1-sign.jpg"),
+    preview: asset("/parking-elevator-b1-sign-preview.jpg"),
+    alt: "负一层高区和超高区前往T3办公电梯厅的指示牌",
+  },
+  {
+    title: "进入T3办公电梯厅",
+    text: "按指示进入7号商业电梯厅；B1走廊亦可通往低区办公电梯厅。",
+    image: asset("/parking-elevator-b1-hall.jpg"),
+    preview: asset("/parking-elevator-b1-hall-preview.jpg"),
+    alt: "负一层T3办公电梯厅入口",
+  },
+  {
+    title: "负二层 · 低区 / 中区",
+    text: "在 B2 跟随“7号商业电梯厅 / T3办公电梯厅”指示，进入对应办公电梯厅。",
+    image: asset("/parking-elevator-b2-sign.jpg"),
+    preview: asset("/parking-elevator-b2-sign-preview.jpg"),
+    alt: "负二层低区和中区前往7号商业电梯厅及T3办公电梯厅的指示牌",
+  },
+];
+
 const routeGuides = [
   {
     id: "takeout-guide",
@@ -254,12 +282,13 @@ const routeGuides = [
 ];
 
 const faqs = [
-  ["如何开通闸机权限？", "联系专属物业管家领取人员信息采集表，填写完成后发送管家录入。"],
+  ["如何开通闸机权限？", "联系专属物业管家领取人员信息采集表，填写完成后发送管家录入，三个工作日内完成。请提交清晰的正脸照，避免因照片模糊或角度不正导致识别失败。"],
   ["临时报备停车怎么办理？", "车辆到达前请联系所属区域物业管家完成临时报备。临停仅限接送、接待等临时停靠，完成后请立即驶离，不得长期停放。"],
   ["停车月卡如何申请？", "进入“爱泊客”小程序，选择“横琴华发商都停车场”，上传资料并等待管家审核；审核通过后在线缴费。"],
   ["停车月卡如何续费？", "T3拓展区地下停车长租请务必在月卡到期前进行续费；逾期未续费，原月卡套餐将自动失效，需结清临停费用并重新提交月租申请。已生效的月卡费用不予退款，不可中途更换车牌。"],
   ["雨天的暖心服务有哪些？", "前台暖心物品包含一次性毛巾、吹风机和一次性拖鞋；雨伞机提供免费雨伞借用，雨伞套机提供适用于长柄和短柄雨伞的雨伞套；雨伞除水器采用雪尼尔吸水面料，将雨伞放入后左右摇动 2 至 3 次即可快速去除水滴。"],
   ["外卖取餐和18号货梯怎么走？", "外卖请按负一层低区电梯厅、中央连廊、高区电梯厅的路线前往外卖柜；饮用水、快递及送货请从“森林子果蔬茶”旁侧通道前往专属18号货梯，施工材料须到负三层上下货。"],
+  ["地下停车场如何前往办公电梯厅？", "高区、超高区可在负一层跟随“T3办公电梯厅”指示；低区、中区可在负二层跟随“7号商业电梯厅 / T3办公电梯厅”指示。各办公电梯均可到达一楼T3写字楼大堂，并可在大堂换乘。"],
 ];
 
 const freightSequence = [
@@ -314,9 +343,9 @@ export default function Home() {
         <div className="hero-status glass-panel">
           <div>
             <span className="status-light" />
-            <strong>服务在线</strong>
+            <strong>工作日服务人员工作时间</strong>
           </div>
-          <p>工作日服务 · 快速响应</p>
+          <p>8:30–17:30</p>
         </div>
         <a className="scroll-cue" href="#intro" aria-label="向下浏览"><span /></a>
       </section>
@@ -369,14 +398,14 @@ export default function Home() {
               <div className="floor-client-group">
                 <div className="floor-client-heading">
                   <span>11–49F</span>
-                  <strong>写字楼客户区域</strong>
+                  <strong>写字楼办公区域</strong>
                   <i>办公空间</i>
                 </div>
                 <div className="client-zone-grid">
-                  <div><span>11–16F</span><strong>低区客户区域</strong></div>
-                  <div><span>17–27F</span><strong>中区客户区域</strong></div>
-                  <div><span>28–38F</span><strong>高区客户区域</strong></div>
-                  <div><span>39–49F</span><strong>超高区客户区域</strong></div>
+                  <div><span>11–16F</span><strong>低区</strong></div>
+                  <div><span>17–27F</span><strong>中区</strong></div>
+                  <div><span>28–38F</span><strong>高区</strong></div>
+                  <div><span>39–49F</span><strong>超高区</strong></div>
                 </div>
               </div>
               <div className="floor-row floor-safety"><span>10F / 20F / 30F / 40F</span><strong>避难层</strong><i>安全疏散</i></div>
@@ -545,6 +574,11 @@ export default function Home() {
           <div className="parking-guide-grid">
             {accessServices.map((service, index) => (
               <article className="access-service-card parking-access-card" key={service.title}>
+                <a className="access-service-photo" href={service.image} target="_blank" rel="noreferrer" data-lightbox="image" aria-label={`查看${service.title}清晰原图`}>
+                  <img src={service.preview} alt={service.alt} width="1050" height="591" loading="lazy" decoding="async" />
+                  <span>查看清晰原图 ↗</span>
+                </a>
+                <div className="access-service-copy">
                 <div className="service-top"><span className="service-icon">{service.icon}</span><span className="service-no">0{index + 1}</span></div>
                 <span className="service-subtitle">{service.subtitle}</span>
                 <h3>{service.title}</h3>
@@ -554,6 +588,7 @@ export default function Home() {
                     {service.steps.map((step) => <li key={step}>{step}</li>)}
                   </ol>
                 )}
+                </div>
               </article>
             ))}
             {parkingGuides.map((guide) => (
@@ -585,6 +620,24 @@ export default function Home() {
                 </div>
               </article>
             ))}
+          </div>
+          <div className="parking-elevator-guide" id="parking-elevator-guide">
+            <div className="parking-elevator-heading">
+              <div><span className="section-kicker">PARKING TO OFFICE</span><h3>地下停车场 · T3办公电梯厅指引</h3></div>
+              <p>找到“7号商业电梯厅 / T3办公电梯厅”，即可进入对应办公电梯区域。</p>
+            </div>
+            <div className="parking-elevator-grid">
+              {parkingElevatorGuides.map((guide, index) => (
+                <article className="parking-elevator-card" key={guide.title}>
+                  <a className="parking-elevator-photo" href={guide.image} target="_blank" rel="noreferrer" data-lightbox="image" aria-label={`查看${guide.title}清晰原图`}>
+                    <img src={guide.preview} alt={guide.alt} width="1000" height="563" loading="lazy" decoding="async" />
+                    <span>0{index + 1}</span>
+                  </a>
+                  <div className="parking-elevator-copy"><h4>{guide.title}</h4><p>{guide.text}</p></div>
+                </article>
+              ))}
+            </div>
+            <p className="parking-transfer-note"><strong>换乘提示</strong> 各办公电梯均可到达一楼T3写字楼大堂；如需前往其他分区，可在一楼大堂换乘。</p>
           </div>
         </div>
       </section>
