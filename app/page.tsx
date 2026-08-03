@@ -235,6 +235,21 @@ const parkingElevatorGuides = [
   },
 ];
 
+const parkingElevatorRoute = [
+  {
+    title: "按办公分区停车",
+    text: "高区、超高区车辆停至负一层；低区、中区车辆停至负二层。",
+  },
+  {
+    title: "认准电梯厅标识",
+    text: "下车后寻找“7号商业电梯厅 / T3办公电梯厅”指示牌，按标识前往。",
+  },
+  {
+    title: "抵达大堂再换乘",
+    text: "对应办公电梯均可到达一楼T3写字楼大堂，如需换乘请在大堂办理。",
+  },
+];
+
 const routeGuides = [
   {
     id: "takeout-guide",
@@ -445,10 +460,7 @@ export default function Home() {
                   {"image" in person ? (
                     <>
                       <img className="person-portrait" src={person.image} alt={`${person.name} ${person.role}`} width="1254" height="1254" loading="lazy" decoding="async" />
-                      <span className={`staff-badge badge-${person.index}`} aria-label={`${person.department}工牌`}>
-                        <img src={asset("/staff-badge-template.webp")} alt="" width="900" height="265" loading="lazy" decoding="async" />
-                        <span>{person.department}</span>
-                      </span>
+                      <img className="staff-badge" src={asset("/staff-badge-template.webp")} alt={`${person.department}工牌`} width="500" height="180" loading="lazy" decoding="async" />
                     </>
                   ) : (
                     <div className="photo-placeholder">
@@ -478,10 +490,7 @@ export default function Home() {
                   {"image" in person ? (
                     <>
                       <img className="person-portrait" src={person.image} alt={`${person.name} ${person.role}`} width="1254" height="1254" loading="lazy" decoding="async" />
-                      <span className={`staff-badge badge-${person.index}`} aria-label={`${person.department}工牌`}>
-                        <img src={asset("/staff-badge-template.webp")} alt="" width="900" height="265" loading="lazy" decoding="async" />
-                        <span>{person.department}</span>
-                      </span>
+                      <img className="staff-badge" src={asset("/staff-badge-template.webp")} alt={`${person.department}工牌`} width="500" height="180" loading="lazy" decoding="async" />
                     </>
                   ) : (
                     <div className="photo-placeholder">
@@ -624,8 +633,16 @@ export default function Home() {
           <div className="parking-elevator-guide" id="parking-elevator-guide">
             <div className="parking-elevator-heading">
               <div><span className="section-kicker">PARKING TO OFFICE</span><h3>地下停车场 · T3办公电梯厅指引</h3></div>
-              <p>找到“7号商业电梯厅 / T3办公电梯厅”，即可进入对应办公电梯区域。</p>
+              <p>先按办公分区停车，再认准“7号商业电梯厅 / T3办公电梯厅”标识进入对应电梯厅。</p>
             </div>
+            <ol className="parking-elevator-route" aria-label="从停车场到办公电梯厅的路线">
+              {parkingElevatorRoute.map((step, index) => (
+                <li key={step.title}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div><strong>{step.title}</strong><p>{step.text}</p></div>
+                </li>
+              ))}
+            </ol>
             <div className="parking-elevator-grid">
               {parkingElevatorGuides.map((guide, index) => (
                 <article className="parking-elevator-card" key={guide.title}>
