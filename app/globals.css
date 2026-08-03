@@ -169,7 +169,7 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .staff-badge { position: absolute; z-index: 4; right: 28%; bottom: 9%; width: 34px; aspect-ratio: 900 / 265; filter: drop-shadow(0 1px 2px rgba(37, 28, 8, .14)); }
 .staff-badge > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
 .staff-badge > span { position: absolute; inset: 6% 1.5% 6% auto; width: 34%; display: grid; place-items: center; border-radius: 1px 3px 3px 1px; color: #111; background: linear-gradient(90deg, #e9c961, #f7df8b 52%, #e6c35f); font-size: 5px; font-weight: 850; letter-spacing: 0; white-space: nowrap; text-shadow: 0 1px rgba(255,255,255,.42); }
-.staff-badge.badge-02, .staff-badge.badge-03, .staff-badge.badge-05, .staff-badge.badge-06, .staff-badge.badge-07 { right: 29%; bottom: 8%; width: 28px; }
+.staff-badge.badge-02, .staff-badge.badge-03, .staff-badge.badge-05, .staff-badge.badge-06, .staff-badge.badge-07 { right: 33%; bottom: 8%; width: 28px; }
 .staff-badge.badge-02 > span, .staff-badge.badge-03 > span, .staff-badge.badge-05 > span, .staff-badge.badge-06 > span, .staff-badge.badge-07 > span { font-size: 3.6px; }
 .photo-placeholder { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 16px; color: #7b9dbc; }
 .photo-placeholder small { font-size: 15px; letter-spacing: .15em; }
@@ -459,7 +459,7 @@ footer { padding: 42px 0; background: #06172d; color: #fff; }
   .person-card.featured .person-photo, .person-photo { min-height: 320px; }
   .person-portrait { width: min(90%, 360px); }
   .staff-badge { right: 27%; bottom: 9%; width: 34px; }
-  .staff-badge.badge-02, .staff-badge.badge-03, .staff-badge.badge-05, .staff-badge.badge-06, .staff-badge.badge-07 { right: 28%; bottom: 8%; width: 28px; }
+  .staff-badge.badge-02, .staff-badge.badge-03, .staff-badge.badge-05, .staff-badge.badge-06, .staff-badge.badge-07 { right: 32%; bottom: 8%; width: 28px; }
   .person-card.featured .person-info { padding: 24px; }
   .service-grid { grid-template-columns: 1fr; }
   .service-card { min-height: 340px; }
