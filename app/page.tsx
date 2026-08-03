@@ -265,10 +265,10 @@ const faqs = [
 const freightSequence = [
   { src: asset("/freight-step-1.jpg"), preview: asset("/freight-step-1.webp"), label: "沿路边规范停车", alt: "车辆到达后沿路边规范停车" },
   { src: asset("/freight-step-2.jpg"), preview: asset("/freight-step-2.webp"), label: "找到旁侧入口", alt: "森林子果蔬茶旁侧的18号货梯通道入口" },
-  { src: asset("/freight-step-3.jpg"), preview: asset("/freight-step-3.webp"), label: "进入室内通道", alt: "从旁侧入口进入18号货梯室内通道" },
-  { src: asset("/freight-step-4.jpg"), preview: asset("/freight-step-4.webp"), label: "沿18号货梯箭头直行", alt: "沿室内通道地面18号货梯箭头直行" },
-  { src: asset("/freight-step-5.jpg"), preview: asset("/freight-step-5.webp"), label: "按箭头左转", alt: "在18号货梯管控区域按地面箭头左转" },
-  { src: asset("/freight-step-6.jpg"), preview: asset("/freight-step-6.webp"), label: "到达18号货梯", alt: "抵达专属18号货梯" },
+  { src: asset("/freight-step-3.jpg?v=20260802"), preview: asset("/freight-step-3.webp?v=20260802"), label: "进入室内通道", alt: "从旁侧入口进入18号货梯室内通道" },
+  { src: asset("/freight-step-4.jpg?v=20260802"), preview: asset("/freight-step-4.webp?v=20260802"), label: "沿18号货梯箭头直行", alt: "沿室内通道地面18号货梯箭头直行" },
+  { src: asset("/freight-step-5.jpg?v=20260802"), preview: asset("/freight-step-5.webp?v=20260802"), label: "按箭头左转", alt: "在18号货梯管控区域按地面箭头左转" },
+  { src: asset("/freight-step-6.jpg?v=20260802"), preview: asset("/freight-step-6.webp?v=20260802"), label: "到达18号货梯", alt: "抵达专属18号货梯" },
 ];
 const takeoutSequence = [
   { src: asset("/takeout-step-1.jpg"), preview: asset("/takeout-step-1.webp"), label: "低区电梯厅左转", alt: "从负一层低区电梯厅向左转" },
