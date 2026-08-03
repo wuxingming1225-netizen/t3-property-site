@@ -166,7 +166,6 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .person-photo::after { width: 160px; height: 160px; left: -60px; bottom: -80px; }
 .person-photo.has-photo::before, .person-photo.has-photo::after { display: none; }
 .person-portrait { position: absolute; z-index: 1; left: 50%; bottom: -2px; width: min(78%, 420px); height: 96%; transform: translateX(-50%); object-fit: contain; object-position: center bottom; filter: drop-shadow(0 18px 28px rgba(33,78,119,.12)); }
-.staff-badge { display: none; }
 .photo-placeholder { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 16px; color: #7b9dbc; }
 .photo-placeholder small { font-size: 15px; letter-spacing: .15em; }
 .person-silhouette { width: 122px; height: 122px; position: relative; display: block; border-radius: 50%; background: rgba(255,255,255,.44); border: 1px dashed rgba(49,114,173,.34); }
@@ -255,7 +254,7 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .parking-renewal-alert { margin-top: 12px; padding: 17px 18px; border: 1px solid #ffc2b9; border-left: 5px solid #f05249; border-radius: 15px; color: #7d211c; background: #fff3f1; }
 .parking-renewal-alert strong { display: block; margin-bottom: 7px; color: #d53027; font-size: 16px; letter-spacing: .06em; }
 .parking-renewal-alert p { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.8; }
-.parking-elevator-guide { margin-top: 54px; }
+.parking-elevator-guide { margin-top: 54px; padding: 36px; border: 1px solid #d6e6f4; border-radius: 28px; background: linear-gradient(145deg, #fff, #eef7ff); box-shadow: 0 18px 50px rgba(28, 79, 132, .08); }
 .parking-elevator-heading { display: flex; align-items: end; justify-content: space-between; gap: 36px; margin-bottom: 24px; }
 .parking-elevator-heading h3 { margin: 10px 0 0; font-size: clamp(30px, 3vw, 43px); letter-spacing: -.045em; }
 .parking-elevator-heading > p { width: min(430px, 42%); margin: 0; color: #60758a; font-size: 16px; line-height: 1.8; }
@@ -482,7 +481,6 @@ footer { padding: 42px 0; background: #06172d; color: #fff; }
   .person-card.featured { grid-column: auto; display: block; }
   .person-card.featured .person-photo, .person-photo { min-height: 320px; }
   .person-portrait { width: min(90%, 360px); }
-  .staff-badge { display: block; position: absolute; z-index: 2; right: 14%; bottom: 10%; width: 54px; height: auto; object-fit: contain; }
   .person-card.featured .person-info { padding: 24px; }
   .service-grid { grid-template-columns: 1fr; }
   .service-card { min-height: 340px; }
@@ -492,6 +490,7 @@ footer { padding: 42px 0; background: #06172d; color: #fff; }
   .lobby-service-card > div { padding: 30px 24px; }
   .lobby-service-card h3 { font-size: 32px; }
   .weather-service-grid, .parking-guide-grid { grid-template-columns: 1fr; }
+  .parking-elevator-guide { margin-top: 38px; padding: 24px 18px; border-radius: 24px; }
   .parking-elevator-heading { display: block; }
   .parking-elevator-heading > p { width: auto; margin-top: 14px; }
   .parking-elevator-route { grid-template-columns: 1fr; }
