@@ -91,7 +91,7 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .refuge-markers { position: absolute; z-index: 3; right: 8%; bottom: 0; left: 18%; height: calc(100% - 70px); pointer-events: none; }
 .refuge-marker { position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(231, 207, 156, .94) 24%, rgba(216, 187, 120, .44) 78%, transparent); }
 .refuge-marker::before { content: ""; position: absolute; right: 9%; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: #f0d79e; box-shadow: 0 0 0 4px rgba(216, 187, 120, .18); }
-.refuge-marker::after { content: attr(data-floor); position: absolute; right: 0; top: -9px; color: #f0d79e; font-size: 14px; font-weight: 750; letter-spacing: .08em; }
+.refuge-marker::after { content: attr(data-floor); position: absolute; right: -4px; top: -11px; color: #fff3cb; font-size: 18px; font-weight: 850; letter-spacing: .1em; text-shadow: 0 1px 5px rgba(2, 15, 35, .9); }
 .marker-40 { top: 20%; }
 .marker-30 { top: 40%; }
 .marker-20 { top: 60%; }
