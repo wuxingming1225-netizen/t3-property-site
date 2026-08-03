@@ -436,12 +436,13 @@ export default function Home() {
             <a href="#team"><span>01</span><strong>人员介绍</strong><small>认识9位专属服务伙伴</small><i>↓</i></a>
             <a href="#services"><span>02</span><strong>服务介绍</strong><small>大堂甄品与雨天暖心服务</small><i>↓</i></a>
             <a href="#access"><span>03</span><strong>停车与通行</strong><small>闸机、访客、临停与月卡</small><i>↓</i></a>
-            <a href="#routes"><span>04</span><strong>路线介绍</strong><small>外卖取餐与18号货梯</small><i>↓</i></a>
+            <a href="#routes"><span>04</span><strong>路线介绍</strong><small>地下停车场、外卖与18号货梯</small><i>↓</i></a>
           </nav>
           <div className="quick-links" aria-label="常用办理直达">
             <span>常用办理直达</span>
             <a href="#parking-guide">停车月卡办理 <i>↘</i></a>
             <a href="#temporary-parking-guide">临时停车报备 <i>↘</i></a>
+            <a href="#parking-elevator-guide">地下停车场指引 <i>↘</i></a>
             <a href="#freight-guide">18号货梯 <i>↘</i></a>
             <a href="#takeout-guide">外卖取餐 <i>↘</i></a>
           </div>
@@ -460,7 +461,6 @@ export default function Home() {
                   {"image" in person ? (
                     <>
                       <img className="person-portrait" src={person.image} alt={`${person.name} ${person.role}`} width="1254" height="1254" loading="lazy" decoding="async" />
-                      <img className="staff-badge" src={asset("/staff-badge-template.webp")} alt={`${person.department}工牌`} width="500" height="180" loading="lazy" decoding="async" />
                     </>
                   ) : (
                     <div className="photo-placeholder">
@@ -490,7 +490,6 @@ export default function Home() {
                   {"image" in person ? (
                     <>
                       <img className="person-portrait" src={person.image} alt={`${person.name} ${person.role}`} width="1254" height="1254" loading="lazy" decoding="async" />
-                      <img className="staff-badge" src={asset("/staff-badge-template.webp")} alt={`${person.department}工牌`} width="500" height="180" loading="lazy" decoding="async" />
                     </>
                   ) : (
                     <div className="photo-placeholder">
