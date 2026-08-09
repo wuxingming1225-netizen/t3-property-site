@@ -13,6 +13,7 @@ const team = [
     image: asset("/wuxingming-cutout.webp"),
     department: "客服部",
     range: "T3 全域",
+    hours: "工作日 8:30–17:30",
     duties: "统筹服务品质、安全运营与跨部门协同，快速响应企业重要事项。",
     featured: true,
   },
@@ -24,6 +25,7 @@ const team = [
     image: asset("/zeng-linghui-cutout.webp"),
     department: "客服部",
     range: "中区 / 高区",
+    hours: "工作日 8:30–17:30",
     duties: "负责企业入驻、报事跟进、费用咨询与中区、高区日常巡查。",
   },
   {
@@ -34,6 +36,7 @@ const team = [
     image: asset("/he-sihui-cutout.webp"),
     department: "客服部",
     range: "低区 / 超高区",
+    hours: "工作日 8:30–17:30",
     duties: "负责客户沟通、访客协助、装修协调与低区、超高区日常服务。",
   },
   {
@@ -44,6 +47,7 @@ const team = [
     image: asset("/liu-daping-cutout.webp"),
     department: "客服部",
     range: "T3选品中心5-9楼",
+    hours: "工作日 7:30–17:30",
     duties: "统筹选品中心接洽、活动支持、空间秩序与资源协同。",
   },
   {
@@ -54,6 +58,7 @@ const team = [
     image: asset("/zhou-zhiying-cutout.webp"),
     department: "客服部",
     range: "T3 首层大堂",
+    hours: "工作日 8:30–17:30",
     duties: "承担大堂迎宾、访客分流、电梯引导与高峰秩序维护。",
   },
   {
@@ -64,6 +69,7 @@ const team = [
     image: asset("/liang-panpan-cutout.webp"),
     department: "客服部",
     range: "选品中心前台",
+    hours: "工作日 10:00–18:30",
     duties: "提供来访登记、路线指引、会议接待与现场咨询服务。",
   },
   {
@@ -74,6 +80,7 @@ const team = [
     image: asset("/liu-jiaxin-cutout.webp"),
     department: "客服部",
     range: "选品中心前台",
+    hours: "工作日 8:30–17:30",
     duties: "负责客户迎送、会务衔接、物资确认与服务信息传递。",
   },
 ];
@@ -87,6 +94,7 @@ const supportTeam = [
     image: asset("/liu-liuhu-cutout.webp"),
     department: "工程部",
     range: "T3 工程运维全域",
+    hours: "工作日 8:30–17:30",
     duties: "统筹设施设备运行、工程维修、施工协调与现场技术支持。",
   },
   {
@@ -97,13 +105,13 @@ const supportTeam = [
     image: asset("/hou-huanwu-cutout.webp"),
     department: "安管部",
     range: "T3 公共区域",
+    hours: "工作日 8:30–17:30",
     duties: "负责安全秩序、消防巡查、突发事件响应与现场协同。",
   },
 ];
 
 const accessServices = [
   {
-    icon: "访",
     title: "访客与闸机通行",
     subtitle: "人员录入 · 前台登记 · 提前报备",
     text: "闸机权限与访客到访统一联系对应客服管家办理。",
@@ -189,7 +197,8 @@ const parkingGuides = [
     width: 2200,
     height: 1565,
     steps: ["进入“爱泊客”小程序", "选择“横琴华发商都停车场”", "上传资料并等待管家审核", "审核通过后在线缴费"],
-    note: "建议至少提前 2 个工作日申请。",
+    alert: "建议至少提前 2 个工作日申请。",
+    note: "",
   },
   {
     id: "parking-renewal-guide",
@@ -316,7 +325,7 @@ const freightSequence = [
 ];
 const takeoutSequence = [
   { src: asset("/takeout-step-1.jpg"), preview: asset("/takeout-step-1.webp"), label: "低区电梯厅左转", alt: "从负一层低区电梯厅向左转" },
-  { src: asset("/takeout-step-2.jpg"), preview: asset("/takeout-step-2.webp"), label: "通道终点左转", alt: "沿通道前行并在终点向左转" },
+  { src: asset("/takeout-step-2.svg"), preview: asset("/takeout-step-2-preview.svg"), label: "通道终点左转", alt: "沿通道前行并在终点向左转" },
   { src: asset("/takeout-step-3.jpg"), preview: asset("/takeout-step-3.webp"), label: "直走抵达外卖柜", alt: "直行抵达高区负一层外卖柜" },
 ];
 
@@ -325,7 +334,7 @@ export default function Home() {
     <main>
       <header className="topbar">
         <a className="brand" href="#top" aria-label="返回首页">
-          <span className="brand-mark">T3</span>
+          <span className="brand-mark" aria-hidden="true"><img src={asset("/huafa-mark.svg")} alt="" width="642" height="636" /></span>
           <span>横琴天啟T3物业服务中心</span>
         </a>
         <nav aria-label="页面导航">
@@ -474,7 +483,7 @@ export default function Home() {
                 <div className="person-info">
                   <div className="role-row"><div><span>{person.role}</span><h3>{person.name}</h3></div><span className="arrow">↗</span></div>
                   <p>{person.duties}</p>
-                  <div className="person-meta"><span>⌖ {person.range}</span></div>
+                  <div className="person-meta"><span>⌖ {person.range}</span><span className="person-hours">◷ {person.hours}</span></div>
                 </div>
               </article>
             ))}
@@ -503,7 +512,7 @@ export default function Home() {
                 <div className="person-info">
                   <div className="role-row"><div><span>{person.role}</span><h3>{person.name}</h3></div><span className="arrow">↗</span></div>
                   <p>{person.duties}</p>
-                  <div className="person-meta"><span>⌖ {person.range}</span></div>
+                  <div className="person-meta"><span>⌖ {person.range}</span><span className="person-hours">◷ {person.hours}</span></div>
                 </div>
               </article>
             ))}
@@ -587,10 +596,10 @@ export default function Home() {
                   <span>查看清晰原图 ↗</span>
                 </a>
                 <div className="access-service-copy">
-                <div className="service-top"><span className="service-icon">{service.icon}</span><span className="service-no">0{index + 1}</span></div>
-                <span className="service-subtitle">{service.subtitle}</span>
-                <h3>{service.title}</h3>
-                {service.text && <p>{service.text}</p>}
+                  <div className="access-service-index"><span className="service-no">0{index + 1}</span></div>
+                  <span className="service-subtitle">{service.subtitle}</span>
+                  <h3>{service.title}</h3>
+                  {service.text && <p>{service.text}</p>}
                 {service.steps.length > 0 && (
                   <ol className="access-steps">
                     {service.steps.map((step) => <li key={step}>{step}</li>)}
@@ -744,7 +753,7 @@ export default function Home() {
 
       <footer>
         <div className="section-shell footer-grid">
-          <div className="footer-brand"><span className="brand-mark">T3</span><div><strong>横琴天啟 T3 写字楼</strong><p>物业服务团队 · 让办公更简单</p></div></div>
+          <div className="footer-brand"><span className="brand-mark" aria-hidden="true"><img src={asset("/huafa-mark.svg")} alt="" width="642" height="636" /></span><div><strong>横琴天啟 T3 写字楼</strong><p>物业服务团队 · 让办公更简单</p></div></div>
           <div className="footer-address"><span>项目地址</span><p>珠海市横琴新区荣澳道 128 号</p></div>
           <p className="copyright">© 2026 T3 PROPERTY SERVICE</p>
         </div>

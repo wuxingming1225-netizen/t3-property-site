@@ -34,7 +34,8 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
   background: linear-gradient(180deg, rgba(2, 15, 35, .92), rgba(2, 15, 35, .74) 70%, rgba(2, 15, 35, .46));
 }
 .brand { display: flex; align-items: center; gap: 12px; font-size: 17px; font-weight: 650; letter-spacing: .05em; }
-.brand-mark { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.38); font-size: 16px; font-weight: 800; letter-spacing: -.04em; }
+.brand-mark { width: 42px; height: 42px; display: grid; place-items: center; overflow: hidden; flex: 0 0 auto; border-radius: 12px; background: rgba(255,255,255,.92); border: 1px solid rgba(255,255,255,.48); box-shadow: 0 8px 24px rgba(1,17,38,.18); }
+.brand-mark img { width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: blur(5px) saturate(.72); transform: scale(.88); animation: brandLogoReveal 1.35s cubic-bezier(.22,.8,.32,1) .08s forwards; }
 .topbar nav { display: flex; gap: 38px; font-size: 14px; color: rgba(255,255,255,.78); }
 .topbar nav a { transition: .25s ease; }
 .topbar nav a:hover { color: #fff; transform: translateY(-1px); }
@@ -180,7 +181,18 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .role-row h3 { margin: 5px 0 0; font-size: 23px; letter-spacing: -.03em; }
 .role-row .arrow { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: #eef7ff; color: var(--blue); font-size: 18px; }
 .person-info > p { margin: 14px 0 15px; color: var(--muted); font-size: 15px; line-height: 1.7; }
-.person-meta { border-top: 1px solid #edf2f7; padding-top: 13px; display: flex; flex-direction: column; gap: 6px; color: #6f8497; font-size: 15px; }
+.person-meta { border-top: 1px solid #edf2f7; padding-top: 13px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 7px 18px; color: #6f8497; font-size: 15px; }
+.person-hours { white-space: nowrap; }
+
+@keyframes brandLogoReveal {
+  0% { opacity: 0; filter: blur(5px) saturate(.72); transform: scale(.88); }
+  55% { opacity: .76; filter: blur(1px) saturate(.92); }
+  100% { opacity: 1; filter: blur(0) saturate(1); transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-mark img { opacity: 1; filter: none; transform: none; animation: none; }
+}
 
 .services { padding: 125px 0; }
 .service-heading > p { text-align: left; }
@@ -193,6 +205,8 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .service-top { display: flex; justify-content: space-between; align-items: center; }
 .service-icon { width: 50px; height: 50px; display: grid; place-items: center; border-radius: 16px; background: #eaf5ff; color: var(--blue); font-size: 18px; font-weight: 750; }
 .service-no { color: #b1c1d0; font-size: 15px; font-weight: 700; letter-spacing: .14em; }
+.access-service-index { min-height: 22px; display: flex; justify-content: flex-end; align-items: center; }
+.access-service-index + .service-subtitle { margin-top: 14px; }
 .service-subtitle { margin-top: 50px; color: #1a75d9; font-size: 15px; font-weight: 650; }
 .service-card h3 { margin: 8px 0 15px; font-size: 28px; letter-spacing: -.04em; }
 .service-card > p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.85; }
