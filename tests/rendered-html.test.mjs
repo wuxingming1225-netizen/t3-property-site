@@ -37,15 +37,15 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /华发商都区域/);
   assert.match(html, /05–09F/);
   assert.match(html, /11–16F/);
-  assert.match(html, /低区客户区域/);
+  assert.match(html, /低区/);
   assert.match(html, /17–27F/);
-  assert.match(html, /中区客户区域/);
+  assert.match(html, /中区/);
   assert.match(html, /28–38F/);
-  assert.match(html, /高区客户区域/);
+  assert.match(html, /高区/);
   assert.match(html, /39–49F/);
-  assert.match(html, /写字楼客户区域/);
+  assert.match(html, /写字楼办公区域/);
   assert.match(html, /client-zone-grid/);
-  assert.match(html, /超高区客户区域/);
+  assert.match(html, /超高区/);
   assert.match(html, /10F \/ 20F \/ 30F \/ 40F/);
   assert.match(html, /data-floor="10F"/);
   assert.match(html, /data-floor="20F"/);
@@ -67,9 +67,14 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /href="#temporary-parking-guide"/);
   assert.match(html, /href="#freight-guide"/);
   assert.match(html, /href="#takeout-guide"/);
+  assert.match(html, /href="#parking-elevator-guide"/);
   assert.match(html, /T3物业负责人/);
   assert.match(html, /<span>T3物业负责人<\/span><h3>吴幸明<\/h3>/);
   assert.match(html, /吴幸明[\s\S]*?T3 全域/);
+  assert.match(html, /吴幸明[\s\S]*?工作日 8:30–17:30/);
+  assert.match(html, /刘大平[\s\S]*?工作日 7:30–17:30/);
+  assert.match(html, /梁盼盼[\s\S]*?工作日 10:00–18:30/);
+  assert.match(html, /huafa-mark\.svg/);
   assert.doesNotMatch(html, /T3栋物业负责人/);
   assert.doesNotMatch(html, /T3写字楼物业负责人/);
   assert.match(html, /T3选品中心5-9楼/);
@@ -100,10 +105,7 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /侯焕武/);
   assert.match(html, /liu-liuhu-cutout\.webp/);
   assert.match(html, /hou-huanwu-cutout\.webp/);
-  assert.equal((html.match(/aria-label="客服部工牌"/g) ?? []).length, 7);
-  assert.equal((html.match(/aria-label="工程部工牌"/g) ?? []).length, 1);
-  assert.equal((html.match(/aria-label="安管部工牌"/g) ?? []).length, 1);
-  assert.match(html, /staff-badge-template\.webp/);
+  assert.doesNotMatch(html, /staff-badge-template\.webp/);
   assert.equal((html.match(/<span>姓名待补充<\/span>/g) ?? []).length, 0);
   assert.equal((html.match(/<span>安管部负责人<\/span><h3>侯焕武<\/h3>/g) ?? []).length, 1);
   assert.ok(html.indexOf("刘嘉欣") < html.indexOf("刘六虎"));
@@ -138,6 +140,8 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /访客抵达后在前台登记/);
   assert.match(html, /提前联系需要到访企业的对接人/);
   assert.match(html, /企业对接人将访客信息发送给对应客服管家报备/);
+  assert.doesNotMatch(html, />访<\/span>/);
+  assert.match(html, /停车月卡申请[\s\S]*?重要提醒[\s\S]*?建议至少提前 2 个工作日申请/);
   assert.match(html, /外卖与货梯路线/);
   assert.match(html, /0(?:<!-- -->)?1(?:<!-- -->)? · (?:<!-- -->)?低区电梯厅左转/);
   assert.match(html, /0(?:<!-- -->)?2(?:<!-- -->)? · (?:<!-- -->)?通道终点左转/);
@@ -149,7 +153,7 @@ test("renders the T3 property service site", async () => {
   assert.doesNotMatch(html, /xxxx号房/);
   assert.doesNotMatch(html, /takeout-route\.png/);
   assert.match(html, /takeout-step-1\.webp/);
-  assert.match(html, /takeout-step-2\.webp/);
+  assert.match(html, /takeout-step-2-preview\.svg/);
   assert.match(html, /takeout-step-3\.webp/);
   assert.match(html, /data-lightbox="image"/);
   const lazyImages = html.match(/<img[^>]+loading="lazy"[^>]+decoding="async"[^>]*>/g) ?? [];
@@ -176,7 +180,8 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /停车月卡如何续费？/);
   assert.match(html, /雨天的暖心服务有哪些？/);
   assert.match(html, /外卖取餐和18号货梯怎么走？/);
-  assert.equal((html.match(/<details/g) ?? []).length, 6);
+  assert.match(html, /地下停车场如何前往办公电梯厅？/);
+  assert.equal((html.match(/<details/g) ?? []).length, 7);
   assert.match(html, /该区域设有 24 小时监控/);
   assert.match(html, /停车月卡续费缴费/);
   assert.match(html, /T3拓展区地下停车长租请务必在月卡到期前进行续费/);
@@ -185,6 +190,13 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /已生效的月卡费用不予退款，不可中途更换车牌/);
   assert.match(html, /parking-renewal\.webp/);
   assert.match(html, /访客与闸机通行/);
+  assert.match(html, /工作日服务人员工作时间/);
+  assert.match(html, /按办公分区停车/);
+  assert.match(html, /地下停车场、外卖与18号货梯/);
+  assert.match(html, /地下停车场指引/);
+  assert.match(html, /高区、超高区车辆停至负一层；低区、中区车辆停至负二层。/);
+  assert.match(html, /认准电梯厅标识/);
+  assert.match(html, /抵达大堂再换乘/);
   assert.doesNotMatch(html, /先看人员和服务，也可以直接进入常用办理指引/);
   assert.doesNotMatch(html, /管理说明：横琴华发商都停车场由商都物业管理/);
   assert.doesNotMatch(html, /办理指引不重复展示；这里仅保留大堂日常服务与便民物资/);
@@ -203,7 +215,7 @@ test("keeps required local guide assets available", async () => {
     access(new URL("public/t3-building.webp", projectRoot)),
     access(new URL("public/t3-building-lineart.png", projectRoot)),
     access(new URL("public/takeout-step-1.jpg", projectRoot)),
-    access(new URL("public/takeout-step-2.jpg", projectRoot)),
+    access(new URL("public/takeout-step-2.svg", projectRoot)),
     access(new URL("public/takeout-step-3.jpg", projectRoot)),
     access(new URL("public/parking-apply.jpg", projectRoot)),
     access(new URL("public/parking-renewal.jpg", projectRoot)),
@@ -233,7 +245,6 @@ test("keeps required local guide assets available", async () => {
     access(new URL("public/liu-jiaxin-cutout.png", projectRoot)),
     access(new URL("public/liu-liuhu-cutout.png", projectRoot)),
     access(new URL("public/hou-huanwu-cutout.png", projectRoot)),
-    access(new URL("public/staff-badge-template.webp", projectRoot)),
   ]);
 });
 
@@ -250,7 +261,7 @@ test("keeps mobile-critical guide images lightweight", async () => {
     "public/parking-apply.webp",
     "public/parking-renewal.webp",
     "public/takeout-step-1.webp",
-    "public/takeout-step-2.webp",
+    "public/takeout-step-2-preview.svg",
     "public/takeout-step-3.webp",
     "public/freight-step-1.webp",
     "public/freight-step-2.webp",
@@ -259,7 +270,6 @@ test("keeps mobile-critical guide images lightweight", async () => {
     "public/freight-step-5.webp",
     "public/freight-step-6.webp",
     "public/freight-step-7.webp",
-    "public/staff-badge-template.webp",
     "public/wuxingming-cutout.webp",
     "public/zeng-linghui-cutout.webp",
     "public/he-sihui-cutout.webp",
@@ -307,4 +317,6 @@ test("keeps scroll performance safeguards", async () => {
   assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.weather-service-grid,\s*\.parking-guide-grid\s*\{[^}]*grid-template-columns:\s*1fr/s);
   assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.refuge-markers\s*\{[^}]*height:\s*450px/s);
   assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.hero-orb\s*\{[^}]*display:\s*none/);
+  assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.hero-status\s*\{[^}]*bottom:\s*22px/);
+  assert.doesNotMatch(css, /staff-badge/);
 });
