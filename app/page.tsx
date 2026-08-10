@@ -113,7 +113,7 @@ const supportTeam = [
 const accessServices = [
   {
     title: "访客与闸机通行",
-    subtitle: "人员录入 · 前台登记 · 提前报备",
+    eyebrow: "VISITOR & ACCESS",
     text: "闸机权限与访客到访统一联系对应客服管家办理。",
     image: asset("/access-gate.jpg"),
     preview: asset("/access-gate-preview.jpg"),
@@ -364,13 +364,6 @@ export default function Home() {
             <a className="glass-btn" href="tel:07568696992"><span className="pulse-dot" /> 24 小时应急服务</a>
           </div>
         </div>
-        <div className="hero-status glass-panel">
-          <div>
-            <span className="status-light" />
-            <strong>工作日服务人员工作时间</strong>
-          </div>
-          <p>8:30–17:30</p>
-        </div>
         <a className="scroll-cue" href="#intro" aria-label="向下浏览"><span /></a>
       </section>
 
@@ -589,22 +582,19 @@ export default function Home() {
             <p>闸机、访客、临时报备与停车月卡集中查看。</p>
           </div>
           <div className="parking-guide-grid">
-            {accessServices.map((service, index) => (
-              <article className="access-service-card parking-access-card" key={service.title}>
-                <a className="access-service-photo" href={service.image} target="_blank" rel="noreferrer" data-lightbox="image" aria-label={`查看${service.title}清晰原图`}>
+            {accessServices.map((service) => (
+              <article className="parking-guide-card" key={service.title}>
+                <a className="parking-guide-visual" href={service.image} target="_blank" rel="noreferrer" data-lightbox="image" aria-label={`查看${service.title}清晰原图`}>
                   <img src={service.preview} alt={service.alt} width="1050" height="591" loading="lazy" decoding="async" />
                   <span>查看清晰原图 ↗</span>
                 </a>
-                <div className="access-service-copy">
-                  <div className="access-service-index"><span className="service-no">0{index + 1}</span></div>
-                  <span className="service-subtitle">{service.subtitle}</span>
+                <div className="parking-guide-copy">
+                  <span className="section-kicker">{service.eyebrow}</span>
                   <h3>{service.title}</h3>
-                  {service.text && <p>{service.text}</p>}
-                {service.steps.length > 0 && (
-                  <ol className="access-steps">
-                    {service.steps.map((step) => <li key={step}>{step}</li>)}
+                  <ol>
+                    {service.steps.map((step) => <li key={step}><span>{step}</span></li>)}
                   </ol>
-                )}
+                  {service.text && <p>{service.text}</p>}
                 </div>
               </article>
             ))}
