@@ -75,6 +75,8 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /刘大平[\s\S]*?工作日 7:30–17:30/);
   assert.match(html, /梁盼盼[\s\S]*?工作日 10:00–18:30/);
   assert.match(html, /huafa-mark\.svg/);
+  assert.match(html, /VISITOR &amp; ACCESS/);
+  assert.doesNotMatch(html, /parking-access-card/);
   assert.doesNotMatch(html, /T3栋物业负责人/);
   assert.doesNotMatch(html, /T3写字楼物业负责人/);
   assert.match(html, /T3选品中心5-9楼/);
@@ -190,7 +192,7 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /已生效的月卡费用不予退款，不可中途更换车牌/);
   assert.match(html, /parking-renewal\.webp/);
   assert.match(html, /访客与闸机通行/);
-  assert.match(html, /工作日服务人员工作时间/);
+  assert.doesNotMatch(html, /工作日服务人员工作时间/);
   assert.match(html, /按办公分区停车/);
   assert.match(html, /地下停车场、外卖与18号货梯/);
   assert.match(html, /地下停车场指引/);
