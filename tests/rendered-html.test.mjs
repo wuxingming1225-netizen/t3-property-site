@@ -193,12 +193,30 @@ test("renders the T3 property service site", async () => {
   assert.match(html, /parking-renewal\.webp/);
   assert.match(html, /访客与闸机通行/);
   assert.doesNotMatch(html, /工作日服务人员工作时间/);
-  assert.match(html, /按办公分区停车/);
   assert.match(html, /地下停车场、外卖与18号货梯/);
   assert.match(html, /地下停车场指引/);
-  assert.match(html, /高区、超高区车辆停至负一层；低区、中区车辆停至负二层。/);
-  assert.match(html, /认准电梯厅标识/);
-  assert.match(html, /抵达大堂再换乘/);
+  assert.match(html, /地下停车场 · T3办公电梯厅指引/);
+  assert.match(html, /我在 · (?:<!-- -->)?负一层/);
+  assert.match(html, /我在 · (?:<!-- -->)?负二层 \/ 负三层/);
+  assert.match(html, /前往(?:<!-- -->)?高区 \/ 超高区/);
+  assert.match(html, /前往(?:<!-- -->)?低区 \/ 中区/);
+  assert.equal((html.match(/data-parking-route=/g) ?? []).length, 4);
+  assert.match(html, /进入负一层后左转/);
+  assert.match(html, /找到区域并停好车/);
+  assert.match(html, /认准T3办公电梯厅/);
+  assert.match(html, /直行前往连廊/);
+  assert.match(html, /进入连廊后右转/);
+  assert.match(html, /驶下斜坡后右转/);
+  assert.match(html, /在上坡前左转/);
+  assert.match(html, /到达低区 \/ 中区电梯厅/);
+  assert.match(html, /负二层与负三层使用相同路线/);
+  assert.match(html, /查看路线/);
+  assert.doesNotMatch(html, /parking-route-choice-shade/);
+  assert.match(html, /parking-route-step-01\.webp/);
+  assert.match(html, /parking-route-step-13\.webp/);
+  assert.match(html, /parking-route-step-01-full\.webp/);
+  assert.match(html, /parking-route-step-13-full\.webp/);
+  assert.doesNotMatch(html, /按办公分区停车|7号商业电梯厅|高区、超高区车辆停至负一层；低区、中区车辆停至负二层。/);
   assert.doesNotMatch(html, /先看人员和服务，也可以直接进入常用办理指引/);
   assert.doesNotMatch(html, /管理说明：横琴华发商都停车场由商都物业管理/);
   assert.doesNotMatch(html, /办理指引不重复展示；这里仅保留大堂日常服务与便民物资/);
@@ -247,6 +265,14 @@ test("keeps required local guide assets available", async () => {
     access(new URL("public/liu-jiaxin-cutout.png", projectRoot)),
     access(new URL("public/liu-liuhu-cutout.png", projectRoot)),
     access(new URL("public/hou-huanwu-cutout.png", projectRoot)),
+    ...Array.from({ length: 13 }, (_, index) => {
+      const number = String(index + 1).padStart(2, "0");
+      return access(new URL(`public/parking-route-step-${number}-full.webp`, projectRoot));
+    }),
+    ...Array.from({ length: 13 }, (_, index) => {
+      const number = String(index + 1).padStart(2, "0");
+      return access(new URL(`public/parking-route-step-${number}.webp`, projectRoot));
+    }),
   ]);
 });
 
@@ -281,6 +307,7 @@ test("keeps mobile-critical guide images lightweight", async () => {
     "public/liu-jiaxin-cutout.webp",
     "public/liu-liuhu-cutout.webp",
     "public/hou-huanwu-cutout.webp",
+    ...Array.from({ length: 13 }, (_, index) => `public/parking-route-step-${String(index + 1).padStart(2, "0")}.webp`),
   ];
 
   const sizes = await Promise.all(
@@ -288,7 +315,7 @@ test("keeps mobile-critical guide images lightweight", async () => {
   );
 
   const totalSize = sizes.reduce((total, info) => total + info.size, 0);
-  assert.ok(totalSize < 3_000_000, `optimized page images total ${totalSize} bytes`);
+  assert.ok(totalSize < 4_500_000, `optimized page images total ${totalSize} bytes`);
 });
 
 test("keeps scroll performance safeguards", async () => {
@@ -313,6 +340,8 @@ test("keeps scroll performance safeguards", async () => {
   assert.match(css, /\.weather-service-grid\s*\{[^}]*grid-template-columns:\s*repeat\(4,\s*1fr\)/s);
   assert.match(css, /\.parking-guide-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*1fr\)/s);
   assert.match(css, /\.parking-guide-visual\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*9/s);
+  assert.match(css, /\.parking-route-slider\s*\{[^}]*scroll-snap-type:\s*x\s+mandatory/s);
+  assert.match(css, /\.parking-route-slide\s*\{[^}]*flex:\s*0\s+0\s+100%/s);
   assert.match(css, /\.freight-step\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*9/s);
   assert.match(css, /\.image-lightbox\s*\{[^}]*max-height:\s*calc\(100dvh\s*-\s*48px\)/s);
   assert.match(css, /\.image-lightbox-frame\s*\{[^}]*height:\s*min\(56dvh,/s);
