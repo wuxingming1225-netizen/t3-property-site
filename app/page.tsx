@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import ImageLightbox from "./image-lightbox";
+import ParkingRouteGuides, { type ParkingRoute } from "./parking-route-guides";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const asset = (path: string) => `${basePath}${path}`;
@@ -220,42 +221,132 @@ const parkingGuides = [
   },
 ];
 
-const parkingElevatorGuides = [
+const b1SharedParkingSteps = [
   {
-    title: "负一层 · 高区 / 超高区",
-    text: "在 B1 停车后，跟随“T3办公电梯厅”指示牌前行。",
-    image: asset("/parking-elevator-b1-sign.jpg"),
-    preview: asset("/parking-elevator-b1-sign-preview.jpg"),
-    alt: "负一层高区和超高区前往T3办公电梯厅的指示牌",
+    image: asset("/parking-route-step-01-full.webp"),
+    preview: asset("/parking-route-step-01.webp"),
+    title: "进入负一层后左转",
+    text: "车辆进入地下停车场负一层后，按图示方向左转。",
+    alt: "车辆进入地下停车场负一层后左转",
   },
   {
-    title: "进入T3办公电梯厅",
-    text: "按指示进入7号商业电梯厅；B1走廊亦可通往低区办公电梯厅。",
-    image: asset("/parking-elevator-b1-hall.jpg"),
-    preview: asset("/parking-elevator-b1-hall-preview.jpg"),
-    alt: "负一层T3办公电梯厅入口",
+    image: asset("/parking-route-step-02-full.webp"),
+    preview: asset("/parking-route-step-02.webp"),
+    title: "找到区域并停好车",
+    text: "沿路线找到停车区域，将车辆停好后再步行前往电梯厅。",
+    alt: "车辆在负一层找到停车区域并停好车",
   },
   {
-    title: "负二层 · 低区 / 中区",
-    text: "在 B2 跟随“7号商业电梯厅 / T3办公电梯厅”指示，进入对应办公电梯厅。",
-    image: asset("/parking-elevator-b2-sign.jpg"),
-    preview: asset("/parking-elevator-b2-sign-preview.jpg"),
-    alt: "负二层低区和中区前往7号商业电梯厅及T3办公电梯厅的指示牌",
+    image: asset("/parking-route-step-03-full.webp"),
+    preview: asset("/parking-route-step-03.webp"),
+    title: "认准T3办公电梯厅",
+    text: "停好车后认准“T3办公电梯厅”标识，按图示方向步行进入。",
+    alt: "负一层T3办公电梯厅标识和步行入口",
   },
 ];
 
-const parkingElevatorRoute = [
+const parkingElevatorRoutes: ParkingRoute[] = [
   {
-    title: "按办公分区停车",
-    text: "高区、超高区车辆停至负一层；低区、中区车辆停至负二层。",
+    floor: "负一层",
+    destination: "高区 / 超高区",
+    summary: "左转进入负一层，停好车后认准“T3办公电梯厅”。",
+    steps: [
+      ...b1SharedParkingSteps,
+      {
+        image: asset("/parking-route-step-04-full.webp"),
+        preview: asset("/parking-route-step-04.webp"),
+        title: "到达高区 / 超高区电梯厅",
+        text: "步行进入后，即可到达高区 / 超高区办公电梯厅。",
+        alt: "负一层高区和超高区办公电梯厅",
+      },
+    ],
   },
   {
-    title: "认准电梯厅标识",
-    text: "下车后寻找“7号商业电梯厅 / T3办公电梯厅”指示牌，按标识前往。",
+    floor: "负一层",
+    destination: "低区 / 中区",
+    summary: "前段路线相同，到达电梯厅后经连廊前往低区 / 中区。",
+    steps: [
+      ...b1SharedParkingSteps,
+      {
+        image: asset("/parking-route-step-05-full.webp"),
+        preview: asset("/parking-route-step-05.webp"),
+        title: "直行前往连廊",
+        text: "进入办公电梯厅后继续直行，前往连接低区 / 中区的连廊。",
+        alt: "从高区和超高区办公电梯厅直行前往连廊",
+      },
+      {
+        image: asset("/parking-route-step-06-full.webp"),
+        preview: asset("/parking-route-step-06.webp"),
+        title: "进入连廊后右转",
+        text: "进入连廊后右转并直行，即可到达低区 / 中区办公电梯厅。",
+        alt: "进入连廊后右转前往低区和中区办公电梯厅",
+      },
+    ],
   },
   {
-    title: "抵达大堂再换乘",
-    text: "对应办公电梯均可到达一楼T3写字楼大堂，如需换乘请在大堂办理。",
+    floor: "负二层 / 负三层",
+    destination: "高区 / 超高区",
+    summary: "下斜坡后右转，再左转进入高区 / 超高区办公电梯厅。",
+    note: "负二层与负三层路线相同。",
+    steps: [
+      {
+        image: asset("/parking-route-step-07-full.webp"),
+        preview: asset("/parking-route-step-07.webp"),
+        title: "驶下斜坡后右转",
+        text: "驶下斜坡后，按图示箭头方向右转。",
+        alt: "负二层或负三层驶下斜坡后右转",
+      },
+      {
+        image: asset("/parking-route-step-08-full.webp"),
+        preview: asset("/parking-route-step-08.webp"),
+        title: "左转到达办公电梯厅",
+        text: "继续前行并左转，即可到达高区 / 超高区办公电梯厅。",
+        alt: "左转前往高区和超高区办公电梯厅",
+      },
+    ],
+  },
+  {
+    floor: "负二层 / 负三层",
+    destination: "低区 / 中区",
+    summary: "下斜坡后直行，上坡前左转，按路线进入低区 / 中区。",
+    note: "负二层与负三层路线相同。",
+    steps: [
+      {
+        image: asset("/parking-route-step-09-full.webp"),
+        preview: asset("/parking-route-step-09.webp"),
+        title: "驶下斜坡后直行",
+        text: "驶下斜坡后保持直行。",
+        alt: "负二层或负三层驶下斜坡后直行",
+      },
+      {
+        image: asset("/parking-route-step-10-full.webp"),
+        preview: asset("/parking-route-step-10.webp"),
+        title: "在上坡前左转",
+        text: "前行至上坡处，在进入上坡前左转。",
+        alt: "在地下停车场上坡前左转",
+      },
+      {
+        image: asset("/parking-route-step-11-full.webp"),
+        preview: asset("/parking-route-step-11.webp"),
+        title: "继续直行",
+        text: "左转后沿通道继续直行。",
+        alt: "左转后沿地下停车场通道直行",
+      },
+      {
+        image: asset("/parking-route-step-12-full.webp"),
+        preview: asset("/parking-route-step-12.webp"),
+        title: "前方左转",
+        text: "继续按图示方向左转。",
+        alt: "按图示方向左转前往T3办公电梯厅",
+      },
+      {
+        image: asset("/parking-route-step-13-full.webp"),
+        preview: asset("/parking-route-step-13.webp"),
+        title: "到达低区 / 中区电梯厅",
+        text: "认准“T3办公电梯厅”标识，步行进入低区 / 中区办公电梯厅。",
+        alt: "负二层低区和中区T3办公电梯厅入口",
+      },
+    ],
   },
 ];
 
@@ -312,7 +403,7 @@ const faqs = [
   ["停车月卡如何续费？", "T3拓展区地下停车长租请务必在月卡到期前进行续费；逾期未续费，原月卡套餐将自动失效，需结清临停费用并重新提交月租申请。已生效的月卡费用不予退款，不可中途更换车牌。"],
   ["雨天的暖心服务有哪些？", "前台暖心物品包含一次性毛巾、吹风机和一次性拖鞋；雨伞机提供免费雨伞借用，雨伞套机提供适用于长柄和短柄雨伞的雨伞套；雨伞除水器采用雪尼尔吸水面料，将雨伞放入后左右摇动 2 至 3 次即可快速去除水滴。"],
   ["外卖取餐和18号货梯怎么走？", "外卖请按负一层低区电梯厅、中央连廊、高区电梯厅的路线前往外卖柜；饮用水、快递及送货请从“森林子果蔬茶”旁侧通道前往专属18号货梯，施工材料须到负三层上下货。"],
-  ["地下停车场如何前往办公电梯厅？", "高区、超高区可在负一层跟随“T3办公电梯厅”指示；低区、中区可在负二层跟随“7号商业电梯厅 / T3办公电梯厅”指示。各办公电梯均可到达一楼T3写字楼大堂，并可在大堂换乘。"],
+  ["地下停车场如何前往办公电梯厅？", "请先选择当前所在的车库楼层和要前往的办公区，打开对应路线；全程认准“T3办公电梯厅”标识。负二层与负三层路线相同。"],
 ];
 
 const freightSequence = [
@@ -631,28 +722,10 @@ export default function Home() {
           <div className="parking-elevator-guide" id="parking-elevator-guide">
             <div className="parking-elevator-heading">
               <div><span className="section-kicker">PARKING TO OFFICE</span><h3>地下停车场 · T3办公电梯厅指引</h3></div>
-              <p>先按办公分区停车，再认准“7号商业电梯厅 / T3办公电梯厅”标识进入对应电梯厅。</p>
+              <p>选择所在楼层和目的办公区，全程认准“T3办公电梯厅”。</p>
             </div>
-            <ol className="parking-elevator-route" aria-label="从停车场到办公电梯厅的路线">
-              {parkingElevatorRoute.map((step, index) => (
-                <li key={step.title}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <div><strong>{step.title}</strong><p>{step.text}</p></div>
-                </li>
-              ))}
-            </ol>
-            <div className="parking-elevator-grid">
-              {parkingElevatorGuides.map((guide, index) => (
-                <article className="parking-elevator-card" key={guide.title}>
-                  <a className="parking-elevator-photo" href={guide.image} target="_blank" rel="noreferrer" data-lightbox="image" aria-label={`查看${guide.title}清晰原图`}>
-                    <img src={guide.preview} alt={guide.alt} width="1000" height="563" loading="lazy" decoding="async" />
-                    <span>0{index + 1}</span>
-                  </a>
-                  <div className="parking-elevator-copy"><h4>{guide.title}</h4><p>{guide.text}</p></div>
-                </article>
-              ))}
-            </div>
-            <p className="parking-transfer-note"><strong>换乘提示</strong> 各办公电梯均可到达一楼T3写字楼大堂；如需前往其他分区，可在一楼大堂换乘。</p>
+            <ParkingRouteGuides routes={parkingElevatorRoutes} />
+            <p className="parking-transfer-note"><strong>楼层说明</strong> 负二层与负三层使用相同路线。</p>
           </div>
         </div>
       </section>

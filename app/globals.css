@@ -272,22 +272,44 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .parking-renewal-alert p { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.8; }
 .parking-elevator-guide { margin-top: 54px; padding: 36px; border: 1px solid #d6e6f4; border-radius: 28px; background: linear-gradient(145deg, #fff, #eef7ff); box-shadow: 0 18px 50px rgba(28, 79, 132, .08); }
 .parking-elevator-heading { display: flex; align-items: end; justify-content: space-between; gap: 36px; margin-bottom: 24px; }
-.parking-elevator-heading h3 { margin: 10px 0 0; font-size: clamp(30px, 3vw, 43px); letter-spacing: -.045em; }
-.parking-elevator-heading > p { width: min(430px, 42%); margin: 0; color: #60758a; font-size: 16px; line-height: 1.8; }
-.parking-elevator-route { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 0 0 20px; padding: 0; list-style: none; }
-.parking-elevator-route li { display: grid; grid-template-columns: 30px 1fr; align-items: start; gap: 12px; min-height: 104px; padding: 17px; border: 1px solid #d6e6f4; border-radius: 18px; background: linear-gradient(135deg, #fff, #f3f9fe); }
-.parking-elevator-route li > span { display: grid; width: 30px; height: 30px; place-items: center; border-radius: 50%; color: #fff; background: var(--blue); font-size: 12px; font-weight: 800; letter-spacing: .04em; }
-.parking-elevator-route strong { display: block; color: #163b61; font-size: 16px; }
-.parking-elevator-route p { margin: 6px 0 0; color: #60758a; font-size: 14px; line-height: 1.65; }
-.parking-elevator-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.parking-elevator-card { overflow: hidden; border: 1px solid #d6e6f4; border-radius: 24px; background: #fff; box-shadow: 0 16px 44px rgba(28, 89, 148, .08); }
-.parking-elevator-photo { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; background: #e7f2fb; }
-.parking-elevator-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
-.parking-elevator-photo:hover img { transform: scale(1.025); }
-.parking-elevator-photo > span { position: absolute; left: 15px; top: 15px; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: rgba(5, 35, 68, .72); font-size: 13px; font-weight: 750; backdrop-filter: blur(10px); }
-.parking-elevator-copy { padding: 24px; }
-.parking-elevator-copy h4 { margin: 0 0 12px; font-size: 23px; letter-spacing: -.035em; }
-.parking-elevator-copy p { margin: 0; color: #60758a; font-size: 15px; line-height: 1.8; }
+.parking-elevator-heading h3 { margin: 10px 0 0; font-size: clamp(28px, 3vw, 38px); letter-spacing: -.04em; }
+.parking-elevator-heading > p { width: min(410px, 42%); margin: 0; color: #60758a; font-size: 15px; line-height: 1.7; }
+.parking-route-choices { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.parking-route-choice { position: relative; min-height: 138px; overflow: hidden; border: 1px solid #d5e5f3; border-radius: 18px; padding: 0; color: #153a5f; background: #fff; text-align: left; cursor: pointer; box-shadow: 0 9px 24px rgba(28, 79, 132, .06); transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease; }
+.parking-route-choice-copy { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 20px 64px 20px 22px; }
+.parking-route-choice-copy small { color: #2878bd; font-size: 13px; font-weight: 700; letter-spacing: .05em; }
+.parking-route-choice-copy strong { margin-top: 7px; font-size: 22px; line-height: 1.2; letter-spacing: -.025em; }
+.parking-route-choice-copy > span { margin-top: 8px; color: #7890a6; font-size: 13px; }
+.parking-route-choice > i { position: absolute; right: 18px; top: 50%; display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid #cfe2f3; border-radius: 50%; color: #1376c5; background: #f1f8fe; font-size: 17px; font-style: normal; transform: translateY(-50%); }
+.parking-route-choice:hover { border-color: #9bcbed; box-shadow: 0 12px 28px rgba(28, 79, 132, .1); transform: translateY(-2px); }
+.parking-route-choice:focus-visible { outline: 3px solid #158ee9; outline-offset: 3px; }
+.parking-route-dialog { width: min(1100px, calc(100vw - 40px)); max-width: none; max-height: calc(100dvh - 28px); margin: auto; padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,.22); border-radius: 26px; color: #102e4d; background: #f5faff; box-shadow: 0 30px 110px rgba(0,0,0,.48); }
+.parking-route-dialog::backdrop { background: rgba(1, 9, 20, .84); backdrop-filter: blur(10px); }
+.parking-route-dialog-panel { display: flex; height: min(820px, calc(100dvh - 40px)); flex-direction: column; }
+.parking-route-dialog-heading { display: flex; flex: 0 0 auto; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 24px 28px 20px; border-bottom: 1px solid #dce8f3; background: #fff; }
+.parking-route-dialog-heading > div > span { color: #1479ca; font-size: 13px; font-weight: 800; letter-spacing: .12em; }
+.parking-route-dialog-heading h4 { margin: 6px 0 5px; font-size: 26px; letter-spacing: -.03em; }
+.parking-route-dialog-heading p { margin: 0; color: #60758a; font-size: 14px; line-height: 1.65; }
+.parking-route-dialog-heading > button { flex: 0 0 auto; display: grid; width: 40px; height: 40px; place-items: center; border: 0; border-radius: 50%; color: #fff; background: #0b3158; font-size: 28px; line-height: 1; cursor: pointer; }
+.parking-route-slider { display: flex; flex: 1 1 auto; min-height: 0; overflow-x: auto; overscroll-behavior-inline: contain; scroll-behavior: smooth; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.parking-route-slider::-webkit-scrollbar { display: none; }
+.parking-route-slide { flex: 0 0 100%; min-width: 0; min-height: 0; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(260px, .8fr); overflow-y: auto; background: #f5faff; scroll-snap-align: start; scroll-snap-stop: always; }
+.parking-route-slide-photo { position: relative; min-height: 420px; overflow: hidden; background: #06182c; }
+.parking-route-slide-photo img { width: 100%; height: 100%; object-fit: contain; }
+.parking-route-slide-photo > span { position: absolute; right: 16px; bottom: 15px; border: 1px solid rgba(255,255,255,.4); border-radius: 999px; padding: 9px 12px; color: #fff; background: rgba(3, 22, 42, .66); font-size: 13px; backdrop-filter: blur(10px); }
+.parking-route-slide-copy { align-self: center; padding: 34px 30px; }
+.parking-route-slide-copy > span { color: #1681d8; font-size: 13px; font-weight: 800; letter-spacing: .1em; }
+.parking-route-slide-copy h5 { margin: 12px 0 13px; font-size: 24px; line-height: 1.25; letter-spacing: -.03em; }
+.parking-route-slide-copy p { margin: 0; color: #60758a; font-size: 15px; line-height: 1.7; }
+.parking-route-dialog-controls { display: flex; flex: 0 0 auto; align-items: center; gap: 13px; padding: 13px 20px; border-top: 1px solid #dce8f3; background: #fff; }
+.parking-route-dialog-controls > button { display: grid; width: 40px; height: 40px; flex: 0 0 auto; place-items: center; border: 1px solid #c9ddef; border-radius: 50%; color: #0b65ae; background: #f1f8fe; font-size: 18px; cursor: pointer; }
+.parking-route-dialog-controls > button:disabled { opacity: .35; cursor: default; }
+.parking-route-dialog-controls > span { margin-left: auto; color: #55718a; font-size: 13px; font-weight: 750; white-space: nowrap; }
+.parking-route-progress { display: flex; align-items: center; gap: 7px; }
+.parking-route-progress button { width: 8px; height: 8px; border: 0; border-radius: 999px; padding: 0; background: #bed3e5; cursor: pointer; transition: width .25s ease, background .25s ease; }
+.parking-route-progress button.is-active { width: 25px; background: #1184de; }
+.parking-route-dialog-note { flex: 0 0 auto; margin: 0; padding: 11px 22px; color: #5f7488; background: #eaf5ff; font-size: 13px; }
+.parking-route-dialog-note strong { margin-right: 8px; color: #0a72c5; }
 .parking-transfer-note { margin: 18px 0 0; padding: 18px 22px; border: 1px solid #cfe4f7; border-radius: 18px; color: #4f6f8c; background: rgba(255,255,255,.75); font-size: 15px; line-height: 1.8; }
 .parking-transfer-note strong { margin-right: 8px; color: var(--blue); }
 
@@ -509,9 +531,25 @@ footer { padding: 42px 0; background: #06172d; color: #fff; }
   .parking-elevator-guide { margin-top: 38px; padding: 24px 18px; border-radius: 24px; }
   .parking-elevator-heading { display: block; }
   .parking-elevator-heading > p { width: auto; margin-top: 14px; }
-  .parking-elevator-route { grid-template-columns: 1fr; }
-  .parking-elevator-route li { min-height: 0; }
-  .parking-elevator-grid { grid-template-columns: 1fr; }
+  .parking-route-choices { grid-template-columns: 1fr; }
+  .parking-route-choice { min-height: 124px; }
+  .parking-route-choice-copy { padding: 18px 56px 18px 18px; }
+  .parking-route-choice-copy strong { font-size: 20px; }
+  .parking-route-dialog { width: calc(100vw - 16px); max-height: calc(100dvh - 16px); border-radius: 18px; }
+  .parking-route-dialog-panel { height: calc(100dvh - 16px); }
+  .parking-route-dialog-heading { padding: 17px 17px 14px; }
+  .parking-route-dialog-heading h4 { font-size: 23px; }
+  .parking-route-dialog-heading p { font-size: 13px; }
+  .parking-route-dialog-heading > button { width: 36px; height: 36px; }
+  .parking-route-slide { display: block; }
+  .parking-route-slide-photo { display: block; min-height: 0; aspect-ratio: 4 / 3; }
+  .parking-route-slide-copy { padding: 20px 19px 24px; }
+  .parking-route-slide-copy h5 { margin: 9px 0 10px; font-size: 23px; }
+  .parking-route-slide-copy p { font-size: 14px; }
+  .parking-route-dialog-controls { gap: 9px; padding: 10px 12px; }
+  .parking-route-dialog-controls > button { width: 36px; height: 36px; }
+  .parking-route-progress { gap: 5px; }
+  .parking-route-dialog-note { padding: 9px 14px; }
   .weather-service-photo { aspect-ratio: 3 / 4; }
   .parking-guide-copy { padding: 26px 24px 30px; }
   .parking-guide-copy h3 { font-size: 29px; }
@@ -545,6 +583,7 @@ footer { padding: 42px 0; background: #06172d; color: #fff; }
 @media (hover: none) {
   .person-card:hover, .service-card:hover, .primary-btn:hover, .glass-btn:hover { transform: none; }
   .route-visual:hover img, .takeout-step:hover img, .freight-step:hover img { transform: none; }
+  .parking-route-choice:hover { transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
