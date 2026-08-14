@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useId, useLayoutEffect, useRef, useState } from "react";
 
 export type ParkingRouteStep = {
   image: string;
@@ -26,12 +26,14 @@ export default function ParkingRouteGuides({ routes }: { routes: ParkingRoute[] 
   const [activeStepIndex, setActiveStepIndex] = useState(0);
   const activeRoute = activeRouteIndex === null ? null : routes[activeRouteIndex];
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const dialog = dialogRef.current;
-    if (!dialog || !activeRoute || dialog.open) return;
+    const slider = sliderRef.current;
+    if (!dialog || !slider || !activeRoute) return;
 
-    dialog.showModal();
-    requestAnimationFrame(() => sliderRef.current?.scrollTo({ left: 0 }));
+    slider.scrollLeft = 0;
+    setActiveStepIndex(0);
+    if (!dialog.open) dialog.showModal();
   }, [activeRoute]);
 
   const openRoute = (index: number) => {
