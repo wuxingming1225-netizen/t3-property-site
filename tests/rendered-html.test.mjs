@@ -351,3 +351,11 @@ test("keeps scroll performance safeguards", async () => {
   assert.match(css, /@media \(max-width: 700px\)[\s\S]*\.hero-status\s*\{[^}]*bottom:\s*22px/);
   assert.doesNotMatch(css, /staff-badge/);
 });
+
+test("opens every parking route at the first image", async () => {
+  const component = await readFile(new URL("../app/parking-route-guides.tsx", import.meta.url), "utf8");
+
+  assert.match(component, /useLayoutEffect/);
+  assert.match(component, /slider\.scrollLeft\s*=\s*0/);
+  assert.match(component, /setActiveStepIndex\(0\)/);
+});
